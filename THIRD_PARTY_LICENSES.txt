@@ -10,7 +10,7 @@ aiofiles 23.2.1
     Asyncio support for files
     Copyright 2016 Tin Tvrtkovic
 
-aiohttp 3.8.6
+aiohttp 3.9.3
 
     LICENSE:
        Copyright aio-libs contributors.
@@ -49,6 +49,7 @@ aiohttp 3.8.6
     Alexey Firsov
     Alexey Popravka
     Alexey Stepanov
+    Almaz Salakhov
     Amin Etesamian
     Amit Tulshyan
     Amy Boyle
@@ -65,16 +66,19 @@ aiohttp 3.8.6
     Antoine Pietri
     Anton Kasyanov
     Anton Zhdan-Pushkin
+    Arie Bovenberg
     Arseny Timoniq
     Artem Yushkovskiy
     Arthur Darcet
     Austin Scola
     Ben Bader
     Ben Greiner
+    Ben Kallus
     Ben Timby
     Benedikt Reinartz
     Bob Haddleton
     Boris Feld
+    Borys Vorona
     Boyi Chen
     Brett Cannon
     Brian Bouterse
@@ -99,8 +103,10 @@ aiohttp 3.8.6
     Dan King
     Dan Xu
     Daniel García
+    Daniel Golding
     Daniel Grossmann-Kavanagh
     Daniel Nelson
+    Daniele Trifirò
     Danny Song
     David Bibb
     David Michael Brown
@@ -110,6 +116,7 @@ aiohttp 3.8.6
     Dennis Kliban
     Dima Veselov
     Dimitar Dimitrov
+    Diogo Dutra da Mata
     Dmitriy Safonov
     Dmitry Doroshev
     Dmitry Erlikh
@@ -123,11 +130,13 @@ aiohttp 3.8.6
     Eduard Iskandarov
     Eli Ribble
     Elizabeth Leddy
+    Emil Melnikov
     Enrique Saez
     Eric Sheng
     Erich Healy
     Erik Peterson
     Eugene Chernyshov
+    Eugene Ershov
     Eugene Naydenov
     Eugene Nikolaiev
     Eugene Tolmachev
@@ -157,9 +166,11 @@ aiohttp 3.8.6
     Hu Bo
     Hugh Young
     Hugo Herter
+    Hugo Hromic
     Hugo van Kemenade
     Hynek Schlawack
     Igor Alexandrov
+    Igor Bolshakov
     Igor Davydenko
     Igor Mozharovsky
     Igor Pavlov
@@ -167,6 +178,9 @@ aiohttp 3.8.6
     Ilya Chichak
     Ilya Gruzinov
     Ingmar Steen
+    Ivan Lakovic
+    Ivan Larin
+    J. Nick Koston
     Jacob Champion
     Jaesung Lee
     Jake Davis
@@ -174,7 +188,9 @@ aiohttp 3.8.6
     Jakub Wilk
     Jan Buchar
     Jan Gosmann
+    Jarno Elonen
     Jashandeep Sohi
+    Jean-Baptiste Estival
     Jens Steinhauser
     Jeonghun Lee
     Jeongkyu Shin
@@ -187,6 +203,7 @@ aiohttp 3.8.6
     Jon Nabozny
     Jonas Krüger Svensson
     Jonas Obrist
+    Jonathan Ballet
     Jonathan Wright
     Jonny Tan
     Joongi Kim
@@ -212,6 +229,7 @@ aiohttp 3.8.6
     Kyrylo Perevozchikov
     Kyungmin Lee
     Lars P. Søndergaard
+    Lee LieWhite
     Liu Hua
     Louis-Philippe Huberdeau
     Loïc Lajeanne
@@ -223,6 +241,7 @@ aiohttp 3.8.6
     Makc Belousow
     Manuel Miranda
     Marat Sharafutdinov
+    Marc Mueller
     Marco Paolini
     Mariano Anaya
     Mariusz Masztalerczuk
@@ -230,11 +249,14 @@ aiohttp 3.8.6
     Martijn Pieters
     Martin Melka
     Martin Richard
+    Martin Sucha
     Mathias Fröjdman
     Mathieu Dugré
+    Matt VanEseltine
     Matthias Marquardt
     Matthieu Hauglustaine
     Matthieu Rigal
+    Matvey Tingaev
     Meet Mangukiya
     Michael Ihnatenko
     Michał Górny
@@ -255,11 +277,14 @@ aiohttp 3.8.6
     Nándor Mátravölgyi
     Oisin Aylward
     Olaf Conradi
+    Oleg Höfling
     Pahaz Blinov
     Panagiotis Kolokotronis
     Pankaj Pandey
+    Parag Jain
     Pau Freixes
     Paul Colomiets
+    Paul J. Dorn
     Paulius Šileikis
     Paulus Schoutsen
     Pavel Kamaev
@@ -278,7 +303,10 @@ aiohttp 3.8.6
     Required Field
     Robert Lu
     Robert Nikolich
+    Roman Markeloff
     Roman Podoliaka
+    Rong Zhang
+    Samir Akarioh
     Samuel Colvin
     Sean Hunt
     Sebastian Acuna
@@ -300,6 +328,7 @@ aiohttp 3.8.6
     Stephan Jaensch
     Stephen Cirelli
     Stephen Granade
+    Steve Repsher
     Steven Seguin
     Sunghyun Hwang
     Sunit Deshpande
@@ -316,6 +345,7 @@ aiohttp 3.8.6
     Tomasz Trebski
     Toshiaki Tanaka
     Trinh Hoang Nhu
+    Tymofii Tsiapa
     Vadim Suharnikov
     Vaibhav Sagar
     Vamsi Krishna Avula
@@ -324,6 +354,7 @@ aiohttp 3.8.6
     Viacheslav Greshilov
     Victor Collod
     Victor Kovtun
+    Victor Makarov
     Vikas Kawadia
     Viktor Danyliuk
     Ville Skyttä
@@ -347,6 +378,8 @@ aiohttp 3.8.6
     William Grzybowski
     William S.
     Wilson Ong
+    wouter bolsterlee
+    Xiang Li
     Yang Zhou
     Yannick Koechlin
     Yannick Péroux
@@ -359,8 +392,11 @@ aiohttp 3.8.6
     Yury Selivanov
     Yusuke Tsutsumi
     Yuval Ofir
+    Yuvi Panda
+    Zainab Lawal
     Zeal Wierslee
     Zlatan Sičanica
+    Łukasz Setla
     Марк Коренберг
     Семён Марьясин
 
@@ -374,7 +410,7 @@ aiosignal 1.3.1
     Martijn Pieters
     Nikolay Kim
 
-aiosqlite 0.19.0
+aiosqlite 0.20.0
 
     LICENSE:
     MIT License
@@ -400,15 +436,7 @@ aiosqlite 0.19.0
     SOFTWARE.
 
 
-async-timeout 4.0.3
-
-    LICENSE:
-    Copyright 2016-2020 aio-libs collaboration.
-
-    Licensed under the Apache License, Version 2.0 (see below)
-
-
-attrs 23.1.0
+attrs 23.2.0
 
     LICENSE:
     The MIT License (MIT)
@@ -434,32 +462,7 @@ attrs 23.1.0
     SOFTWARE.
 
 
-charset-normalizer 3.3.0
-
-    LICENSE:
-    MIT License
-
-    Copyright (c) 2019 TAHRI Ahmed R.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-
-frozenlist 1.4.0
+frozenlist 1.4.1
 
     LICENSE:
     Apache License, Version 2.0 (see below)
@@ -474,49 +477,50 @@ frozenlist 1.4.0
     Paul Colomiets
 
 
-idna 3.4
+idna 3.6
 
     LICENSE:
     BSD 3-Clause License
 
-    Copyright (c) 2013-2021, Kim Davies
+    Copyright (c) 2013-2023, Kim Davies and contributors.
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions are met:
+    modification, are permitted provided that the following conditions are
+    met:
 
-    1. Redistributions of source code must retain the above copyright notice, this
-       list of conditions and the following disclaimer.
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright notice,
-       this list of conditions and the following disclaimer in the documentation
-       and/or other materials provided with the distribution.
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
 
     3. Neither the name of the copyright holder nor the names of its
        contributors may be used to endorse or promote products derived from
        this software without specific prior written permission.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+    TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-multidict 6.0.4
+multidict 6.0.5
 
     LICENSE:
-       Copyright 2016-2021 Andrew Svetlov and aio-libs team
+       Copyright 2016 Andrew Svetlov and aio-libs contributors
 
        Licensed under the Apache License, Version 2.0 (see below);
 
 
-yarl 1.9.2
+yarl 1.9.4
 
     The yarl package is written by Andrew Svetlov.
     LICENSE: Apache License, Version 2.0 (see below)
