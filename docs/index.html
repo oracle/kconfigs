@@ -1,0 +1,176 @@
+<!-- Copyright (c) 2024, Oracle and/or its affiliates.
+     Licensed under the terms of the GNU General Public License. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Distribution Kernel Configs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="tux-sm.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="." class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <span class="fs-4">Distribution Kernel Configs</span>
+        </a>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="row g-3">
+        <div class="col">
+          <input id="configSelector" class="form-control" list="configurations" placeholder="KConfig entry, type to search..." onchange="addConfig(event.target.value)">
+          <datalist id="configurations">
+          </datalist>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary" onclick="addConfig(document.getElementById('configSelector').value)">Add Config</button>
+        </div>
+      </div>
+
+      <table class="table table-striped table-hover">
+        <thead id="header">
+          <td>Distribution</td>
+          <td></td>
+        </thead>
+        <tbody id="body">
+          <td>Oracle Linux...</td>
+          <td>y</td>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      var distroToIndex = new Map();
+      var configMap = new Map();
+
+      var selectedConfigs = new Set();
+
+      function loadData(data) {
+          let index = 0;
+          for (distro of data.distros) {
+              distroToIndex.set(distro.unique_name, index);
+              index++;
+          }
+          let cl = document.getElementById("configurations");
+          for (let [name, list] of Object.entries(data.kconfigs)) {
+              let element = document.createElement("option");
+              element.value = name;
+              cl.appendChild(element);
+              configMap.set(name, list);
+          }
+          changed = false;
+          for (let cn of selectedConfigs) {
+              if (!configMap.has(cn)) {
+                  selectedConfigs.delete(cn);
+                  changed = true;
+                  console.log("delete " + cn);
+              }
+          }
+          reload(changed);
+      }
+      function reload(pushState) {
+          console.log("Reloading")
+
+          let sortedConfigs = Array.from(selectedConfigs.keys());
+          sortedConfigs.sort();
+
+          const distributionElem = document.createElement("th");
+          distributionElem.innerText = "Distribution";
+          distributionElem.style = "width: 100%"
+          let headElems = [distributionElem];
+          for (cn of sortedConfigs) {
+              const configurationElem = document.createElement("th");
+              configurationElem.innerText = cn;
+              configurationElem.innerHTML += "&nbsp;";
+              const removeBtn = document.createElement("a");
+              removeBtn.dataset.target = cn;
+              removeBtn.classList.add("link-danger");
+              removeBtn.style = "cursor: pointer";
+              removeBtn.innerText = "[x]";
+              removeBtn.onclick = (e) => { removeConfig(e.target.dataset.target) };
+              configurationElem.appendChild(removeBtn)
+              headElems.push(configurationElem);
+          }
+          let head_row1 = document.createElement("tr");
+          head_row1.replaceChildren(...headElems)
+          document.getElementById("header").replaceChildren(head_row1);
+
+          let tb = document.getElementById("body");
+          tb.replaceChildren();
+          let sortedDistros = Array.from(distroToIndex.keys());
+          sortedDistros.sort();
+          for (let dn of sortedDistros) {
+              let elem = document.createElement("td");
+              elem.innerText = dn;
+              let rowElems = [elem];
+              for (let cn of sortedConfigs) {
+                  let valueElem = document.createElement("td");
+                  let index = distroToIndex.get(dn);
+                  let configList = configMap.get(cn);
+                  if (configList !== undefined) {
+                      val = configList[index];
+                  } else {
+                      val = null;
+                  }
+                  if (val === null) {
+                      valueElem.innerHTML = "&mdash;";
+                  } else {
+                      valueElem.innerText = configList[index];
+                  }
+                  rowElems.push(valueElem);
+              }
+              let row = document.createElement("tr");
+              row.replaceChildren(...rowElems);
+              tb.appendChild(row);
+          }
+
+          if (pushState) {
+              let qs = new URLSearchParams();
+              for (cn of selectedConfigs) {
+                  qs.append("config", cn);
+              }
+              history.pushState(null, "", "?" + qs.toString())
+          }
+      }
+      function setState() {
+          let qs = new URLSearchParams(document.location.search);
+          console.log("SETSTATE");
+          selectedConfigs.clear();
+          for (cn of qs.getAll("config")) {
+              selectedConfigs.add(cn);
+              console.log(cn);
+          }
+          if (selectedConfigs.size === 0) {
+              selectedConfigs.add("UTS_RELEASE");
+          }
+          reload(false);
+      }
+      function addConfig(text) {
+          if (configMap.has(text) && !selectedConfigs.has(text)) {
+              selectedConfigs.add(text);
+              reload(true);
+          }
+      }
+      function removeConfig(text) {
+          if (selectedConfigs.has(text)) {
+              selectedConfigs.delete(text);
+              reload(true);
+          }
+      }
+      window.onpopstate = setState;
+      setState();
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "summary.json", true);
+      xhr.onload = (event) => {
+          console.log("Loaded kernel config summary")
+          loadData(JSON.parse(event.target.response));
+      }
+      xhr.send(null);
+    </script>
+  </body>
+</html>
