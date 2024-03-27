@@ -1,5 +1,6 @@
 # Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
+import asyncio
 import hashlib
 import io
 import posixpath
@@ -26,6 +27,8 @@ HTTPS_HOSTS = {
 
 
 class DownloadManager:
+    RETRIES = 3
+
     def __init__(self, max_downloads: int = 8):
         self.session = ClientSession(raise_for_status=True)
         self.sem = Semaphore(max_downloads)
@@ -49,19 +52,38 @@ class DownloadManager:
             # Prevents duplicate work during development
             print(f"Skip download {file}")
             return
-        async with self.sem:
-            try:
-                print(f"Download {url} to {file}")
-                async with self.session.get(url) as resp, aiofiles.open(
-                    file, "wb"
-                ) as out:
-                    async for chunk in resp.content.iter_chunked(4096):
-                        if checksum:
-                            h.update(chunk)
-                        await out.write(chunk)
-            except BaseException:
-                file.unlink(missing_ok=True)
-                raise
+        errors = []
+        for i in range(self.RETRIES):
+            async with self.sem:
+                try:
+                    print(
+                        f"Download {url} to {file} [try {i+1}/{self.RETRIES}]"
+                    )
+                    async with self.session.get(url) as resp, aiofiles.open(
+                        file, "wb"
+                    ) as out:
+                        async for chunk in resp.content.iter_chunked(4096):
+                            if checksum:
+                                h.update(chunk)
+                            await out.write(chunk)
+                    break
+                except ClientResponseError as err:
+                    file.unlink(missing_ok=True)
+                    if err.status == 404:
+                        # retrying won't help, raise
+                        raise
+                    # otherwise, wait a second and retry
+                    errors.append(err)
+                except BaseException:
+                    file.unlink(missing_ok=True)
+                    raise
+            await asyncio.sleep(1)
+        else:
+            # loop terminated after retries,
+            raise Exception(
+                f"Failed to download {url} after {self.RETRIES} retries: "
+                f"{errors}"
+            )
         if checksum:
             digest = h.hexdigest()
             if digest != checksum[1]:
@@ -76,15 +98,30 @@ class DownloadManager:
     async def download_file_mem(
         self, url: str, checksum: tuple[str, str] | None = None
     ) -> bytes:
-        out = io.BytesIO()
         if checksum:
             h = hashlib.new(checksum[0])
-        async with self.sem, self.session.get(url) as resp:
-            print(f"Download {url} to mem")
-            async for chunk in resp.content.iter_chunked(4096):
-                if checksum:
-                    h.update(chunk)
-                out.write(chunk)
+        errors = []
+        for i in range(self.RETRIES):
+            out = io.BytesIO()
+            try:
+                async with self.sem, self.session.get(url) as resp:
+                    print(f"Download {url} to mem [try {i+1}/{self.RETRIES}]")
+                    async for chunk in resp.content.iter_chunked(4096):
+                        if checksum:
+                            h.update(chunk)
+                        out.write(chunk)
+                break
+            except ClientResponseError as err:
+                if err.status == 404:
+                    raise
+                errors.append(err)
+            await asyncio.sleep(1)
+        else:
+            # loop terminated after retries,
+            raise Exception(
+                f"Failed to download {url} after {self.RETRIES} retries: "
+                f"{errors}"
+            )
         if checksum:
             digest = h.hexdigest()
             if digest != checksum[1]:
