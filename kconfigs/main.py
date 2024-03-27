@@ -4,6 +4,7 @@ import argparse
 import asyncio
 import configparser
 import json
+import multiprocessing
 import posixpath
 import shutil
 from pathlib import Path
@@ -14,6 +15,11 @@ from kconfigs.fetcher import DistroConfig
 from kconfigs.fetcher import Fetcher
 from kconfigs.util import download_file
 from kconfigs.util import download_manager
+
+
+# Extraction is CPU-bound, and it also consumes quite a bit of disk space.
+# Limit the number of CPUs which can do extraction in parallel.
+extract_sem = asyncio.Semaphore(multiprocessing.cpu_count() + 1)
 
 
 class FetcherFactory:
@@ -63,23 +69,27 @@ async def run_for_distro(
         workdir.mkdir(parents=True)
         latest_url, maybe_csum = await fetcher.latest_version_url(d.package)
         if latest_url != previous_url:
-            name = posixpath.basename(latest_url)
-            file = workdir / name
-            await download_file(latest_url, file, checksum=maybe_csum)
+            async with extract_sem:
+                name = posixpath.basename(latest_url)
+                file = workdir / name
+                await download_file(latest_url, file, checksum=maybe_csum)
 
-            extractor = Extractor.get(d.extractor)
+                extractor = Extractor.get(d.extractor)
 
-            maybe_sig = await fetcher.signature_url(d.package)
-            if maybe_sig:
-                signame = posixpath.basename(maybe_sig)
-                sigfile = workdir / signame
-                await download_file(maybe_sig, sigfile)
-                await extractor.verify_signature(file, sigfile, d)
+                maybe_sig = await fetcher.signature_url(d.package)
+                if maybe_sig:
+                    signame = posixpath.basename(maybe_sig)
+                    sigfile = workdir / signame
+                    await download_file(maybe_sig, sigfile)
+                    await extractor.verify_signature(file, sigfile, d)
 
-            print(f"Extract config of {d.unique_name}")
-            await extractor.extract_kconfig(file, out, d)
+                print(f"Extract config of {d.unique_name}")
+                await extractor.extract_kconfig(file, out, d)
     else:
         latest_url = previous_url
+    if workdir.exists():
+        # Clear the distro's work directory to conserve space
+        shutil.rmtree(workdir)
     return d, {"latest_url": latest_url}
 
 
