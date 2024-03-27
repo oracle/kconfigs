@@ -57,7 +57,9 @@ def main() -> None:
 
     cfg = ConfigParser()
     cfg.read(args.config)
-    distros = [DistroConfig(**dict(cfg[sec])) for sec in cfg.sections()]
+    distros = [
+        DistroConfig(**dict(cfg[sec])) for sec in cfg.sections()  # type: ignore
+    ]
 
     kconfigs = {}
     kconfig_keys: set[str] = set()
