@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Schedule: 5:30PM Monday-Friday UTC, which is roughly
+    # 10:30 AM Pacific (give or take some DST) on weekdays.
+    - cron: '30 17 * * MON-FRI'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04  # don't use "-latest", we can manually update
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GNUPGHOME: /tmp  # avoid "gpg: Fatal: can't create directory '/home/runner/.gnupg': File exists"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install gzip bzip2 xz-utils zstd tar rpm cpio dpkg make
+          make venv
+      - name: Checkout gh-pages and setup git
+        run: |
+          git fetch origin gh-pages --depth=1
+          git worktree add ../gh-pages gh-pages
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'noreply@example.com'
+      - name: Fetch updates and build page
+        run: |
+          venv/bin/python -m kconfigs.main config.ini \
+              --state ../gh-pages/state.json \
+              --output-dir ../gh-pages/out
+          venv/bin/python -m kconfigs.analyzer config.ini \
+              --input-dir ../gh-pages/out \
+              --output-file ../gh-pages/docs/summary.json
+          cp index.html tux-sm.png ../gh-pages/docs/
+      - name: Push update
+        run: |
+          cd ../gh-pages
+          git add .
+          git commit -m "Automatic update"
+          git push origin gh-pages
