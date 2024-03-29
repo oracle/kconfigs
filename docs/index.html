@@ -84,7 +84,14 @@
           let headElems = [distributionElem];
           for (cn of sortedConfigs) {
               const configurationElem = document.createElement("th");
-              configurationElem.innerText = cn;
+              if (cn === "UTS_RELEASE") {
+                  configurationElem.innerText += cn; // fake config
+              } else {
+                  const configLink = document.createElement("a");
+                  configLink.href = "https://cateee.net/lkddb/web-lkddb/" + cn + ".html";
+                  configLink.innerText = cn;
+                  configurationElem.appendChild(configLink)
+              }
               configurationElem.innerHTML += "&nbsp;";
               const removeBtn = document.createElement("a");
               removeBtn.dataset.target = cn;
