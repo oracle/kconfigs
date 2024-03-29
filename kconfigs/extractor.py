@@ -15,6 +15,7 @@ class Extractor(abc.ABC):
     async def verify_signature(
         self, package: Path, sig: Path, dc: DistroConfig
     ) -> None:
+        """Override this if you have custom verification logic"""
         assert dc.key
         if await gpg_verify(package, sig, dc.key):
             print(f"Good GPG signature [{dc.key}]: {package.name}")
