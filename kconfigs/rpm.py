@@ -12,12 +12,11 @@ from functools import cmp_to_key
 from itertools import zip_longest
 from pathlib import Path
 from typing import Any
-from typing import cast
+from typing import NamedTuple
 from typing import TypeVar
 
 import aiosqlite
 from aiofiles.tempfile import TemporaryDirectory
-from aiosqlite import Row
 
 from kconfigs.extractor import Extractor
 from kconfigs.fetcher import Checksum
@@ -33,6 +32,14 @@ GROUPRE = re.compile("([0-9]+|[a-zA-Z]+)")
 
 
 T = TypeVar("T", str, int)
+
+
+class PkgMeta(NamedTuple):
+    version: str
+    release: str
+    href: str
+    checksum: str
+    checksum_type: str
 
 
 def samekindcmp(s1: T, s2: T) -> int:
@@ -107,7 +114,12 @@ class RpmFetcher(Fetcher):
             yum_base, self.key, https_ok=True
         )
         tree = ET.fromstring(data.decode("utf-8"))
-        primary_db_data = tree.findall(".//{*}data[@type='primary_db']")[0]
+        # prefer primary_db because it's sqlite, which is faster to query
+        primary_db_list = tree.findall(".//{*}data[@type='primary_db']")
+        if not primary_db_list:
+            # fall back to XML where necessary
+            primary_db_list = tree.findall(".//{*}data[@type='primary']")
+        primary_db_data = primary_db_list[0]
         location = primary_db_data.findall("{*}location")[0]
         checksum = primary_db_data.findall("{*}checksum")[0]
         href = location.attrib["href"]
@@ -135,12 +147,8 @@ class RpmFetcher(Fetcher):
         )
         self.__latest_db_path = await maybe_decompress(file)
 
-    async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
-        async with self.__mutex:
-            if not self.__latest_db_path:
-                await self.__fetch_latest_db()
-            assert self.__latest_db_path
-
+    async def __packages_from_sqlite(self, pkg: str) -> list[PkgMeta]:
+        assert self.__latest_db_path
         async with aiosqlite.connect(self.__latest_db_path) as conn:
             result = await conn.execute(
                 """
@@ -149,18 +157,56 @@ class RpmFetcher(Fetcher):
                 """,
                 (pkg,),
             )
-            rows = list(await result.fetchall())
+            rows = await result.fetchall()
+            return [PkgMeta(*row) for row in rows]
 
-        def cmp(t1: Row, t2: Row) -> int:
-            val = rpmvercmp(t1[0], t2[0])
+    async def __packages_from_xml(self, pkg: str) -> list[PkgMeta]:
+        assert self.__latest_db_path
+        with open(self.__latest_db_path, "rt") as f:
+            tree = ET.parse(f)
+        pkgs = tree.findall("{*}package[{*}name='%s']" % pkg)
+        res = []
+        for pkg_elem in pkgs:
+            ver_elem = pkg_elem.find("{*}version")
+            csum_elem = pkg_elem.find("{*}checksum")
+            loc_elem = pkg_elem.find("{*}location")
+            assert (
+                ver_elem is not None
+                and csum_elem is not None
+                and loc_elem is not None
+            )
+            res.append(
+                PkgMeta(
+                    ver_elem.attrib["ver"],
+                    ver_elem.attrib["rel"],
+                    loc_elem.attrib["href"],
+                    csum_elem.text or "",  # satisfy mypy here :/
+                    csum_elem.attrib["type"],
+                )
+            )
+        return res
+
+    async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
+        async with self.__mutex:
+            if not self.__latest_db_path:
+                await self.__fetch_latest_db()
+            assert self.__latest_db_path
+
+        if self.__latest_db_path.suffix == ".xml":
+            rows = await self.__packages_from_xml(pkg)
+        else:
+            rows = await self.__packages_from_sqlite(pkg)
+
+        def cmp(t1: PkgMeta, t2: PkgMeta) -> int:
+            val = rpmvercmp(t1.version, t2.version)
             if val == 0:
-                val = rpmvercmp(t1[1], t2[1])
+                val = rpmvercmp(t1.release, t2.release)
             return val
 
         rows.sort(key=cmp_to_key(cmp))
-        href = cast(str, rows[-1][2])
-        csum = cast(str, rows[-1][3])
-        csum_type = cast(str, rows[-1][4])
+        href = rows[-1].href
+        csum = rows[-1].checksum
+        csum_type = rows[-1].checksum_type
         if not href.startswith("http:") or href.startswith("https:"):
             href = posixpath.join(self.index, href)
         return (href, (csum_type, csum))
