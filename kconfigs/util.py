@@ -23,6 +23,7 @@ HTTPS_HOSTS = {
     "yum.oracle.com",
     "source.android.com",
     "dl.fedoraproject.org",
+    "download.copr.fedorainfracloud.org",
 }
 
 
