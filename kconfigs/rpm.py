@@ -246,7 +246,9 @@ async def extract_rpm_file(
 # GPG database. This dictionary maps GPG key database names to the underlying
 # keys, so we can put them into a temporary RPM key database.
 # TODO: generate this from the gpg-keys/Makefile directory?
-MULTI_KEYS: dict[str, list[str]] = {}
+MULTI_KEYS: dict[str, list[str]] = {
+    "asahi.gpg": ["fedora-asahi", "fedora-asahi-kernel"],
+}
 
 
 async def verify_rpm(rpm: Path, key: str) -> None:
