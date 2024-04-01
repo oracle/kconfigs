@@ -239,12 +239,27 @@ async def extract_rpm_file(
         shutil.copyfile(tdpath / file, output)
 
 
+# Some GPG "key" names in the "gpg-keys" directory are actually a combination of
+# multiple keys into a GPG database. This works for the gpg_verify() function,
+# which will happily accept that database and verify using any one of the given
+# keys. However, for RPM signature verification, we need to let RPM manage the
+# GPG database. This dictionary maps GPG key database names to the underlying
+# keys, so we can put them into a temporary RPM key database.
+# TODO: generate this from the gpg-keys/Makefile directory?
+MULTI_KEYS: dict[str, list[str]] = {}
+
+
 async def verify_rpm(rpm: Path, key: str) -> None:
-    key_path = Path(__file__).parent.parent.resolve() / f"gpg-keys/{key}"
+    keydir = Path(__file__).parent.parent.resolve() / "gpg-keys"
+    if key in MULTI_KEYS:
+        key_paths = [keydir / s for s in MULTI_KEYS[key]]
+    else:
+        key_paths = [keydir / key]
     async with TemporaryDirectory() as td:
-        await check_call(
-            ["/usr/bin/rpm", f"--dbpath={td}", "--import", key_path]
-        )
+        for key_path in key_paths:
+            await check_call(
+                ["/usr/bin/rpm", f"--dbpath={td}", "--import", key_path]
+            )
         proc = await asyncio.create_subprocess_exec(
             "/usr/bin/rpm",
             f"--dbpath={td}",
