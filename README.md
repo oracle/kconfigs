@@ -1,17 +1,32 @@
 # kconfigs
 
-This is a system for fetching the kconfigs for a variety of Linux distributions,
-as well as the upstream defconfigs, and archiving them for later analysis. The
-resulting configuration data can be summarized into a compact JSON file which
-can be browsed on [our webpage][1]. Or, you can simply download the
-configurations and explore them with `grep`.
+This is a system for fetching the Linux kernel configuration files for a variety
+of Linux distributions, and archiving them for later analysis. The resulting
+configuration data is summarized into a compact JSON file which can be
+browsed on [our webpage][1]. Or, you can simply download the configurations and
+explore them with `grep`.
 
 [1]: https://oracle.github.io/kconfigs/
 
 On a regular basis, Github CI runs will fetch more recent package versions and
 keep the configurations up-to-date.
 
+## Browsing Configurations Locally
+
+While the [webpage][1] is convenient, you can also directly clone the `gh-pages`
+branch of this repository to explore locally:
+
+``` sh
+git clone https://github.com/oracle/kconfigs -b gh-pages
+cd kconfigs
+grep -r IKCONFIG_PROC out/
+```
+
 ## How to Run
+
+This tool runs on Python 3.11 or later. It requires common compression tools
+(gzip, bzip2, xz, zstd, tar) as well as common command line tools for Linux
+packaging installed to the system (gpg, rpm, cpio, dpkg).
 
 The following setup instructions apply to Oracle Linux 9. First, install runtime
 dependencies (most should already be installed, but they are listed for
@@ -27,6 +42,8 @@ dnf install -y python3.11{,-devel,-venv,-pip} \
 To setup the runtime Python environment:
 
 ``` sh
+git clone https://github.com/oracle/kconfigs
+cd kconfigs
 make venv
 ```
 
@@ -35,6 +52,8 @@ To run the extraction routine:
 ``` sh
 make run
 ```
+
+Configurations will appear in the `out` directory.
 
 ## Documentation
 
