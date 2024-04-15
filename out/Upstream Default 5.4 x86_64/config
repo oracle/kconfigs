@@ -1,13 +1,13 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.4.273 Kernel Configuration
+# Linux/x86_64 5.4.274 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 11.4.1 20230605 (Red Hat 11.4.1-2.1.0.1)
+# Compiler: gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=110401
+CONFIG_GCC_VERSION=110400
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_CAN_LINK=y
 CONFIG_CC_HAS_ASM_GOTO=y
@@ -4115,9 +4115,7 @@ CONFIG_LSM="lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,appar
 #
 # Memory initialization
 #
-CONFIG_CC_HAS_AUTO_VAR_INIT=y
 CONFIG_INIT_STACK_NONE=y
-# CONFIG_INIT_STACK_ALL is not set
 # CONFIG_INIT_ON_ALLOC_DEFAULT_ON is not set
 # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
 # end of Memory initialization
