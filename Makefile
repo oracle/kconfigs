@@ -12,6 +12,7 @@ venv:
 .PHONY: run
 run:
 	venv/bin/python -m kconfigs.main config.ini
+	venv/bin/python -m kconfigs.cleanup config.ini
 	venv/bin/python -m kconfigs.analyzer config.ini
 
 .PHONY: dev
