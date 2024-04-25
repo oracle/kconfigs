@@ -39,6 +39,8 @@ jobs:
           venv/bin/python -m kconfigs.main config.ini \
               --state ../gh-pages/state.json \
               --output-dir ../gh-pages/out
+          venv/bin/python -m kconfigs.cleanup config.ini \
+              --input-dir ../gh-pages/out
           venv/bin/python -m kconfigs.analyzer config.ini \
               --input-dir ../gh-pages/out \
               --output-file ../gh-pages/docs/summary.json
