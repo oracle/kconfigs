@@ -150,17 +150,17 @@
         "Ubuntu 22.04 LTS Jammy x86_64": {
             "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-5.15.0-25-generic_5.15.0-25.25_amd64.deb"
         },
-        "Ubuntu 23.04 Lunar aarch64": {
-            "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-6.2.0-20-generic_6.2.0-20.20_arm64.deb"
-        },
-        "Ubuntu 23.04 Lunar x86_64": {
-            "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.2.0-20-generic_6.2.0-20.20_amd64.deb"
-        },
         "Ubuntu 23.10 Mantic aarch64": {
             "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-6.5.0-9-generic_6.5.0-9.9_arm64.deb"
         },
         "Ubuntu 23.10 Mantic x86_64": {
             "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.5.0-9-generic_6.5.0-9.9_amd64.deb"
+        },
+        "Ubuntu 24.04 LTS Noble aarch64": {
+            "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-6.8.0-31-generic_6.8.0-31.31_arm64.deb"
+        },
+        "Ubuntu 24.04 LTS Noble x86_64": {
+            "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.8.0-31-generic_6.8.0-31.31_amd64.deb"
         },
         "Upstream Default 4.14 aarch64": {
             "latest_url": "NONE"
@@ -226,11 +226,11 @@
             "http://archive.ubuntu.com/ubuntu/-jammy-amd64-None": {
                 "last_hash": "37cb57f1554cbfa71c5a29ee9ffee18a9a8c1782bb0568e0874b7ff4ce8f9c11"
             },
-            "http://archive.ubuntu.com/ubuntu/-lunar-amd64-None": {
-                "last_hash": "ade8eb8da1722bbc5d51ff660a772e7a6439d63958183c94eeeee658e1a636d6"
-            },
             "http://archive.ubuntu.com/ubuntu/-mantic-amd64-None": {
                 "last_hash": "9edce408dd8f5a3ce462b96c8aa5c82168f2ddf961d73a7639148745b0984fca"
+            },
+            "http://archive.ubuntu.com/ubuntu/-noble-amd64-None": {
+                "last_hash": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451"
             },
             "http://ftp.us.debian.org/debian/-bookworm-amd64-None": {
                 "last_hash": "2988d7a0ed222cc0f7f292c3b5925d548703f1211b98740922611330b8782b91"
@@ -262,11 +262,11 @@
             "http://ports.ubuntu.com/-jammy-arm64-None": {
                 "last_hash": "b80d1f097198f4a2d80f84db0252263d902051a695040acbc085f033048bc9bb"
             },
-            "http://ports.ubuntu.com/-lunar-arm64-None": {
-                "last_hash": "adee90d52d9530b54ebd9cebae13ecd1680ed41ffed5ca7765beac4753ae41bc"
-            },
             "http://ports.ubuntu.com/-mantic-arm64-None": {
                 "last_hash": "24ac85cf7709f8b17c7d1568ab5e2011724f7bb3bf508491f7dbca37fe6bb257"
+            },
+            "http://ports.ubuntu.com/-noble-arm64-None": {
+                "last_hash": "4a1901e6124fb0a111f5dffc8f5c14474f449e2ecfa71f2eaf0b29917edb53f9"
             }
         },
         "kconfigs.pacman.PacmanFetcher": {
