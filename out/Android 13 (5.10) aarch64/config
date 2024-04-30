@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.10.205 Kernel Configuration
+# Linux/arm64 5.10.209 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (8508608, based on r450784e) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)"
 CONFIG_GCC_VERSION=0
@@ -815,7 +815,7 @@ CONFIG_MODULE_SIG_HASH="sha1"
 # CONFIG_MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS is not set
 # CONFIG_UNUSED_SYMBOLS is not set
 CONFIG_TRIM_UNUSED_KSYMS=y
-CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.10-2024-03/out/android13-5.10/common/abi_symbollist.raw"
+CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.10-2024-04/out/android13-5.10/common/abi_symbollist.raw"
 CONFIG_MODULES_TREE_LOOKUP=y
 CONFIG_BLOCK=y
 CONFIG_BLK_RQ_ALLOC_TIME=y
@@ -2859,7 +2859,6 @@ CONFIG_SPI_MASTER=y
 # CONFIG_SPI_THUNDERX is not set
 # CONFIG_SPI_XCOMM is not set
 # CONFIG_SPI_XILINX is not set
-# CONFIG_SPI_ZYNQMP_GQSPI is not set
 # CONFIG_SPI_AMD is not set
 
 #
@@ -4659,8 +4658,6 @@ CONFIG_MMC_SDHCI_PLTFM=y
 # CONFIG_MMC_TOSHIBA_PCI is not set
 # CONFIG_MMC_MTK is not set
 # CONFIG_MMC_SDHCI_XENON is not set
-# CONFIG_MMC_SDHCI_OMAP is not set
-# CONFIG_MMC_SDHCI_AM654 is not set
 # CONFIG_MEMSTICK is not set
 CONFIG_NEW_LEDS=y
 CONFIG_LEDS_CLASS=y
