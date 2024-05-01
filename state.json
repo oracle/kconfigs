@@ -19,7 +19,7 @@
             "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.8.8.arch1-1-x86_64.pkg.tar.zst"
         },
         "CentOS 7 x86_64": {
-            "latest_url": "http://mirror.centos.org/centos/7/updates/x86_64/Packages/kernel-3.10.0-1160.114.2.el7.x86_64.rpm"
+            "latest_url": "http://mirror.centos.org/centos/7/updates/x86_64/Packages/kernel-3.10.0-1160.118.1.el7.x86_64.rpm"
         },
         "CentOS 8 Stream aarch64": {
             "latest_url": "http://mirror.centos.org/centos/8-stream/BaseOS/aarch64/os/Packages/kernel-core-4.18.0-552.el8.aarch64.rpm"
@@ -251,10 +251,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "176b0a43216d7a5da77173d65b827280193c8fc69e463dd80a5f5fb6462737ea"
+                "last_hash": "4fdf1460198f7b3d81c9128f5a9abf6efb92f358ac75d35ae37c3eced629bd07"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "2c1b0126fc371cbb68434e08d9661a8435e72b3f0edb13ba8742533e632a0401"
+                "last_hash": "9d7c1f83758e2e1a96ae1fac1cfe712d8b6c41014abe7ff9b25db80acd8fc28a"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,12 +271,12 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Tue, 30 Apr 2024 09:03:33 GMT"
+                "last_modified": "Wed, 01 May 2024 15:29:15 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
             "http://mirror.centos.org/centos/7/updates/x86_64/": {
-                "last_db": "http://mirror.centos.org/centos/7/updates/x86_64/repodata/9680c4fd3871e31153f67e1e03241a3d3af3adc141f71be06761e14e81c605ad-primary.sqlite.bz2"
+                "last_db": "http://mirror.centos.org/centos/7/updates/x86_64/repodata/3efab55ebd2ba672a39168311a4680bd3187bf42975572a8b10008834ab82c98-primary.sqlite.bz2"
             },
             "http://mirror.centos.org/centos/8-stream/BaseOS/aarch64/os/": {
                 "last_db": "http://mirror.centos.org/centos/8-stream/BaseOS/aarch64/os/repodata/b8af8bac29c7b3131135e4357176fa06c141b16ea3a680b1c8cd908c5e19b72c-primary.sqlite.xz"
@@ -297,16 +297,16 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/39/Everything/x86_64/os/repodata/ac6fe73a5757a7eb49bed9103abf2336d7ad4c993811b74e3b66725d78a65f02-primary.sqlite.xz"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/aarch64/repodata/b4679c6def3378b2ba9d53e709955cb0ed5dfe20672ce80fb1377e1053f17cb1-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/aarch64/repodata/5e080c6850bda35ea0922d7bab1c39ef949e321f6ce1a59439e9d4aed12f7615-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/x86_64/repodata/3f3dfe6156af509b5f1ef1777a4fb28b8174cf8e1ad39970d5117c91c535f8cd-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/x86_64/repodata/71866a7d6f772a9b5d3e596ceadf78dacdc404c4a9e80611db8b628e9fb145b1-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/5b19fc655bc926b93b7066737d29a9bd3577d1fc2280f69bef404470962e8d8a-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/e6f801a097ac1207bcf594dfd49c79a0d1a9d1ad35b4263c3eb89e36eaa8570c-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/12ec4477ef6f1d37f73676ea5da712a1ee073059020719da45326fbee7e5c1dd-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/955ab85e60a5c1afe186d60deee9a9c63517221ad07285533402aa649dc39cba-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/09e19c4a5b4eb2ed54ec1eafa2e2d50a87883e3d8987d258230c4fc85170432d-primary.xml.gz"
