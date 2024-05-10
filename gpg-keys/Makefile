@@ -1,7 +1,7 @@
-SRC_KEYS := $(shell find . -type f -not -name '*.gpg' -not -name Makefile -not -name 'debian*' -not -name 'ubuntu-*' -not -name 'fedora-asahi*')
+SRC_KEYS := $(shell find . -type f -not -name '*.gpg' -not -name Makefile -not -name 'debian*' -not -name 'ubuntu-*' -not -name 'fedora-asahi*' -not -name 'archlinux*')
 BIN_KEYS := $(patsubst %,%.gpg,$(SRC_KEYS))
 
-all: $(BIN_KEYS) debian.gpg ubuntu.gpg asahi.gpg
+all: $(BIN_KEYS) debian.gpg ubuntu.gpg asahi.gpg archlinux.gpg
 
 %.gpg: %
 	gpg --dearmor <$< >$@
@@ -16,4 +16,8 @@ ubuntu.gpg: $(UBUNTU_KEYS)
 
 ASAHI_KEYS := $(shell echo fedora-asahi*)
 asahi.gpg: $(ASAHI_KEYS)
+	gpg --no-default-keyring --keyring=./$@ --import $^ || true
+
+ARCH_KEYS := $(shell echo archlinux-*)
+archlinux.gpg: $(ARCH_KEYS)
 	gpg --no-default-keyring --keyring=./$@ --import $^ || true
