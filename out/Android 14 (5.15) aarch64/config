@@ -149,6 +149,9 @@ CONFIG_RCU_BOOST_DELAY=500
 CONFIG_RCU_EXP_KTHREAD=y
 CONFIG_RCU_NOCB_CPU=y
 # CONFIG_TASKS_TRACE_RCU_READ_MB is not set
+CONFIG_RCU_LAZY=y
+CONFIG_RCU_LAZY_DEFAULT_OFF=y
+CONFIG_RCU_BOOT_END_DELAY=20000
 # end of RCU Subsystem
 
 CONFIG_IKCONFIG=y
@@ -800,7 +803,7 @@ CONFIG_MODULE_COMPRESS_NONE=y
 # CONFIG_MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS is not set
 CONFIG_MODPROBE_PATH="/system/bin/modprobe"
 CONFIG_TRIM_UNUSED_KSYMS=y
-CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android14-5.15-2024-04/out/bazel/output_user_root/f12c94cbdb5d6b519f5a9d52f38e69ab/execroot/__main__/bazel-out/k8-fastbuild/bin/common/kernel_aarch64_raw_kmi_symbol_list/abi_symbollist.raw"
+CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android14-5.15-2024-05/out/bazel/output_user_root/32c9225ff94de9afe07af2d382687913/execroot/__main__/bazel-out/k8-fastbuild/bin/common/kernel_aarch64_raw_kmi_symbol_list/abi_symbollist.raw"
 CONFIG_MODULES_TREE_LOOKUP=y
 CONFIG_BLOCK=y
 CONFIG_BLK_RQ_ALLOC_TIME=y
