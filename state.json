@@ -1,7 +1,7 @@
 {
     "distros": {
         "Android 12 (5.10) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android12-5.10-2024-03_r4.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android12-5.10-2024-05_r1.zip"
         },
         "Android 13 (5.10) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android13-5.10-2024-04_r2.zip"
@@ -251,10 +251,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "02ac4dbe912df88d9a814583b2388d7369fe558e80c64c2cd15d60fc2ee179de"
+                "last_hash": "16d9682447f61e27b7847a4bcb09c494341515ffe165287abe486b1ca45ee97b"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "388e7661c5610c31c095b122f546592f41e73ea150477b46405bc8435fc36dc2"
+                "last_hash": "f1f77fce546b16dfbd5c39a831a34148e417feab68cd8bb2d3cea00c21601ce5"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,7 +271,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 15 May 2024 12:33:05 GMT"
+                "last_modified": "Thu, 16 May 2024 15:44:39 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
