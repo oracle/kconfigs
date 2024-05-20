@@ -14,7 +14,7 @@
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="." class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <span class="fs-4">Distribution Kernel Configs</span>
+          <span class="fs-4" id="heading">Distribution Kernel Configs</span>
         </a>
       </header>
     </div>
@@ -48,6 +48,28 @@
       var configMap = new Map();
 
       var selectedConfigs = new Set();
+
+      function getSummaryURL(version='') {
+        if(!version) return "summary.json" // By default fetch latest configuration summary
+        return `https://raw.githubusercontent.com/oracle/kconfigs/${version}/docs/summary.json`
+      }
+
+      function updateVersion(invalid=false) {
+        let params = new URLSearchParams(document.location.search);
+        let sp = document.getElementById("heading")
+        if(invalid) {
+          sp.innerHTML = `Distribution Kernel Configs`
+          alert("Invalid Version. Please add a valid version")
+          params.delete("version")
+          url = window.location.pathname + (params.toString())?`?${params.toString()}`:''
+          window.history.pushState({}, '', url)
+          return
+        }
+        var version = params.get("version")
+        if(!version) return
+        sp.innerHTML = `Distribution Kernel Configs (version: ${version})`
+        return version
+      }
 
       function loadData(data) {
           let index = 0;
@@ -170,12 +192,16 @@
       }
       window.onpopstate = setState;
       setState();
+      let version = updateVersion();
 
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", "summary.json", true);
+      xhr.open("GET", getSummaryURL(version), true);
       xhr.onload = (event) => {
           console.log("Loaded kernel config summary")
-          loadData(JSON.parse(event.target.response));
+          if(event.target.status === 200)
+            loadData(JSON.parse(event.target.response));
+          else
+            updateVersion(true)
       }
       xhr.send(null);
     </script>
