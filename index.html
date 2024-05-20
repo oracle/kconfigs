@@ -11,11 +11,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </head>
   <body>
+
+  <div class="modal fade" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="versionModalLabel">Select Version</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <select class="form-control" id="versionModalSelector">
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="navigateToVersion(document.getElementById('versionModalSelector').value)">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="." class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <span class="fs-4" id="heading">Distribution Kernel Configs</span>
         </a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#versionModal">Choose Version</button>
       </header>
     </div>
 
@@ -48,6 +69,30 @@
       var configMap = new Map();
 
       var selectedConfigs = new Set();
+
+      function navigateToVersion(version) {
+        if(!version) {
+          return // if no version present, do not navigate
+        }
+        let params = new URLSearchParams(document.location.search);
+        params.delete("version");
+        params.append("version", version);
+        url = window.location.pathname + `?${params.toString()}`;
+        window.location.href = url;
+      }
+
+      function populateVersionOptions(data) {
+        data = JSON.parse(data)
+        let resp = Array.from(data);
+        let versions = resp.map((res)=>res.sha)
+        const vms = document.getElementById("versionModalSelector");
+        versions.forEach(version=>{
+          const optionElement = document.createElement('option');
+          optionElement.value = optionElement.textContent = version;
+          vms.append(optionElement);
+        })
+
+      }
 
       function getSummaryURL(version='') {
         if(!version) return "summary.json" // By default fetch latest configuration summary
@@ -193,6 +238,14 @@
       window.onpopstate = setState;
       setState();
       let version = updateVersion();
+
+      let vor = new XMLHttpRequest()
+      vor.open("GET", "https://api.github.com/repos/oracle/kconfigs/commits?sha=gh-pages", true)
+      vor.onload = (event) => {
+        console.log("Loaded Versions from Repository");
+        populateVersionOptions(event.target.response)
+      }
+      vor.send(null)
 
       const xhr = new XMLHttpRequest();
       xhr.open("GET", getSummaryURL(version), true);
