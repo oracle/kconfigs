@@ -82,19 +82,19 @@
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/39/Everything/x86_64/os/Packages/k/kernel-core-6.5.6-300.fc39.x86_64.rpm"
         },
         "Fedora 39 Updates aarch64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/Packages/k/kernel-core-6.8.9-200.fc39.aarch64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/Packages/k/kernel-core-6.8.10-200.fc39.aarch64.rpm"
         },
         "Fedora 39 Updates x86_64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/Packages/k/kernel-core-6.8.9-200.fc39.x86_64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/Packages/k/kernel-core-6.8.10-200.fc39.x86_64.rpm"
         },
         "Fedora Asahi Remix 39 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/07454833-kernel/kernel-core-6.8.9-404.asahi.fc39.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc39.aarch64.rpm"
         },
         "Fedora Asahi Remix 40 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/07454833-kernel/kernel-core-6.8.9-404.asahi.fc40.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc40.aarch64.rpm"
         },
         "Fedora Asahi Remix Rawhide aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/07454833-kernel/kernel-core-6.8.9-404.asahi.fc41.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc41.aarch64.rpm"
         },
         "Oracle Linux 7 (Red Hat Compatible) x86_64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/kernel-3.10.0-1160.118.1.0.1.el7.x86_64.rpm"
@@ -251,10 +251,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "9455ea7db15b79fa8dd5297a1ebeb4de7206e4c8d956303b52e9daf677fe8907"
+                "last_hash": "252a92179c8f33f2d1451f6dce91d56a70f3ff71fe156e0ee8b85cab0cb4117e"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "27ea24b8a9532c24136c5542b01ed9f5b4139e97c5fff51b99d2bc1a98421408"
+                "last_hash": "1b01b86b8009e3f91fa517b34fe7b2067705e18fb960f9919c7ed9c5a9a20c64"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,7 +271,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Tue, 21 May 2024 06:51:06 GMT"
+                "last_modified": "Wed, 22 May 2024 15:35:08 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -303,19 +303,19 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/x86_64/repodata/b86a9ae0a2f741a2e1a35efdc7fbd72638cc6fa642808b7619db786423e8f5c2-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/414c37e10f952e24202fad5cd28367572ab297fb6caadab30bfb753238f48945-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/bc6073ad7da90ffd1ce713ff3ce88e5ee945b4aa31af9e5189a68e0b1624ce31-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/1fa845c8f7625a179d35ea372e3293faba4f181564d38db66c8dbd3249595f5b-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/703c4fc63cf0c86e04e9b3bbd2360ad7b86d1ac0f85e2431776acd455a0a8511-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/276d6d7872fbb6fb94f2307d7736e26dc97e146e720880619731d5fb76ceb9bc-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/e6ed1ca23762ab2c48c06a74b00d29eefafd521b10b6ca4c5e8d8b921295ac4c-primary.xml.gz"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/repodata/fdcd98b9de8e7e97b8f0687409083a65bd311732e0053be54e46de9b3faaf584-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/repodata/f58cb1bcf13654a1543d64f6f567b3a28c99b37f0200b687f01a6ffcb5a58eed-primary.xml.gz"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/5267dd76a6262fb541ab827c505e892346ccfb62e0c3b2b18e0fc8a3914fcd50-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/86d6eacf3887b2e75a4d2903b1aedc3fd68274ba1cdd1a583b3f9d85a6bb507e-primary.xml.gz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/": {
                 "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/ea4d42ebe9bc5015d3f7c921bd0ebc7f8e70f523410bb063ebb9777c669ba78c-primary.sqlite.xz"
