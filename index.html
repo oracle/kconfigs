@@ -9,6 +9,14 @@
     <link rel="icon" type="image/png" href="tux-sm.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Popperjs (required by tempus dominus)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha256-BRqBN7dYgABqtY9Hd4ynE+1slnEw+roEPFzQ7TRRfcg=" crossorigin="anonymous"></script>
+    <!-- Tempus Dominus JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
+    <!-- Tempus Dominus Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
+    <!-- FontAwesome for calendar icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
   <body>
 
@@ -16,16 +24,20 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="versionModalLabel">Select Version</h5>
+            <h5 class="modal-title" id="versionModalLabel">Select Date of Snapshot</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <select class="form-control" id="versionModalSelector">
-            </select>
+           <div class="input-group" id="versionDateTimePicker" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                <input id="versionDateTimePicker_input" type="text" class="form-control" data-td-target="#versionDateTimePicker"/>
+                <span class="input-group-text" data-td-target="#versionDateTimePicker" data-td-toggle="datetimepicker">
+                    <i class="fas fa-calendar"><span class="path1"></span><span class="path2"></span></i>
+                </span>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="navigateToVersion(document.getElementById('versionModalSelector').value)">Save changes</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="navigateToVersionFromDate(document.getElementById('versionDateTimePicker_input').value)">Save changes</button>
           </div>
         </div>
       </div>
@@ -70,7 +82,11 @@
 
       var selectedConfigs = new Set();
 
-      function navigateToVersion(version) {
+      var versionDateMapping = new Map();
+
+      function navigateToVersionFromDate(date) {
+        date = new Date(date).toDateString();
+        version = versionDateMapping.get(date);
         if(!version) {
           return // if no version present, do not navigate
         }
@@ -84,12 +100,28 @@
       function populateVersionOptions(data) {
         data = JSON.parse(data)
         let resp = Array.from(data);
-        let versions = resp.map((res)=>res.sha)
-        const vms = document.getElementById("versionModalSelector");
-        versions.forEach(version=>{
-          const optionElement = document.createElement('option');
-          optionElement.value = optionElement.textContent = version;
-          vms.append(optionElement);
+        resp.forEach((res)=>{
+          versionDateMapping.set(new Date(res.commit.committer.date).toDateString(), res.sha)
+        })
+        let datepicker = document.getElementById("versionDateTimePicker")
+        new tempusDominus.TempusDominus(datepicker, {
+          restrictions: {
+            enabledDates: Array.from(versionDateMapping.keys().map(ds => new Date(ds))),
+          },
+          display: {
+              viewMode: 'calendar',
+              components: {
+                clock: false,
+                hours: false,
+                minutes: false,
+                seconds: false,
+                useTwentyfourHour: undefined
+              },
+            },
+            localization: {
+              format: 'MM-dd-yyyy',
+            },
+          useCurrent: false,
         })
 
       }
