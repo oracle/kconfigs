@@ -107,11 +107,11 @@
           alert("Invalid Version. Please add a valid version")
           params.delete("version")
           url = window.location.pathname + (params.toString())?`?${params.toString()}`:''
-          window.history.pushState({}, '', url)
+          window.location.href = url;
           return
         }
-        var version = params.get("version")
-        if(!version) return
+        var version = params.get("version");
+        if(!version) return "gh-pages";
         sp.innerHTML = `Distribution Kernel Configs (version: ${version})`
         return version
       }
@@ -203,8 +203,7 @@
           }
 
           if (pushState) {
-              let qs = new URLSearchParams();
-              for (cn of selectedConfigs) {
+              let qs = new URLSearchParams(); for (cn of selectedConfigs) {
                   qs.append("config", cn);
               }
               history.pushState(null, "", "?" + qs.toString())
