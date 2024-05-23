@@ -16,7 +16,7 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2024-04_r9.zip"
         },
         "Arch x86_64": {
-            "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.9.1.arch1-1-x86_64.pkg.tar.zst"
+            "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.9.1.arch1-2-x86_64.pkg.tar.zst"
         },
         "CentOS 7 x86_64": {
             "latest_url": "http://mirror.centos.org/centos/7/updates/x86_64/Packages/kernel-3.10.0-1160.118.1.el7.x86_64.rpm"
@@ -88,13 +88,13 @@
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/Packages/k/kernel-core-6.8.10-200.fc39.x86_64.rpm"
         },
         "Fedora Asahi Remix 39 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc39.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/07476198-kernel/kernel-core-6.8.9-406.asahi.fc39.aarch64.rpm"
         },
         "Fedora Asahi Remix 40 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc40.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/07476198-kernel/kernel-core-6.8.9-406.asahi.fc40.aarch64.rpm"
         },
         "Fedora Asahi Remix Rawhide aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/07475835-kernel/kernel-core-6.8.9-405.asahi.fc41.aarch64.rpm"
+            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/07476198-kernel/kernel-core-6.8.9-406.asahi.fc41.aarch64.rpm"
         },
         "Oracle Linux 7 (Red Hat Compatible) x86_64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/kernel-3.10.0-1160.118.1.0.1.el7.x86_64.rpm"
@@ -251,10 +251,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "252a92179c8f33f2d1451f6dce91d56a70f3ff71fe156e0ee8b85cab0cb4117e"
+                "last_hash": "24b2c3b17f0fcdd0001f9aab018711a2d7659226df7237527952be0f9c4b857c"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "1b01b86b8009e3f91fa517b34fe7b2067705e18fb960f9919c7ed9c5a9a20c64"
+                "last_hash": "5c7ebef0edf1b872f95ae4e0230e76e436983cda9f1589fe7ce64ff00167a84f"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,7 +271,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 22 May 2024 15:35:08 GMT"
+                "last_modified": "Thu, 23 May 2024 10:33:42 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -303,19 +303,19 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/38/Everything/x86_64/repodata/b86a9ae0a2f741a2e1a35efdc7fbd72638cc6fa642808b7619db786423e8f5c2-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/bc6073ad7da90ffd1ce713ff3ce88e5ee945b4aa31af9e5189a68e0b1624ce31-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/d15c9cea006ff0c8f059e6fc73e671bcbb109acb6324424e4fb915180cba0709-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/703c4fc63cf0c86e04e9b3bbd2360ad7b86d1ac0f85e2431776acd455a0a8511-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/f6ac269a00dc8cd3bca6940982ed0124ea2e99cf02d24c39e4aefffbe4875469-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/e6ed1ca23762ab2c48c06a74b00d29eefafd521b10b6ca4c5e8d8b921295ac4c-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/0e41607a5c32ebacadf9eac6d47d06c07ee3b30bb3387eec5401456173765ada-primary.xml.gz"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/repodata/f58cb1bcf13654a1543d64f6f567b3a28c99b37f0200b687f01a6ffcb5a58eed-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/repodata/c348b9f11b50ae151b40d76f2c4dabec9a322cfe6666daec5be887c227b43c16-primary.xml.gz"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/": {
-                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/86d6eacf3887b2e75a4d2903b1aedc3fd68274ba1cdd1a583b3f9d85a6bb507e-primary.xml.gz"
+                "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/a633c4c638d672c5558e19783761d3fec19e1614a936dc448f35fa83badf89c1-primary.xml.gz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/": {
                 "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/ea4d42ebe9bc5015d3f7c921bd0ebc7f8e70f523410bb063ebb9777c669ba78c-primary.sqlite.xz"
