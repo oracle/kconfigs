@@ -138,6 +138,12 @@
         "Oracle Linux 9 (UEK 7) x86_64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-206.153.7.el9uek.x86_64.rpm"
         },
+        "Oracle Linux 9 (UEK-NEXT) aarch64": {
+            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/getPackage/kernel-ueknext-core-6.8.0-2.el9uek.aarch64.rpm"
+        },
+        "Oracle Linux 9 (UEK-NEXT) x86_64": {
+            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/getPackage/kernel-ueknext-core-6.8.0-2.el9uek.x86_64.rpm"
+        },
         "Ubuntu 20.04 LTS Focal aarch64": {
             "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-5.4.0-26-generic_5.4.0-26.30_arm64.deb"
         },
@@ -370,6 +376,12 @@
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/c6617710a896a10edbbc5e3ac747ebd76a33e1c8-primary.sqlite.bz2"
+            },
+            "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/0ac3e6b3e745728575805f1ad855590a32e78c70-primary.sqlite.bz2"
+            },
+            "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/": {
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/repodata/ee5887b40adde66637b2bf9a5a513729c5701e69-primary.sqlite.bz2"
             }
         },
         "kconfigs.upstream.UpstreamFetcher": {
