@@ -93,6 +93,7 @@
 
       var versionDateMapping = new Map();
       var currentVersion = "";
+      var currentDate = "";
 
       function navigateToVersionFromDate(date) {
         version = versionDateMapping.get(date);
@@ -101,6 +102,7 @@
         }
         let params = new URLSearchParams(document.location.search);
         params.delete("version");
+        params.delete("date");
         params.append("version", version);
         url = window.location.pathname + `?${params.toString()}`;
         window.location.href = url;
@@ -114,39 +116,45 @@
       }
 
       function populateVersionOptions(data) {
-        data = JSON.parse(data)
-        let resp = Array.from(data);
-        let dates = new Set();
-        resp.forEach((res)=>{
-          let date = new Date(res.commit.committer.date);
-          dates.add(date);
-          versionDateMapping.set(dateString(date), res.sha)
-          // If we started with a SHA, replace it with the date string
-          // for a better user experience.
-          if (currentVersion == res.sha)
-            setHeading(currentVersion, dateString(date));
-        })
-        let datepicker = document.getElementById("versionDateTimePicker")
-        new tempusDominus.TempusDominus(datepicker, {
-          restrictions: {
-            enabledDates: Array.from(dates),
-          },
-          display: {
-              viewMode: 'calendar',
-              components: {
-                clock: false,
-                hours: false,
-                minutes: false,
-                seconds: false,
-                useTwentyfourHour: undefined
+          data = JSON.parse(data)
+          let resp = Array.from(data);
+          let dates = new Set();
+          resp.forEach((res)=>{
+              const date = new Date(res.commit.committer.date);
+              const dateStr = dateString(date);
+              dates.add(date);
+              versionDateMapping.set(dateStr, res.sha)
+              // If we started with a SHA, replace it with the date string
+              // for a better user experience. If we started with a date, no
+              // need to update the header, but we need to fetch data now.
+              if (currentVersion == res.sha) {
+                  setHeading(currentVersion, dateStr);
+                  currentDate = dateStr;
+              } else if (currentDate == dateStr) {
+                  currentVersion = res.sha;
+                  requestData();
+              }
+          })
+          let datepicker = document.getElementById("versionDateTimePicker")
+          new tempusDominus.TempusDominus(datepicker, {
+              restrictions: {
+                  enabledDates: Array.from(dates),
               },
-            },
-            localization: {
-              format: 'yyyy-MM-dd',
-            },
-          useCurrent: false,
-        })
-
+              display: {
+                  viewMode: 'calendar',
+                  components: {
+                      clock: false,
+                      hours: false,
+                      minutes: false,
+                      seconds: false,
+                      useTwentyfourHour: undefined
+                  },
+              },
+              localization: {
+                  format: 'yyyy-MM-dd',
+              },
+              useCurrent: false,
+          })
       }
 
       function getSummaryURL(version='') {
@@ -162,24 +170,30 @@
             sp.innerHTML = `Distribution Kernel Configs (version: ${version})`
       }
 
-      function updateVersion(invalid=false) {
-        let params = new URLSearchParams(document.location.search);
-        if(invalid) {
-          sp.innerHTML = `Distribution Kernel Configs`
-          alert("Invalid Version. Please add a valid version")
-          params.delete("version")
-          url = window.location.pathname + (params.toString())?`?${params.toString()}`:''
+      function invalidVersion() {
+          alert("Invalid Version. Please add a valid version");
+          params.delete("version");
+          url = window.location.pathname + (params.toString())?`?${params.toString()}`:'';
           window.location.href = url;
-          return
-        }
-        let version = params.get("version");
-        let date = "";
-        if(!version) {
-          version = "gh-pages";
-          date = "latest";
-        }
-        setHeading(version, date);
-        return version
+      }
+
+      function initVersion() {
+          let params = new URLSearchParams(document.location.search);
+          let version = params.get("version");
+          let date = params.get("date");
+
+          /* If version is provided, prefer it */
+          if (version) {
+              date = null;
+          } else if (date) {
+              currentDate = date;
+              setHeading(version, date);
+          } else {
+              version = "gh-pages";
+              date = "latest";
+          }
+          setHeading(version, date);
+          return version
       }
 
       function loadData(data) {
@@ -204,6 +218,19 @@
               }
           }
           reload(changed);
+      }
+      function requestData() {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", getSummaryURL(currentVersion), true);
+          xhr.onload = (event) => {
+              console.log("Loaded kernel config summary")
+              if (event.target.status === 200) {
+                  loadData(JSON.parse(event.target.response));
+              } else {
+                  invalidVersion();
+              }
+          }
+          xhr.send(null);
       }
       function reload(pushState) {
           console.log("Reloading")
@@ -388,26 +415,19 @@
       }
       window.onpopstate = setState;
       setState();
-      currentVersion = updateVersion();
+      currentVersion = initVersion();
 
       let vor = new XMLHttpRequest()
       vor.open("GET", "https://api.github.com/repos/oracle/kconfigs/commits?sha=gh-pages", true)
       vor.onload = (event) => {
-        console.log("Loaded Versions from Repository");
-        populateVersionOptions(event.target.response)
+          console.log("Loaded Versions from Repository");
+          populateVersionOptions(event.target.response)
       }
       vor.send(null)
 
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", getSummaryURL(currentVersion), true);
-      xhr.onload = (event) => {
-          console.log("Loaded kernel config summary")
-          if(event.target.status === 200)
-            loadData(JSON.parse(event.target.response));
-          else
-            updateVersion(true)
+      if (currentVersion) {
+          requestData();
       }
-      xhr.send(null);
     </script>
   </body>
 </html>
