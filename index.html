@@ -74,6 +74,15 @@
           <td>y</td>
         </tbody>
       </table>
+
+      <div class="row">
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary" onclick="exportTsv()">Save as TSV</button>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-secondary" onclick="exportText()">Save as Text</button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -290,6 +299,92 @@
               selectedConfigs.delete(text);
               reload(true);
           }
+      }
+      function doDownload(blob, filename) {
+          let a = document.createElement("a");
+          let url = URL.createObjectURL(blob);
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+              document.body.removeChild(a);
+              window.URL.revokeObjectURL(url);
+          }, 0);
+      }
+      function exportTsv() {
+          let text = "Distro";
+
+          let sortedConfigs = Array.from(selectedConfigs.keys());
+          sortedConfigs.sort();
+          for (cn of sortedConfigs) {
+              text += "\t" + cn;
+          }
+          text += "\n";
+
+          let sortedDistros = Array.from(distroToIndex.keys());
+          sortedDistros.sort();
+          for (let dn of sortedDistros) {
+              text += dn;
+              let index = distroToIndex.get(dn);
+              for (let cn of sortedConfigs) {
+                  let configList = configMap.get(cn);
+                  if (configList !== undefined) {
+                      val = configList[index];
+                  } else {
+                      val = null;
+                  }
+                  text += "\t"
+                  if (val) {
+                      text += configList[index];
+                  }
+              }
+              text += "\n";
+          }
+          let file = new Blob([text], {type: "text/tab-separated-values"});
+          doDownload(file, "kconfigs.tsv");
+      }
+      function exportText() {
+          let sortedConfigs = Array.from(selectedConfigs.keys());
+          sortedConfigs.sort();
+          let sortedDistros = Array.from(distroToIndex.keys());
+          sortedDistros.sort();
+
+          let distro_width = 6; /* Distro */
+          for (let dn of sortedDistros) {
+              distro_width = Math.max(distro_width, dn.length);
+          }
+          let config_widths = [];
+          for (let cn of sortedConfigs) {
+              let width = cn.length;
+              let configList = configMap.get(cn);
+              if (configList === undefined) continue;
+              for (let val of configList)
+                  width = Math.max(width, val ? val.length : 2);
+              config_widths.push(width);
+          }
+
+          let text = "Distro".padEnd(distro_width);
+          sortedConfigs.map((cn, i) => {
+              text += cn.padStart(2 + config_widths[i]);
+          });
+          text += "\n";
+
+          for (let dn of sortedDistros) {
+              text += dn.padEnd(distro_width);
+              let index = distroToIndex.get(dn);
+              sortedConfigs.map((cn, i) => {
+                  let configList = configMap.get(cn);
+                  if (configList === undefined || !configList[index]) {
+                      text += "--".padStart(2 + config_widths[i]);
+                  } else if (configList[index]) {
+                      text += configList[index].padStart(2 + config_widths[i]);
+                  }
+              });
+              text += "\n";
+          }
+          let file = new Blob([text], {type: "text/plain"});
+          doDownload(file, "kconfigs.txt");
       }
       window.onpopstate = setState;
       setState();
