@@ -9,13 +9,46 @@
     <link rel="icon" type="image/png" href="tux-sm.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Popperjs (required by tempus dominus)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha256-BRqBN7dYgABqtY9Hd4ynE+1slnEw+roEPFzQ7TRRfcg=" crossorigin="anonymous"></script>
+    <!-- Tempus Dominus JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
+    <!-- Tempus Dominus Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
+    <!-- FontAwesome for calendar icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
   <body>
+
+  <div class="modal fade" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="versionModalLabel">Select Date of Snapshot</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           <div class="input-group" id="versionDateTimePicker" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                <input id="versionDateTimePicker_input" type="text" class="form-control" data-td-target="#versionDateTimePicker"/>
+                <span class="input-group-text" data-td-target="#versionDateTimePicker" data-td-toggle="datetimepicker">
+                    <i class="fas fa-calendar"><span class="path1"></span><span class="path2"></span></i>
+                </span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="navigateToVersionFromDate(document.getElementById('versionDateTimePicker_input').value)">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="." class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <span class="fs-4">Distribution Kernel Configs</span>
+          <span class="fs-4" id="heading">Distribution Kernel Configs</span>
         </a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#versionModal">Choose Version</button>
       </header>
     </div>
 
@@ -48,6 +81,72 @@
       var configMap = new Map();
 
       var selectedConfigs = new Set();
+
+      var versionDateMapping = new Map();
+
+      function navigateToVersionFromDate(date) {
+        date = new Date(date).toDateString();
+        version = versionDateMapping.get(date);
+        if(!version) {
+          return // if no version present, do not navigate
+        }
+        let params = new URLSearchParams(document.location.search);
+        params.delete("version");
+        params.append("version", version);
+        url = window.location.pathname + `?${params.toString()}`;
+        window.location.href = url;
+      }
+
+      function populateVersionOptions(data) {
+        data = JSON.parse(data)
+        let resp = Array.from(data);
+        resp.forEach((res)=>{
+          versionDateMapping.set(new Date(res.commit.committer.date).toDateString(), res.sha)
+        })
+        let datepicker = document.getElementById("versionDateTimePicker")
+        new tempusDominus.TempusDominus(datepicker, {
+          restrictions: {
+            enabledDates: Array.from(versionDateMapping.keys().map(ds => new Date(ds))),
+          },
+          display: {
+              viewMode: 'calendar',
+              components: {
+                clock: false,
+                hours: false,
+                minutes: false,
+                seconds: false,
+                useTwentyfourHour: undefined
+              },
+            },
+            localization: {
+              format: 'MM-dd-yyyy',
+            },
+          useCurrent: false,
+        })
+
+      }
+
+      function getSummaryURL(version='') {
+        if(!version) return "summary.json" // By default fetch latest configuration summary
+        return `https://raw.githubusercontent.com/oracle/kconfigs/${version}/docs/summary.json`
+      }
+
+      function updateVersion(invalid=false) {
+        let params = new URLSearchParams(document.location.search);
+        let sp = document.getElementById("heading")
+        if(invalid) {
+          sp.innerHTML = `Distribution Kernel Configs`
+          alert("Invalid Version. Please add a valid version")
+          params.delete("version")
+          url = window.location.pathname + (params.toString())?`?${params.toString()}`:''
+          window.location.href = url;
+          return
+        }
+        var version = params.get("version");
+        if(!version) return "gh-pages";
+        sp.innerHTML = `Distribution Kernel Configs (version: ${version})`
+        return version
+      }
 
       function loadData(data) {
           let index = 0;
@@ -136,8 +235,7 @@
           }
 
           if (pushState) {
-              let qs = new URLSearchParams();
-              for (cn of selectedConfigs) {
+              let qs = new URLSearchParams(); for (cn of selectedConfigs) {
                   qs.append("config", cn);
               }
               history.pushState(null, "", "?" + qs.toString())
@@ -170,12 +268,24 @@
       }
       window.onpopstate = setState;
       setState();
+      let version = updateVersion();
+
+      let vor = new XMLHttpRequest()
+      vor.open("GET", "https://api.github.com/repos/oracle/kconfigs/commits?sha=gh-pages", true)
+      vor.onload = (event) => {
+        console.log("Loaded Versions from Repository");
+        populateVersionOptions(event.target.response)
+      }
+      vor.send(null)
 
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", "summary.json", true);
+      xhr.open("GET", getSummaryURL(version), true);
       xhr.onload = (event) => {
           console.log("Loaded kernel config summary")
-          loadData(JSON.parse(event.target.response));
+          if(event.target.status === 200)
+            loadData(JSON.parse(event.target.response));
+          else
+            updateVersion(true)
       }
       xhr.send(null);
     </script>
