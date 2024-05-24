@@ -168,11 +168,11 @@
         "Ubuntu 24.04 LTS Noble x86_64": {
             "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.8.0-31-generic_6.8.0-31.31_amd64.deb"
         },
-        "Upstream Default 4.14 aarch64": {
-            "latest_url": "NONE"
+        "Upstream Default 4.14 (OpenELA) aarch64": {
+            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.344-openela"
         },
-        "Upstream Default 4.14 x86_64": {
-            "latest_url": "NONE"
+        "Upstream Default 4.14 (OpenELA) x86_64": {
+            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.344-openela"
         },
         "Upstream Default 4.19 aarch64": {
             "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.314.tar.xz"
@@ -274,6 +274,9 @@
             "http://ports.ubuntu.com/-noble-arm64-None": {
                 "last_hash": "4a1901e6124fb0a111f5dffc8f5c14474f449e2ecfa71f2eaf0b29917edb53f9"
             }
+        },
+        "kconfigs.github.GithubFetcher": {
+            "github-openela-kernel-lts": {}
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
@@ -385,12 +388,6 @@
             }
         },
         "kconfigs.upstream.UpstreamFetcher": {
-            "upstream-4.14-aarch64": {
-                "last_version": "4.14.333"
-            },
-            "upstream-4.14-x86_64": {
-                "last_version": "4.14.333"
-            },
             "upstream-4.19-aarch64": {
                 "last_version": "4.19.314"
             },
