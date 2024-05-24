@@ -106,6 +106,8 @@ class DefconfigExtractor(Extractor):
     async def verify_signature(
         self, package: Path, sig: Path, dc: DistroConfig
     ) -> None:
+        if dc.key == "NOVERIFY-GITHUB":
+            return
         assert dc.key is not None
         decompressed_tar = await maybe_decompress(package)
         if await gpg_verify(decompressed_tar, sig, dc.key):
@@ -125,13 +127,15 @@ class DefconfigExtractor(Extractor):
             tdpath = Path(td)
             arch = UPSTREAM_ARCH.get(dc.arch, dc.arch)
 
-            extract_dir = tdpath / package.stem.split(".tar")[0]
             await check_call(
                 ["tar", "xf", package],
                 cwd=tdpath,
                 stdout=DEVNULL,
                 stderr=DEVNULL,
             )
+            subdirs = list(tdpath.iterdir())
+            assert len(subdirs) == 1
+            extract_dir = subdirs[0]
             await check_call(
                 ["make", f"ARCH={arch}", "defconfig"],
                 cwd=extract_dir,
