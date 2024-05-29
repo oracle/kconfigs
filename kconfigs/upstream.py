@@ -79,7 +79,11 @@ class UpstreamFetcher(Fetcher):
             tree = ET.fromstring(data.decode("utf-8"))
             for item in tree.findall("./channel/item"):
                 kernel = UpstreamKernel.from_item(item)
-                if kernel.version.startswith(self.release):
+                # Use 6.1.15 or 6.1-rc5 for release "6.1",
+                # but do not use 6.10!
+                if kernel.version.startswith(
+                    self.release + "."
+                ) or kernel.version.startswith(self.release + "-"):
                     self.__latest_version = kernel.version
                     self.__latest_url = kernel.url
                     break
