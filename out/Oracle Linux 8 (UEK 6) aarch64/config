@@ -1,10 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.4.17-2136.331.7.el8uek.aarch64 Kernel Configuration
+# Linux/arm64 5.4.17-2136.332.5.2.el8uek.aarch64 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-20.0.3)
+# Compiler: gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-22.0.1)
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80500
@@ -37,6 +37,7 @@ CONFIG_CROSS_MEMORY_ATTACH=y
 CONFIG_AUDIT=y
 CONFIG_HAVE_ARCH_AUDITSYSCALL=y
 CONFIG_AUDITSYSCALL=y
+# CONFIG_UEK_KABI_SIZE_ALIGN_CHECKS is not set
 
 #
 # IRQ subsystem

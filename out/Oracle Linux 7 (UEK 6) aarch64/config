@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.4.17-2136.331.7.el7uek.aarch64 Kernel Configuration
+# Linux/arm64 5.4.17-2136.332.5.2.el7uek.aarch64 Kernel Configuration
 #
 
 #
@@ -35,6 +35,7 @@ CONFIG_CROSS_MEMORY_ATTACH=y
 CONFIG_AUDIT=y
 CONFIG_HAVE_ARCH_AUDITSYSCALL=y
 CONFIG_AUDITSYSCALL=y
+# CONFIG_UEK_KABI_SIZE_ALIGN_CHECKS is not set
 
 #
 # IRQ subsystem
