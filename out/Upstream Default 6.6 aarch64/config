@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.35 Kernel Configuration
+# Linux/arm64 6.6.36 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 CONFIG_CC_IS_GCC=y
@@ -4180,7 +4180,7 @@ CONFIG_GPIO_TEGRA=y
 CONFIG_GPIO_TEGRA186=y
 # CONFIG_GPIO_THUNDERX is not set
 CONFIG_GPIO_UNIPHIER=y
-# CONFIG_GPIO_VF610 is not set
+CONFIG_GPIO_VF610=y
 CONFIG_GPIO_VISCONTI=y
 CONFIG_GPIO_WCD934X=m
 CONFIG_GPIO_XGENE=y
