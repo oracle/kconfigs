@@ -119,9 +119,18 @@
           data = JSON.parse(data)
           let resp = Array.from(data);
           let dates = new Set();
+          let lastDateStr = undefined;
           resp.forEach((res)=>{
               const date = new Date(res.commit.committer.date);
               const dateStr = dateString(date);
+
+              // We encounter commits in reverse chronological order. Use the
+              // first commit for the date and skip the rest, as we normally
+              // care about the most recent commit on the date.
+              if (dateStr === lastDateStr)
+                  return;
+              lastDateStr = dateStr;
+
               dates.add(date);
               versionDateMapping.set(dateStr, res.sha)
               // If we started with a SHA, replace it with the date string
@@ -268,8 +277,12 @@
 
           let tb = document.getElementById("body");
           tb.replaceChildren();
+
+          // Sorting should be done in a way that allows numbers to be sorted
+          // in a human friendly way. 6.10 should come after 6.1, for example.
+          var collator = new Intl.Collator(undefined, {numeric: true});
           let sortedDistros = Array.from(distroToIndex.keys());
-          sortedDistros.sort();
+          sortedDistros.sort(collator.compare);
           for (let dn of sortedDistros) {
               let elem = document.createElement("td");
               elem.innerText = dn;
