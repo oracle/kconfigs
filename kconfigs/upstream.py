@@ -81,9 +81,11 @@ class UpstreamFetcher(Fetcher):
                 kernel = UpstreamKernel.from_item(item)
                 # Use 6.1.15 or 6.1-rc5 for release "6.1",
                 # but do not use 6.10!
-                if kernel.version.startswith(
-                    self.release + "."
-                ) or kernel.version.startswith(self.release + "-"):
+                if (
+                    kernel.version == self.release
+                    or kernel.version.startswith(self.release + ".")
+                    or kernel.version.startswith(self.release + "-")
+                ):
                     self.__latest_version = kernel.version
                     self.__latest_url = kernel.url
                     break
