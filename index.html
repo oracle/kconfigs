@@ -268,8 +268,12 @@
 
           let tb = document.getElementById("body");
           tb.replaceChildren();
+
+          // Sorting should be done in a way that allows numbers to be sorted
+          // in a human friendly way. 6.10 should come after 6.1, for example.
+          var collator = new Intl.Collator(undefined, {numeric: true});
           let sortedDistros = Array.from(distroToIndex.keys());
-          sortedDistros.sort();
+          sortedDistros.sort(collator.compare);
           for (let dn of sortedDistros) {
               let elem = document.createElement("td");
               elem.innerText = dn;
