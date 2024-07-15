@@ -119,9 +119,18 @@
           data = JSON.parse(data)
           let resp = Array.from(data);
           let dates = new Set();
+          let lastDateStr = undefined;
           resp.forEach((res)=>{
               const date = new Date(res.commit.committer.date);
               const dateStr = dateString(date);
+
+              // We encounter commits in reverse chronological order. Use the
+              // first commit for the date and skip the rest, as we normally
+              // care about the most recent commit on the date.
+              if (dateStr === lastDateStr)
+                  return;
+              lastDateStr = dateStr;
+
               dates.add(date);
               versionDateMapping.set(dateStr, res.sha)
               // If we started with a SHA, replace it with the date string
