@@ -160,34 +160,34 @@
             "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.8.0-31-generic_6.8.0-31.31_amd64.deb"
         },
         "Upstream Default 4.14 (OpenELA) aarch64": {
-            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.348-openela"
+            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.349-openela"
         },
         "Upstream Default 4.14 (OpenELA) x86_64": {
-            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.348-openela"
+            "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.349-openela"
         },
         "Upstream Default 4.19 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.317.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.318.tar.xz"
         },
         "Upstream Default 4.19 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.317.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.318.tar.xz"
         },
         "Upstream Default 5.15 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.162.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.163.tar.xz"
         },
         "Upstream Default 5.15 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.162.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.163.tar.xz"
         },
         "Upstream Default 5.4 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.279.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.280.tar.xz"
         },
         "Upstream Default 5.4 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.279.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.280.tar.xz"
         },
         "Upstream Default 6.1 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.99.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.100.tar.xz"
         },
         "Upstream Default 6.1 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.99.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.100.tar.xz"
         },
         "Upstream Default 6.10 aarch64": {
             "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz"
@@ -196,16 +196,16 @@
             "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz"
         },
         "Upstream Default 6.6 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.40.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.41.tar.xz"
         },
         "Upstream Default 6.6 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.40.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.41.tar.xz"
         },
         "Upstream Default 6.9 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.9.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.10.tar.xz"
         },
         "Upstream Default 6.9 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.9.tar.xz"
+            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.10.tar.xz"
         }
     },
     "fetchers": {
@@ -248,10 +248,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "6f86bf0ec3a4b738941fda5f692e83acc585c192c78e9c498882a446a80c3b54"
+                "last_hash": "68eb8e099152e4964cd83f6f9829b8b8c59f1f7dbaa67a869972635aaa7b7855"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "d749aff2e0e85d4b1f3f95899bc5e96b36ded4a59e6092ca930a6df07bf3ed28"
+                "last_hash": "915ef19387c7fec336c8f8f8a24230cfbe7f2b06802b934f45e39cf5fa4d3e11"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,7 +271,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Tue, 16 Jul 2024 09:07:46 GMT"
+                "last_modified": "Thu, 18 Jul 2024 10:05:59 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -288,16 +288,16 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/40/Everything/x86_64/os/repodata/ed9afb00128477c11c186fdb9cd2a4d3eaccf396ec83c0eb94097fad5b2c6660-primary.sqlite.gz"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/d19873d21070d96cbef25d24a1993323519ddcf9fc1334942628ca9af3d7983f-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/6a3717393456b969305d1bdeb38257916c8bb2785dde0b404af85b68d0013867-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/b12d4ff852ddff32879a89935bb1469cf93f6bb5f366098d55ee1dc9a39af29e-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/6457b55263485a2db2bd1167ce2b78bb1c6786dcf6aa9d1be6af3f9d20cb616a-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/a7c5f24ca1e14d6526c843dbaf2ab838abfb88f7897cedfc3bdadf8b620ab7e5-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/8e30fdfa9e9867a788198dcce6824076ee3d21458d21f5bd31b9da594f55facd-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/0b7a6a45d8d5e6fc818bd4ea15877401f464f09fe8a11d5e28ab43aec4c771c1-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/84fed651f7f9cf478970f4120679c98ef60aff58ea81e1aeda7d4b870f2c5c29-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/8089a61ed9a3a09ca84aa8417c45b6d4b9554aaf7537b752eef7f02b37c1167c-primary.xml.gz"
@@ -371,28 +371,28 @@
         },
         "kconfigs.upstream.UpstreamFetcher": {
             "upstream-4.19-aarch64": {
-                "last_version": "4.19.317"
+                "last_version": "4.19.318"
             },
             "upstream-4.19-x86_64": {
-                "last_version": "4.19.317"
+                "last_version": "4.19.318"
             },
             "upstream-5.15-aarch64": {
-                "last_version": "5.15.162"
+                "last_version": "5.15.163"
             },
             "upstream-5.15-x86_64": {
-                "last_version": "5.15.162"
+                "last_version": "5.15.163"
             },
             "upstream-5.4-aarch64": {
-                "last_version": "5.4.279"
+                "last_version": "5.4.280"
             },
             "upstream-5.4-x86_64": {
-                "last_version": "5.4.279"
+                "last_version": "5.4.280"
             },
             "upstream-6.1-aarch64": {
-                "last_version": "6.1.99"
+                "last_version": "6.1.100"
             },
             "upstream-6.1-x86_64": {
-                "last_version": "6.1.99"
+                "last_version": "6.1.100"
             },
             "upstream-6.10-aarch64": {
                 "last_version": "6.10"
@@ -401,16 +401,16 @@
                 "last_version": "6.10"
             },
             "upstream-6.6-aarch64": {
-                "last_version": "6.6.40"
+                "last_version": "6.6.41"
             },
             "upstream-6.6-x86_64": {
-                "last_version": "6.6.40"
+                "last_version": "6.6.41"
             },
             "upstream-6.9-aarch64": {
-                "last_version": "6.9.9"
+                "last_version": "6.9.10"
             },
             "upstream-6.9-x86_64": {
-                "last_version": "6.9.9"
+                "last_version": "6.9.10"
             }
         }
     }
