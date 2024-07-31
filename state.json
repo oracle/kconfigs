@@ -248,10 +248,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "e29896677922bfe6010103e3a984d10ad9d59dcf5ab95c0a630becbe7745d8cd"
+                "last_hash": "1636504e9b25eb3be3dc25f4ff7336e1281af6901297056a4721b6a9d45e0aed"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "137b9f9d1a584c21bc7639b4015f4e24b969852fdcb1a9f9df7d121c368bc37c"
+                "last_hash": "22dabae304209a08e0ed4a50b290a0a1e98142eaa4ada43c076f38b5fe8af8fc"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -271,7 +271,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Mon, 29 Jul 2024 05:50:35 GMT"
+                "last_modified": "Wed, 31 Jul 2024 10:30:47 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -288,16 +288,16 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/40/Everything/x86_64/os/repodata/ed9afb00128477c11c186fdb9cd2a4d3eaccf396ec83c0eb94097fad5b2c6660-primary.sqlite.gz"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/431d6dece2bcfd5f39deae90de9df62c6c06be36b463d02b282077608f84958b-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/c1c69212a5d85c117c81bd5ff618847925fbc684117f80886da34068098ab802-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/918cef711ef1aae1e1b0ce3620cd0e7da7efaa384c497b7017231898c7c9de79-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/5d0b369b0766891b1be0c33f9d3f4d8a66addf8364312c707cbfb7c4c88003e0-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/1a2fbe3e13f62803e57ec9380215bb517f94124f89f0e4e3d123e8eb4e643fef-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/14aa482698f64568c4fe105190217444c1505cd18e03eff532dd21eb90754f1b-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/a6a5cc7c71d7c646c35b0241495fb749efb386e7282e05630df4c6d8e32ff815-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/d3fffc40104f14ce7a6ec3320b2f2398980dd9dee3b6c4c5b151b8a069b1e713-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/7c28d3b31034f3173a91585d4564395e69179e5287b20846b8960a5533d27d1c-primary.xml.gz"
@@ -348,19 +348,19 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/610b7a69c425e903652e6127516dff062ea6420c26e5c397ec366b29d58ab116-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/ecb335573a43d364895a102b0167147d99cb0c64c93ee5e6e7afd93a348027e3-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/842e71beefdfa191454cfd5267da751ae79ee69ad4c9c5096a846359763df41e-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/23647246ea7eedc420a653cce77558985c9e80bdfbbba4e2db1254e207b0708c-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/952e5b016f2d490a95616678e063231c02c731c648ec90bbef22eded414abaf5-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/8b581ebe5040f90c730b1226f28d776f159d7ffeb7cdf6a352ce430f4f94b8d7-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/985dde72c902a5dfdabbc886ba68624ac8d152785065cee601df53de297fb893-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/cb650f1f48e4b7c008f8b95ce0fddcd662514e870fb352f9b2f4db24c26572bc-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/dc3ce439b569ee2edda50c2be974e1380a325114212fb52531fe02128607cb2a-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/15f0c646cea7173bab548b7db434c8191babd7a6bb02da8651053ce3136a5881-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/765c5cbe9f59619ed7476501e9828e64935623108aa1aafdbb9e4008131f9e7d-primary.sqlite.bz2"
