@@ -49,10 +49,10 @@
             "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.1.0-25-amd64_6.1.106-3_amd64.deb"
         },
         "Debian 13 Trixie aarch64": {
-            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-arm64/linux-image-6.10.11-arm64_6.10.11-1_arm64.deb"
+            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-arm64/linux-image-6.11.2-arm64_6.11.2-1_arm64.deb"
         },
         "Debian 13 Trixie x86_64": {
-            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.10.11-amd64_6.10.11-1_amd64.deb"
+            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.11.2-amd64_6.11.2-1_amd64.deb"
         },
         "Fedora 39 Core aarch64": {
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/39/Everything/aarch64/os/Packages/k/kernel-core-6.5.6-300.fc39.aarch64.rpm"
@@ -242,10 +242,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "4f211e7dbc44de859d0dd51657c1acf40adf94b820581aa65239870a20a3d0a6"
+                "last_hash": "f3cd210124f4e8603835668ce810142309a178f5c68a56c268d31f382b0adcf1"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "12e9fdd7c598b8b86e83e0d146cab55166a9470d436e0fdfbf37e4ab7b259c43"
+                "last_hash": "6736c6cf377ced3dc67a4db49a0fbc5dcc04ceb3b5d4b6b27b88b2a107f2d070"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -265,7 +265,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Mon, 14 Oct 2024 17:50:14 GMT"
+                "last_modified": "Wed, 16 Oct 2024 09:51:39 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -282,16 +282,16 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/40/Everything/x86_64/os/repodata/ed9afb00128477c11c186fdb9cd2a4d3eaccf396ec83c0eb94097fad5b2c6660-primary.sqlite.gz"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/053e28ee0cef03a79216450dc1264eedeb4924258bed9ca469d4ecfdb4bdcc72-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/aarch64/repodata/da35bd6a7554e6fef39e2bde78b1edca43dde9ce2f3b74188fd4516580d9b1a3-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/e385e80ef9f42f709a09c5b52a4f196c671a7481de779740d361498453041ecc-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/39/Everything/x86_64/repodata/fdd12d6c70d55dd782ccadae8b9b1bb1e69c8fb35647642b49ba29eda6362169-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/225ad0f15c71cf93f244501ec2c94c8cda5bfb009eca783eca43f58a0b255f5c-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/5524501fe96d2f0949dd137b57f4279b48069e19dd345b8487e6f01d831fa7eb-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/bd0ad2f3b4bdc20f68929ab7c5969038b365fbd1e8cca9fb1a1e5762ca079d6c-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/fe86e6622f3d45ccee12bfee18c51e98b420d6f475fc9df7ed52d4b241118bca-primary.sqlite.bz2"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/": {
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-39-aarch64/repodata/e4d3753a784da1ea557c232d6783fea81d93884398c3cfb629cdd73ab8c78480-primary.xml.gz"
@@ -303,10 +303,10 @@
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/b9c7c85791d00ff09ebf9f508f107ec5b97db1d53aaefdf931dfe798218dc3a2-primary.xml.gz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/38860dde0ecae4cea21000684fb9502232b952e6be1d070f7bd1357f5d68f7d8-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/e70ef754699a75bfa9a7bc1b192de4d507237ece094042baf1165d32549a6b78-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/d246a917b27bd812e501f7c40145b2ffbdbcca0786b3a2e97cb5079c91b3cb47-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/a807e3cf307cd48b5a40ebd01611e5f2c8d2bc324c8e476ebd61ec6b188ba50b-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/aarch64/packages-experimental/": {
                 "last_db": "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/aarch64/packages-experimental/repodata/99e8b63e88663137b6aebf5088c04332bb1768192ad8f7ad95920263bce86319-primary.sqlite.bz2"
