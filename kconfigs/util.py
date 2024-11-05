@@ -58,7 +58,7 @@ class DownloadManager:
             async with self.sem:
                 try:
                     print(
-                        f"Download {url} to {file} [try {i+1}/{self.RETRIES}]"
+                        f"Download {url} to {file} [try {i + 1}/{self.RETRIES}]"
                     )
                     async with self.session.get(url) as resp, aiofiles.open(
                         file, "wb"
@@ -106,7 +106,7 @@ class DownloadManager:
             out = io.BytesIO()
             try:
                 async with self.sem, self.session.get(url) as resp:
-                    print(f"Download {url} to mem [try {i+1}/{self.RETRIES}]")
+                    print(f"Download {url} to mem [try {i + 1}/{self.RETRIES}]")
                     async for chunk in resp.content.iter_chunked(4096):
                         if checksum:
                             h.update(chunk)

@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
     -   id: trailing-whitespace
         exclude: "^.*.json|.*/config"
@@ -12,29 +12,29 @@ repos:
     -   id: check-added-large-files
         exclude: "^.*.json|.*/config"
 -   repo: https://github.com/psf/black
-    rev: "23.7.0"
+    rev: "24.10.0"
     hooks:
     -   id: black
         args: [--line-length=80, --exclude=setup.py]
 -   repo: https://github.com/pycqa/flake8
-    rev: "6.1.0"
+    rev: "7.1.1"
     hooks:
     -   id: flake8
 -   repo: local
     hooks:
     -   id: mypy
         name: mypy
-        entry: venv/bin/mypy
+        entry: .venv/bin/mypy
         language: system
         args: [--strict, --disallow-untyped-calls]
         files: "^.*.py$"
         verbose: true
 -   repo: https://github.com/asottile/reorder_python_imports
-    rev: v3.10.0
+    rev: v3.14.0
     hooks:
     -   id: reorder-python-imports
 -   repo: https://github.com/netromdk/vermin
-    rev: v1.5.2
+    rev: v1.6.0
     hooks:
     -   id: vermin
         args: ['-t=3.11-', '--violations', '--eval-annotations']
