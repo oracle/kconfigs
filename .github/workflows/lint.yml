@@ -15,6 +15,6 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install pre-commit and mypy
-        run: pip install pre-commit && make dev
+        run: pip install pipenv && make dev
       - name: Run pre-commit hooks
-        run: pre-commit run --all-files --show-diff-on-failure
+        run: .venv/bin/pre-commit run --all-files --show-diff-on-failure

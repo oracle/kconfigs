@@ -5,23 +5,21 @@ PYTHON ?= python3.13
 
 .PHONY: venv
 venv:
-	rm -rf venv
-	$(PYTHON) -m venv venv
-	venv/bin/pip install -r requirements.txt
+	@mkdir -p .venv  # ensure that pipenv sees .venv
+	$(PYTHON) -m pipenv install
 
 .PHONY: run
 run:
-	venv/bin/python -m kconfigs.main config.ini
-	venv/bin/python -m kconfigs.cleanup config.ini
-	venv/bin/python -m kconfigs.analyzer config.ini
+	.venv/bin/python -m kconfigs.main config.ini
+	.venv/bin/python -m kconfigs.cleanup config.ini
+	.venv/bin/python -m kconfigs.analyzer config.ini
 
 .PHONY: dev
 dev:
-	rm -rf venv
-	$(PYTHON) -m venv venv
-	venv/bin/pip install -r requirements.txt -r requirements-dev.txt
-	pre-commit install --install-hooks
+	@mkdir -p .venv  # ensure that pipenv sees .venv
+	$(PYTHON) -m pipenv install --dev
+	.venv/bin/pre-commit install --install-hooks
 
 .PHONY: upgrade-requirements
 upgrade-requirements:
-	venv/bin/upgrade-requirements
+	$(PYTHON) -m pipenv upgrade

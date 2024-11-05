@@ -27,6 +27,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gzip bzip2 xz-utils zstd tar rpm cpio dpkg make
+          pip install pipenv
           make venv
       - name: Checkout gh-pages and setup git
         run: |
@@ -36,12 +37,12 @@ jobs:
           git config --global user.email 'noreply@example.com'
       - name: Fetch updates and build page
         run: |
-          venv/bin/python -m kconfigs.main config.ini \
+          .venv/bin/python -m kconfigs.main config.ini \
               --state ../gh-pages/state.json \
               --output-dir ../gh-pages/out
-          venv/bin/python -m kconfigs.cleanup config.ini \
+          .venv/bin/python -m kconfigs.cleanup config.ini \
               --input-dir ../gh-pages/out
-          venv/bin/python -m kconfigs.analyzer config.ini \
+          .venv/bin/python -m kconfigs.analyzer config.ini \
               --input-dir ../gh-pages/out \
               --output-file ../gh-pages/docs/summary.json
           cp index.html tux-sm.png ../gh-pages/docs/

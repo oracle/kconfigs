@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiohttp = "*"
+aiofiles = "*"
+aiosqlite = "*"
+
+[dev-packages]
+mypy = "*"
+ptpython = "*"
+types-aiofiles = "*"
+pre-commit = "*"
+
+[requires]
+python_version = "3.13"
