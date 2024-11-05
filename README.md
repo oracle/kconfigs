@@ -33,7 +33,7 @@ dependencies (most should already be installed, but they are listed for
 completeness).
 
 ```sh
-dnf install -y python3.11{,-devel,-venv,-pip} \
+dnf install -y python3.12{,-devel,-venv,-pip} \
                gzip bzip2 xz zstd tar \
                rpm cpio dpkg \
                make

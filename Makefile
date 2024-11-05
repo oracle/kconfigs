@@ -1,7 +1,7 @@
 # Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
 
-PYTHON ?= python3.11
+PYTHON ?= python3.13
 
 .PHONY: venv
 venv:
