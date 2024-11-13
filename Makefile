@@ -1,12 +1,13 @@
 # Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
 
-PYTHON ?= python3.13
+PYTHON ?= python3.12
 
 .PHONY: venv
 venv:
-	@mkdir -p .venv  # ensure that pipenv sees .venv
-	$(PYTHON) -m pipenv install
+	rm -rf .venv
+	$(PYTHON) -m venv .venv
+	sed -n '/^\[packages\]$$/,/^\[dev-packages\]$$/p' Pipfile | grep -v '^\[' | sed 's/ =.*$$//' | xargs .venv/bin/pip install
 
 .PHONY: run
 run:
@@ -16,10 +17,10 @@ run:
 
 .PHONY: dev
 dev:
-	@mkdir -p .venv  # ensure that pipenv sees .venv
-	$(PYTHON) -m pipenv install --dev
+	@rm -rf .venv && mkdir -p .venv  # ensure that pipenv sees .venv
+	pipenv install --dev
 	.venv/bin/pre-commit install --install-hooks
 
 .PHONY: upgrade-requirements
 upgrade-requirements:
-	$(PYTHON) -m pipenv upgrade
+	pipenv upgrade

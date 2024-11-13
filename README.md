@@ -24,9 +24,17 @@ grep -r IKCONFIG_PROC out/
 
 ## How to Run
 
-This tool runs on Python 3.11 or later. It requires common compression tools
-(gzip, bzip2, xz, zstd, tar) as well as common command line tools for Linux
-packaging installed to the system (gpg, rpm, cpio, dpkg).
+To run kconfigs locally, you'll need:
+
+- Python 3.11 or later (with pip and virtualenv). Python 3.12 is the official
+  verison in use, but other recent versions work.
+- Common CLI compression tools (gzip, bzip2, xz, zstd, tar)
+- Linux packaging tools (gpg, rpm, cpio, dpk)
+- The `make` command
+
+If you'd like to do development, then you should also install `pipenv`, and
+Python 3.12 which will ensure you use the exact version of Python and all
+dependencies, which get used in the Github CI system.
 
 The following setup instructions apply to Oracle Linux 9. First, install runtime
 dependencies (most should already be installed, but they are listed for
@@ -45,6 +53,9 @@ To setup the runtime Python environment:
 git clone https://github.com/oracle/kconfigs
 cd kconfigs
 make venv
+
+# Or if you would like to use pipenv to setup all development dependencies:
+make dev
 ```
 
 To run the extraction routine:
@@ -73,6 +84,9 @@ try to help you out.
 
 This project welcomes contributions from the community. Before submitting a pull
 request, please [review our contribution guide](./CONTRIBUTING.md).
+
+For development, you should use Python 3.12 and use pipenv to manage
+dependencies.
 
 ## Security
 
