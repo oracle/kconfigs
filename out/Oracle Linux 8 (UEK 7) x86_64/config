@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.15.0-301.163.5.2.el8uek.x86_64 Kernel Configuration
+# Linux/x86_64 5.15.0-302.167.6.el8uek.x86_64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.4.1 20231218 (Red Hat 11.4.1-3.0.1)"
 CONFIG_CC_IS_GCC=y
@@ -3623,7 +3623,7 @@ CONFIG_MT76x2U=m
 # CONFIG_MT7615E is not set
 # CONFIG_MT7663U is not set
 # CONFIG_MT7663S is not set
-# CONFIG_MT7915E is not set
+CONFIG_MT7915E=m
 CONFIG_MT7921E=m
 CONFIG_WLAN_VENDOR_MICROCHIP=y
 # CONFIG_WILC1000_SDIO is not set
