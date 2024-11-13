@@ -22,13 +22,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.12'
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install gzip bzip2 xz-utils zstd tar rpm cpio dpkg make
           pip install pipenv
-          make venv
+          mkdir -p .venv && pipenv install
       - name: Checkout gh-pages and setup git
         run: |
           git fetch origin gh-pages --depth=1
