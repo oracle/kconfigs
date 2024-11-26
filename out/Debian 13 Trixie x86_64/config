@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.11.7 Kernel Configuration
+# Linux/x86 6.11.9 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="x86_64-linux-gnu-gcc-14 (Debian 14.2.0-8) 14.2.0"
 CONFIG_CC_IS_GCC=y
@@ -3607,6 +3607,7 @@ CONFIG_CAN_PEAK_PCI=m
 CONFIG_CAN_PEAK_PCIEC=y
 CONFIG_CAN_PEAK_PCMCIA=m
 CONFIG_CAN_PLX_PCI=m
+CONFIG_CAN_SJA1000_ISA=m
 # CONFIG_CAN_SJA1000_PLATFORM is not set
 CONFIG_CAN_SOFTING=m
 CONFIG_CAN_SOFTING_CS=m
