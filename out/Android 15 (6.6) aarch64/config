@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.56 Kernel Configuration
+# Linux/arm64 6.6.50 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (11368308, +pgo, +bolt, +lto, +mlgo, based on r510928) clang version 18.0.0 (https://android.googlesource.com/toolchain/llvm-project 477610d4d0d988e69dbc3fae4fe86bff3f07f2b5)"
 CONFIG_GCC_VERSION=0
@@ -636,7 +636,6 @@ CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y
 #
 # CONFIG_CPUFREQ_DT is not set
 # CONFIG_ANDROID_V_CPUFREQ_VIRT is not set
-# CONFIG_CPUFREQ_VIRT is not set
 # CONFIG_CPUFREQ_DT_PLATDEV is not set
 # CONFIG_CPUFREQ_DUMMY is not set
 CONFIG_ARM_SCPI_CPUFREQ=y
@@ -6929,9 +6928,6 @@ CONFIG_KEYS=y
 # CONFIG_ENCRYPTED_KEYS is not set
 # CONFIG_KEY_DH_OPERATIONS is not set
 # CONFIG_SECURITY_DMESG_RESTRICT is not set
-CONFIG_PROC_MEM_ALWAYS_FORCE=y
-# CONFIG_PROC_MEM_FORCE_PTRACE is not set
-# CONFIG_PROC_MEM_NO_FORCE is not set
 CONFIG_SECURITY=y
 CONFIG_SECURITYFS=y
 CONFIG_SECURITY_NETWORK=y
