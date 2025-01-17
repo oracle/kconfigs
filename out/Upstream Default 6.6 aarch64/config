@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.71 Kernel Configuration
+# Linux/arm64 6.6.72 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -9274,8 +9274,8 @@ CONFIG_PHY_MVEBU_CP110_COMPHY=y
 CONFIG_PHY_MTK_TPHY=y
 # CONFIG_PHY_MTK_UFS is not set
 # CONFIG_PHY_MTK_XSPHY is not set
-CONFIG_PHY_MTK_HDMI=m
-CONFIG_PHY_MTK_MIPI_DSI=m
+# CONFIG_PHY_MTK_HDMI is not set
+# CONFIG_PHY_MTK_MIPI_DSI is not set
 # CONFIG_PHY_MTK_DP is not set
 # CONFIG_PHY_SPARX5_SERDES is not set
 # CONFIG_PHY_LAN966X_SERDES is not set
