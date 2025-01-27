@@ -1,8 +1,8 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.12.9 Kernel Configuration
+# Linux/x86 6.12.10 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="x86_64-linux-gnu-gcc-14 (Debian 14.2.0-12) 14.2.0"
+CONFIG_CC_VERSION_TEXT="x86_64-linux-gnu-gcc-14 (Debian 14.2.0-14) 14.2.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=140200
 CONFIG_CLANG_VERSION=0
@@ -2087,7 +2087,7 @@ CONFIG_BT_MTKUART=m
 CONFIG_BT_HCIRSI=m
 # CONFIG_BT_VIRTIO is not set
 # CONFIG_BT_NXPUART is not set
-# CONFIG_BT_INTEL_PCIE is not set
+CONFIG_BT_INTEL_PCIE=m
 # end of Bluetooth device drivers
 
 CONFIG_AF_RXRPC=m
