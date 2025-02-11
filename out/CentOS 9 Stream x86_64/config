@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.14.0-559.el9.x86_64 Kernel Configuration
+# Linux/x86_64 5.14.0-565.el9.x86_64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-4)"
 CONFIG_CC_IS_GCC=y
@@ -31,7 +31,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="5.14.0-559.el9.x86_64"
+CONFIG_BUILD_SALT="5.14.0-565.el9.x86_64"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_BZIP2=y
 CONFIG_HAVE_KERNEL_LZMA=y
@@ -2202,6 +2202,11 @@ CONFIG_UEFI_CPER=y
 CONFIG_UEFI_CPER_X86=y
 
 #
+# Qualcomm firmware drivers
+#
+# end of Qualcomm firmware drivers
+
+#
 # Tegra firmware driver
 #
 # end of Tegra firmware driver
@@ -3271,7 +3276,9 @@ CONFIG_ATH11K=m
 CONFIG_ATH11K_PCI=m
 # CONFIG_ATH11K_DEBUG is not set
 # CONFIG_ATH11K_TRACING is not set
-# CONFIG_ATH12K is not set
+CONFIG_ATH12K=m
+# CONFIG_ATH12K_DEBUG is not set
+# CONFIG_ATH12K_TRACING is not set
 # CONFIG_WLAN_VENDOR_ATMEL is not set
 CONFIG_WLAN_VENDOR_BROADCOM=y
 # CONFIG_B43 is not set
