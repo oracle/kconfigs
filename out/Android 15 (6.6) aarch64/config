@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.58 Kernel Configuration
+# Linux/arm64 6.6.66 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (11368308, +pgo, +bolt, +lto, +mlgo, based on r510928) clang version 18.0.0 (https://android.googlesource.com/toolchain/llvm-project 477610d4d0d988e69dbc3fae4fe86bff3f07f2b5)"
 CONFIG_GCC_VERSION=0
@@ -529,7 +529,6 @@ CONFIG_ARM64_EPAN=y
 # end of ARMv8.7 architectural features
 
 CONFIG_ARM64_SVE=y
-CONFIG_ARM64_SME=y
 # CONFIG_ARM64_PSEUDO_NMI is not set
 CONFIG_RELOCATABLE=y
 CONFIG_RANDOMIZE_BASE=y
@@ -565,7 +564,7 @@ CONFIG_PM_STD_PARTITION=""
 CONFIG_PM_SLEEP=y
 CONFIG_PM_SLEEP_SMP=y
 # CONFIG_PM_AUTOSLEEP is not set
-# CONFIG_PM_USERSPACE_AUTOSLEEP is not set
+CONFIG_PM_USERSPACE_AUTOSLEEP=y
 CONFIG_PM_WAKELOCKS=y
 CONFIG_PM_WAKELOCKS_LIMIT=0
 # CONFIG_PM_WAKELOCKS_GC is not set
@@ -1938,6 +1937,7 @@ CONFIG_ZRAM_DEF_COMP_LZORLE=y
 # CONFIG_ZRAM_DEF_COMP_LZO is not set
 CONFIG_ZRAM_DEF_COMP="lzo-rle"
 # CONFIG_ZRAM_WRITEBACK is not set
+# CONFIG_ZRAM_TRACK_ENTRY_ACTIME is not set
 # CONFIG_ZRAM_MEMORY_TRACKING is not set
 # CONFIG_ZRAM_MULTI_COMP is not set
 CONFIG_BLK_DEV_LOOP=y
