@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.12.13 Kernel Configuration
+# Linux/x86_64 6.12.14 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -1887,6 +1887,7 @@ CONFIG_MD=y
 CONFIG_BLK_DEV_MD=y
 CONFIG_MD_AUTODETECT=y
 CONFIG_MD_BITMAP_FILE=y
+# CONFIG_MD_LINEAR is not set
 # CONFIG_MD_RAID0 is not set
 # CONFIG_MD_RAID1 is not set
 # CONFIG_MD_RAID10 is not set
@@ -4285,7 +4286,6 @@ CONFIG_INTEL_IOMMU_PERF_EVENTS=y
 #
 # IRQ chip support
 #
-# CONFIG_LAN966X_OIC is not set
 # end of IRQ chip support
 
 # CONFIG_IPACK_BUS is not set
