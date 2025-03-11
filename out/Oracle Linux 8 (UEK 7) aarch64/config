@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.15.0-305.176.4.el8uek.aarch64 Kernel Configuration
+# Linux/arm64 5.15.0-306.177.4.el8uek.aarch64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-2.0.1)"
 CONFIG_CC_IS_GCC=y
@@ -7256,8 +7256,8 @@ CONFIG_USB_MON=y
 # CONFIG_USB_C67X00_HCD is not set
 CONFIG_USB_XHCI_HCD=y
 CONFIG_USB_XHCI_DBGCAP=y
-CONFIG_USB_XHCI_PCI=y
-# CONFIG_USB_XHCI_PCI_RENESAS is not set
+CONFIG_USB_XHCI_PCI=m
+CONFIG_USB_XHCI_PCI_RENESAS=m
 CONFIG_USB_XHCI_PLATFORM=m
 # CONFIG_USB_XHCI_HISTB is not set
 # CONFIG_USB_XHCI_MTK is not set
