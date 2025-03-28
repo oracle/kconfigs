@@ -190,10 +190,10 @@
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-306.177.4.el9uek.x86_64.rpm"
         },
         "Oracle Linux 9 (UEK-NEXT) aarch64": {
-            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/getPackage/kernel-ueknext-core-6.13.0-1.el9ueknext.aarch64.rpm"
+            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/getPackage/kernel-ueknext-core-6.12.0-4.el9ueknext.aarch64.rpm"
         },
         "Oracle Linux 9 (UEK-NEXT) x86_64": {
-            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/getPackage/kernel-ueknext-core-6.13.0-1.el9ueknext.x86_64.rpm"
+            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/getPackage/kernel-ueknext-core-6.12.0-4.el9ueknext.x86_64.rpm"
         },
         "Ubuntu 20.04 LTS Focal aarch64": {
             "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-5.4.0-26-generic_5.4.0-26.30_arm64.deb"
@@ -218,6 +218,12 @@
         },
         "Ubuntu 24.10 Oracular x86_64": {
             "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.11.0-8-generic_6.11.0-8.8_amd64.deb"
+        },
+        "Ubuntu 25.04 Oracular aarch64": {
+            "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-6.14.0-13-generic_6.14.0-13.13_arm64.deb"
+        },
+        "Ubuntu 25.04 Plucky x86_64": {
+            "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.14.0-13-generic_6.14.0-13.13_amd64.deb"
         },
         "Upstream Default 4.14 (OpenELA) aarch64": {
             "latest_url": "https://api.github.com/repos/openela/kernel-lts/tarball/v4.14.356-openela-rc1"
@@ -290,6 +296,9 @@
             "http://archive.ubuntu.com/ubuntu/-oracular-amd64-None": {
                 "last_hash": "8df202e0e7e8acedd3ace548a92ea69fd8e44cb382836653b66c2ae705edf690"
             },
+            "http://archive.ubuntu.com/ubuntu/-plucky-amd64-None": {
+                "last_hash": "5303a8c310033d075ff0370d52d6a2bb9d8244b5b3e27823a6c5225e4b53b6c5"
+            },
             "http://ftp.us.debian.org/debian/-bookworm-amd64-None": {
                 "last_hash": "4b1946af5d5b92df69c255d39d6948b0a78393a4965e2146fc5b50b7ce994fd0"
             },
@@ -325,6 +334,9 @@
             },
             "http://ports.ubuntu.com/-oracular-arm64-None": {
                 "last_hash": "cea09535469d6c66b69abae64e389340d2c6441677ac9d6ffc4038fa2ada291c"
+            },
+            "http://ports.ubuntu.com/-plucky-arm64-None": {
+                "last_hash": "1d0bfc8806d481257b2eae19a19a695c99e6c6bc9ecaaffe1e8367642982d557"
             }
         },
         "kconfigs.github.GithubFetcher": {
@@ -481,10 +493,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/220f5b8ff93845391dbcc1550cdfad8ddd30a9961581fde6f66ea93fd854a3ba-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/57d7fa9267a3a8d3e0c01b472603300221dcf18a0d60799f3b2d50e81867332b-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/c3b693db9ca55b3dff46850b97e8b77935c93b6f49dedb4243bdff17c96f84c6-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/repodata/1bf1022570a15bec023970c2d38cbe3159a39c0b98ff2400bef8f3bc7c368052-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/repodata/741170d60c379075c62fa99056fee1cb7bf16df83a3abdde1e6daf73b83f36da-primary.sqlite.bz2"
             }
         },
         "kconfigs.upstream.UpstreamFetcher": {
