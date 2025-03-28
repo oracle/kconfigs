@@ -1,5 +1,29 @@
 {
     "distros": {
+        "Alma Linux 8 aarch64": {
+            "latest_url": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/Packages/kernel-core-4.18.0-553.45.1.el8_10.aarch64.rpm"
+        },
+        "Alma Linux 8 ppc64le": {
+            "latest_url": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/Packages/kernel-core-4.18.0-553.45.1.el8_10.ppc64le.rpm"
+        },
+        "Alma Linux 8 s390x": {
+            "latest_url": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/Packages/kernel-core-4.18.0-553.45.1.el8_10.s390x.rpm"
+        },
+        "Alma Linux 8 x86_64": {
+            "latest_url": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/Packages/kernel-core-4.18.0-553.45.1.el8_10.x86_64.rpm"
+        },
+        "Alma Linux 9 aarch64": {
+            "latest_url": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/Packages/kernel-core-5.14.0-503.33.1.el9_5.aarch64.rpm"
+        },
+        "Alma Linux 9 ppc64le": {
+            "latest_url": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/Packages/kernel-core-5.14.0-503.33.1.el9_5.ppc64le.rpm"
+        },
+        "Alma Linux 9 s390x": {
+            "latest_url": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/Packages/kernel-core-5.14.0-503.33.1.el9_5.s390x.rpm"
+        },
+        "Alma Linux 9 x86_64": {
+            "latest_url": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/Packages/kernel-core-5.14.0-503.33.1.el9_5.x86_64.rpm"
+        },
         "Android 12 (5.10) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android12-5.10-2025-02_r3.zip"
         },
@@ -380,6 +404,30 @@
             },
             "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/x86_64/packages-experimental/": {
                 "last_db": "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/x86_64/packages-experimental/repodata/3fe0ae82dbc0be1eb898fa21803ad69f7e9f4c8f360fdab7221926687fe7b349-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/repodata/687e35ef1a512477eaf8d5667bf2d81ce32dee9c8c1180ac2aa063c3287485cf-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/repodata/45a67cc9d0316dc54fa2e4960235869edbbc714b68e62bc3dafd747763b19431-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/repodata/385a3cbde270f471378aa5688d328aa03ee69b88ab848bba9a6c8d97c5b6b661-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/repodata/eecac05f4f5e278ce0d7151ce59c87feaceadb728a3922131e7cb93b97947c76-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/cd232047e7b4e9fdcad489e0e285fbad2829a7d29ecf5592fae7e0d59612f50a-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/repodata/63e81ea8c665973a831c9f87f555ed6aeeffab4a873c35e6eb74c039affa2a9d-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/repodata/006e6c845743b7298b6b1a2c707fe50772312c2a65e689904e4994dcedb9131b-primary.sqlite.bz2"
+            },
+            "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/": {
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/repodata/cdcf1577f71937cf35213c20615dc95cd7e8cb03e57ffc9a92aebaad44064621-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/developer/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/developer/x86_64/repodata/ddcc5477d8c2d050083feba1abfc8076e42d2aa3-primary.sqlite.bz2"
