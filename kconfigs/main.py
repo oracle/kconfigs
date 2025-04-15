@@ -7,6 +7,7 @@ import json
 import multiprocessing
 import posixpath
 import shutil
+from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 
@@ -98,7 +99,7 @@ def get_distros(
 ) -> list[DistroConfig]:
     distros = []
     for sec in cfg.sections():
-        if f and sec not in f:
+        if f and not any(fnmatch(sec, pat) for pat in f):
             continue
         args: dict[str, Any] = dict(cfg[sec])
         # handle non-string configs
@@ -139,7 +140,8 @@ async def main() -> None:
         "-f",
         action="append",
         default=[],
-        help="Filter to only the given config.ini sections",
+        help="Filter to only the given config.ini sections (fnmatch(3) patterns"
+        "are accepted)",
     )
 
     args = parser.parse_args()
@@ -158,6 +160,13 @@ async def main() -> None:
     distros = get_distros(cfg, args.filter)
     fetchers = FetcherFactory(fetcher_state, args.download_dir)
 
+    if args.filter:
+        new_fetcher_state = fetcher_state.copy()
+        new_distro_state = distro_state.copy()
+    else:
+        new_fetcher_state = {}
+        new_distro_state = {}
+
     async with asyncio.TaskGroup() as tg:
         tasks = []
         for distro in distros:
@@ -171,23 +180,19 @@ async def main() -> None:
             fut.set_name(distro.unique_name)
             tasks.append(fut)
 
-        new_distro_state = {}
         for fut in asyncio.as_completed(tasks):  # type: ignore
             distro, state = await fut
             new_distro_state[distro.unique_name] = state
 
-    new_fetcher_state = fetchers.save_state()
+    new_fetcher_state.update(fetchers.save_state())
 
-    if args.filter:
-        print("NOTE: skipping saving state.json to avoid clobbering it")
-    else:
-        with args.state.open("wt") as f:
-            data = {
-                "fetchers": new_fetcher_state,
-                "distros": new_distro_state,
-            }
-            json.dump(data, f, sort_keys=True, indent=4)
-            f.write("\n")  # newline at end of file for the git hooks
+    with args.state.open("wt") as f:
+        data = {
+            "fetchers": new_fetcher_state,
+            "distros": new_distro_state,
+        }
+        json.dump(data, f, sort_keys=True, indent=4)
+        f.write("\n")  # newline at end of file for the git hooks
 
     await download_manager().session.close()
 
