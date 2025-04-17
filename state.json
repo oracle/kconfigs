@@ -40,7 +40,7 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-04_r1.zip"
         },
         "Android 15 (6.6) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-03_r4.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-04_r2.zip"
         },
         "Arch x86_64": {
             "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.14.2.arch1-1-x86_64.pkg.tar.zst"
@@ -339,10 +339,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "e837383ef224a2ea3fb668e94d0f0b2b6b92f26c1db62e47705eaea0e2c54393"
+                "last_hash": "7d76e89fac6cfac496dc29cf868d8d720cb5168372322883a7966103a3250e5b"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "6bc439ebba6e6d31ae5f87fdfaf30e7df1ff01717aee10613f930630deb45575"
+                "last_hash": "6004bc7aedcd275035bedf11dfceb923115e8c89a5d3589e654ebdead212e9ed"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -365,7 +365,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 16 Apr 2025 07:05:30 GMT"
+                "last_modified": "Thu, 17 Apr 2025 16:26:36 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -520,10 +520,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/c8fc94ea333ca8752dc77d7660e8078ce6553c9996d601ad130a1d6416429a9a-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/aaa7f3ac5dc8b0ccad390c769602779b6c8e98b5d1034fab588951146f255869-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/a6a274b466b97497dd7a44cb66ed43d6cc0e9fdb684c01bbca5fd8a16cac22a3-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/f421eb040a5731b93aa389e17cd0b03d841b0415ea3ce6fe6d98c561ac8976b0-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/78c7b72ada93a2f5a29dd3e4547b078d0ddff089033ecef95ec5197e97a4edb1-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/7273bbf603fee58d725857a9397aaece8be3b4182fb8501c8486cc48192fbe58-primary.sqlite.bz2"
@@ -532,7 +532,7 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/6e6d32b0d7aaf0884fd6421313e82ebf2f8682e13760d671f93f30ac372f5d02-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/57d7fa9267a3a8d3e0c01b472603300221dcf18a0d60799f3b2d50e81867332b-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/139c9bd40d6800bdde633ecda352081de0ed7bd1a60500223866ad8c4c804e7c-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/repodata/1bf1022570a15bec023970c2d38cbe3159a39c0b98ff2400bef8f3bc7c368052-primary.sqlite.bz2"
