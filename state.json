@@ -31,7 +31,7 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android13-5.10-2025-03_r1.zip"
         },
         "Android 13 (5.15) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android13-5.15-2025-03_r2.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android13-5.15-2025-03_r3.zip"
         },
         "Android 14 (5.15) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-5.15-2025-03_r2.zip"
@@ -112,10 +112,10 @@
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/40/Everything/x86_64/os/Packages/k/kernel-core-6.8.5-301.fc40.x86_64.rpm"
         },
         "Fedora 40 Updates aarch64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/Packages/k/kernel-core-6.13.11-100.fc40.aarch64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/Packages/k/kernel-core-6.13.12-100.fc40.aarch64.rpm"
         },
         "Fedora 40 Updates x86_64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/Packages/k/kernel-core-6.13.11-100.fc40.x86_64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/Packages/k/kernel-core-6.13.12-100.fc40.x86_64.rpm"
         },
         "Fedora 41 Core aarch64": {
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/aarch64/os/Packages/k/kernel-core-6.11.4-301.fc41.aarch64.rpm"
@@ -124,10 +124,10 @@
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/x86_64/os/Packages/k/kernel-core-6.11.4-301.fc41.x86_64.rpm"
         },
         "Fedora 41 Updates aarch64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/aarch64/Packages/k/kernel-core-6.13.11-200.fc41.aarch64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/aarch64/Packages/k/kernel-core-6.13.12-200.fc41.aarch64.rpm"
         },
         "Fedora 41 Updates x86_64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/x86_64/Packages/k/kernel-core-6.13.11-200.fc41.x86_64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/x86_64/Packages/k/kernel-core-6.13.12-200.fc41.x86_64.rpm"
         },
         "Fedora 42 Core aarch64": {
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/42/Everything/aarch64/os/Packages/k/kernel-core-6.14.0-63.fc42.aarch64.rpm"
@@ -339,10 +339,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "9d7e154f8230866fc410a6eb903d81fc2eb87bf0413cce31a47a796fe35ad193"
+                "last_hash": "5fde820a510e19908086bd8a39c0e09412c33bd841ca1fb0a0a485adc525a7ab"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "555840421d33f8fc49acbd8f7c17b9dc2d7dd0eabbf1da515969148c456adfbc"
+                "last_hash": "71120d8b9ed40ff245f234f2147bf46f141724b03e12dcd22e5d142e5efd5401"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -365,7 +365,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Mon, 21 Apr 2025 17:03:12 GMT"
+                "last_modified": "Tue, 22 Apr 2025 21:14:12 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -388,22 +388,22 @@
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/42/Everything/x86_64/os/repodata/cd483b35df017d68b73a878a392bbf666a43d75db54c386e4720bc369eb5c3a3-primary.xml.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/2125a7265836411e0c454478a8ad8c08b06c10113f99f10799e378895ad430ab-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/aarch64/repodata/9f4c0f3fa7071459c5646bd47949b46dfd3b2c55b15e83fe815eeceadff4ea18-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/dc9e676f8ea011d67f1809ed0d2d9b39ae468c6898676736edcd865323676e45-primary.sqlite.bz2"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/40/Everything/x86_64/repodata/0a30d3d7570dcf40d2987d9358e91e34b2c60af63ab4221e4cb331fed7d2b4fc-primary.sqlite.bz2"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/aarch64/repodata/23fc15914e8b8a4157893c28d9c4ca2c5d105368d06ac9d2d8ee7a8a8211f33f-primary.xml.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/aarch64/repodata/82282d15e2725347575c901ddc3fdf11227ba8c38b834f2d637253276a3c76b4-primary.xml.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/x86_64/repodata/a3f236e71cf0d27658677b1e15befabeb7d4e64af15933f37dac8df1754354a7-primary.xml.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/41/Everything/x86_64/repodata/a884bc074e74f6494228b7fbcb3e5b8cb829bfcd28ce239c2617550252aeeef1-primary.xml.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/aarch64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/aarch64/repodata/3ca483781a575446f1afb4e54586d4688a2e06327c3fa647c52959ed8925069b-primary.xml.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/aarch64/repodata/f3cff111e74bb5248129b7e5d1eebc0ac609ec397f375fdf02e6cc7d58431885-primary.xml.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/x86_64/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/x86_64/repodata/4732ab51e88a61e7f6c46934df34db6e8fe102fa027b00c576a9004bcfb75c30-primary.xml.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/updates/42/Everything/x86_64/repodata/fe4e906ea850e72fc062d7f991df36e314b3d4ae2d5dd58cee20f1ab29593fa6-primary.xml.zst"
             },
             "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/": {
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-40-aarch64/repodata/89f35769636858228e80e7355065ae98b251160b38cf66359a1f99b82fa6a79d-primary.xml.gz"
@@ -451,16 +451,16 @@
                 "last_db": "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/x86_64/packages-experimental/repodata/3fe0ae82dbc0be1eb898fa21803ad69f7e9f4c8f360fdab7221926687fe7b349-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/repodata/37b1908f72fd3a4603d1b8c53dc4484423feaa328578a551e764606a54201da1-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/repodata/95277b8ccfec54d9330e01fdb3312fe601b73d8c51d9584eff7dc965d9e8e343-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/repodata/2346b9fef93c474085b295de68c5c5cb0f0d8e67337e66e6ac54f609dcbd6d61-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/repodata/89c7f746ef62aac5ebe86ed909c6c50cb34841405cbbeb65b8ac20ea17311211-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/repodata/fc4025ee7af0518e1db13060e9dc79ac5e28cae9f31399629c9e75a352c38157-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/repodata/75b0297648c0063b0fc02735faf1673625efbf3d09cc8e83a730b06edb5fa26e-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/repodata/86f7bfc2931d8d76ad6ec2e61ad303035a0e5561e968931895689aaafe833642-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/repodata/b6b0f756d2c79a17407fad799405985b24905729b02075e316ba1d18fdbd7c4f-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/": {
                 "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/1758216e62d13f823f85cb867921f7f55bdf96b3a03aaf3122671963ea0484a7-primary.sqlite.bz2"
@@ -511,10 +511,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/ea63eb5892d3c66a764e799716d23122a6be0cd7b567f7205797b61030096cf0-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/06f57b83b6f1fff78b62d08ee3db6f3062a5467d5bd0b93ea92b620c4647bc74-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/3ee57756cc23f84045168ac4afc0391aa56d6ed634813a9b06bf615552938306-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/699dabddd437afda916da6f8df681548a3e73a32c061dafa5b9c6c95ad032cb1-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/a1c116f7eb00c6a01738ffbb1a7c1e51acab57dca135e8099a83b8222d8ac95d-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/d2d38a5f55abb5dbd52089fcbb09b0300c00748f4ce5498b62b097d7b26f26d6-primary.sqlite.bz2"
@@ -532,7 +532,7 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/5c9963c594245f957b33c0c0c1675cb6ac88f5ccfe0b720f4d1770d3d8c83a29-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/57d7fa9267a3a8d3e0c01b472603300221dcf18a0d60799f3b2d50e81867332b-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/139c9bd40d6800bdde633ecda352081de0ed7bd1a60500223866ad8c4c804e7c-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/x86_64/repodata/1bf1022570a15bec023970c2d38cbe3159a39c0b98ff2400bef8f3bc7c368052-primary.sqlite.bz2"
