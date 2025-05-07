@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/powerpc 5.14.0-580.el9.ppc64le Kernel Configuration
+# Linux/powerpc 5.14.0-582.el9.ppc64le Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-5)"
 CONFIG_CC_IS_GCC=y
@@ -31,7 +31,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="5.14.0-580.el9.ppc64le"
+CONFIG_BUILD_SALT="5.14.0-582.el9.ppc64le"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_XZ=y
 CONFIG_KERNEL_GZIP=y
@@ -4862,6 +4862,7 @@ CONFIG_TYPEC_MUX_PI3USB30532=m
 # CONFIG_TYPEC_MUX_IT5205 is not set
 # CONFIG_TYPEC_MUX_NB7VPQ904M is not set
 # CONFIG_TYPEC_MUX_PTN36502 is not set
+# CONFIG_TYPEC_MUX_TUSB1046 is not set
 # CONFIG_TYPEC_MUX_WCD939X_USBSS is not set
 # end of USB Type-C Multiplexer/DeMultiplexer Switch support
 
