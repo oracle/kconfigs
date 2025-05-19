@@ -1,8 +1,8 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.1.129 Kernel Configuration
+# Linux/x86 6.1.137 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="gcc-12 (Debian 12.2.0-14) 12.2.0"
+CONFIG_CC_VERSION_TEXT="gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=120200
 CONFIG_CLANG_VERSION=0
@@ -2064,8 +2064,6 @@ CONFIG_ETHTOOL_NETLINK=y
 #
 # Device Drivers
 #
-CONFIG_HAVE_EISA=y
-# CONFIG_EISA is not set
 CONFIG_HAVE_PCI=y
 CONFIG_PCI=y
 CONFIG_PCI_DOMAINS=y
