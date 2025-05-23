@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.12.0-82.el10.aarch64 Kernel Configuration
+# Linux/arm64 6.12.0-84.el10.aarch64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.2.1 20250110 (Red Hat 14.2.1-7)"
 CONFIG_CC_IS_GCC=y
@@ -34,7 +34,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="6.12.0-82.el10.aarch64"
+CONFIG_BUILD_SALT="6.12.0-84.el10.aarch64"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_LZMA=y
 CONFIG_HAVE_KERNEL_XZ=y
@@ -4995,7 +4995,7 @@ CONFIG_MEDIA_CAMERA_SUPPORT=y
 # CONFIG_MEDIA_DIGITAL_TV_SUPPORT is not set
 # CONFIG_MEDIA_RADIO_SUPPORT is not set
 # CONFIG_MEDIA_SDR_SUPPORT is not set
-# CONFIG_MEDIA_PLATFORM_SUPPORT is not set
+CONFIG_MEDIA_PLATFORM_SUPPORT=y
 # CONFIG_MEDIA_TEST_SUPPORT is not set
 # end of Media device types
 
@@ -5057,6 +5057,116 @@ CONFIG_MEDIA_PCI_SUPPORT=y
 # CONFIG_VIDEO_TW686X is not set
 # CONFIG_VIDEO_ZORAN is not set
 # CONFIG_IPU_BRIDGE is not set
+CONFIG_MEDIA_PLATFORM_DRIVERS=y
+# CONFIG_V4L_PLATFORM_DRIVERS is not set
+# CONFIG_V4L_MEM2MEM_DRIVERS is not set
+
+#
+# Allegro DVT media platform drivers
+#
+
+#
+# Amlogic media platform drivers
+#
+
+#
+# Amphion drivers
+#
+
+#
+# Aspeed media platform drivers
+#
+
+#
+# Atmel media platform drivers
+#
+
+#
+# Cadence media platform drivers
+#
+# CONFIG_VIDEO_CADENCE_CSI2RX is not set
+# CONFIG_VIDEO_CADENCE_CSI2TX is not set
+
+#
+# Chips&Media media platform drivers
+#
+# CONFIG_VIDEO_E5010_JPEG_ENC is not set
+
+#
+# Intel media platform drivers
+#
+
+#
+# Marvell media platform drivers
+#
+
+#
+# Mediatek media platform drivers
+#
+
+#
+# Microchip Technology, Inc. media platform drivers
+#
+
+#
+# Nuvoton media platform drivers
+#
+
+#
+# NVidia media platform drivers
+#
+
+#
+# NXP media platform drivers
+#
+# CONFIG_VIDEO_IMX7_CSI is not set
+# CONFIG_VIDEO_IMX8MQ_MIPI_CSI2 is not set
+# CONFIG_VIDEO_IMX_MIPI_CSIS is not set
+# CONFIG_VIDEO_IMX8_ISI is not set
+
+#
+# Qualcomm media platform drivers
+#
+
+#
+# Raspberry Pi media platform drivers
+#
+
+#
+# Renesas media platform drivers
+#
+
+#
+# Rockchip media platform drivers
+#
+
+#
+# Samsung media platform drivers
+#
+
+#
+# STMicroelectronics media platform drivers
+#
+
+#
+# Sunxi media platform drivers
+#
+
+#
+# Texas Instruments drivers
+#
+
+#
+# Verisilicon media platform drivers
+#
+
+#
+# VIA media platform drivers
+#
+
+#
+# Xilinx media platform drivers
+#
 CONFIG_UVC_COMMON=m
 CONFIG_VIDEOBUF2_CORE=m
 CONFIG_VIDEOBUF2_V4L2=m
@@ -7036,8 +7146,6 @@ CONFIG_VIRTIO_IOMMU=y
 # CONFIG_RPMSG_QCOM_GLINK_RPM is not set
 # CONFIG_RPMSG_VIRTIO is not set
 # end of Rpmsg drivers
-
-# CONFIG_SOUNDWIRE is not set
 
 #
 # SOC (System On Chip) specific Drivers
