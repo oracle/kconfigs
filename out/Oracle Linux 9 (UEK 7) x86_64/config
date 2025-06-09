@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.15.0-308.179.6.3.el9uek.x86_64 Kernel Configuration
+# Linux/x86_64 5.15.0-309.180.4.el9uek.x86_64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-5.0.1)"
 CONFIG_CC_IS_GCC=y
@@ -2035,8 +2035,6 @@ CONFIG_ETHTOOL_NETLINK=y
 #
 # Device Drivers
 #
-CONFIG_HAVE_EISA=y
-# CONFIG_EISA is not set
 CONFIG_HAVE_PCI=y
 CONFIG_PCI=y
 CONFIG_PCI_DOMAINS=y
@@ -4329,7 +4327,7 @@ CONFIG_PTP_1588_CLOCK_KVM=m
 # CONFIG_PTP_1588_CLOCK_IDT82P33 is not set
 # CONFIG_PTP_1588_CLOCK_IDTCM is not set
 CONFIG_PTP_1588_CLOCK_VMW=m
-# CONFIG_PTP_1588_CLOCK_OCP is not set
+CONFIG_PTP_1588_CLOCK_OCP=m
 # end of PTP clock support
 
 CONFIG_PINCTRL=y
