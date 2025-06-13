@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.87 Kernel Configuration
+# Linux/arm64 6.6.89 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (11368308, +pgo, +bolt, +lto, +mlgo, based on r510928) clang version 18.0.0 (https://android.googlesource.com/toolchain/llvm-project 477610d4d0d988e69dbc3fae4fe86bff3f07f2b5)"
 CONFIG_GCC_VERSION=0
@@ -1039,6 +1039,7 @@ CONFIG_LRU_GEN_ENABLED=y
 CONFIG_ARCH_SUPPORTS_PER_VMA_LOCK=y
 CONFIG_PER_VMA_LOCK=y
 CONFIG_LOCK_MM_AND_FIND_VMA=y
+CONFIG_MEMFD_ASHMEM_SHIM=y
 
 #
 # Data Access Monitoring
@@ -4174,6 +4175,7 @@ CONFIG_VIDEO_CAMERA_SENSOR=y
 CONFIG_VIDEO_CMDLINE=y
 CONFIG_VIDEO_NOMODESET=y
 # CONFIG_AUXDISPLAY is not set
+CONFIG_TEGRA_HOST1X_CONTEXT_BUS=y
 # CONFIG_TEGRA_HOST1X is not set
 CONFIG_DRM=y
 CONFIG_DRM_MIPI_DSI=y
