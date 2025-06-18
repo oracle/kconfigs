@@ -37,7 +37,7 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-5.15-2025-05_r1.zip"
         },
         "Android 14 (6.1) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-06_r2.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-06_r3.zip"
         },
         "Android 15 (6.6) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-06_r1.zip"
@@ -100,10 +100,10 @@
             "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.1.0-35-amd64_6.1.137-1_amd64.deb"
         },
         "Debian 13 Trixie aarch64": {
-            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-arm64/linux-image-6.12.30-arm64_6.12.30-1_arm64.deb"
+            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-arm64/linux-image-6.12.32-arm64_6.12.32-1_arm64.deb"
         },
         "Debian 13 Trixie x86_64": {
-            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.12.30-amd64_6.12.30-1_amd64.deb"
+            "latest_url": "http://ftp.us.debian.org/debian/pool/main/l/linux-signed-amd64/linux-image-6.12.32-amd64_6.12.32-1_amd64.deb"
         },
         "Fedora 40 Core aarch64": {
             "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/40/Everything/aarch64/os/Packages/k/kernel-core-6.8.5-301.fc40.aarch64.rpm"
@@ -193,7 +193,7 @@
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-309.180.4.el8uek.x86_64.rpm"
         },
         "Oracle Linux 9 (Red Hat Compatible) x86_64": {
-            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/getPackage/kernel-core-5.14.0-570.21.1.0.1.el9_6.x86_64.rpm"
+            "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/getPackage/kernel-core-5.14.0-570.22.1.0.1.el9_6.x86_64.rpm"
         },
         "Oracle Linux 9 (UEK 7) aarch64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/getPackage/kernel-uek-core-5.15.0-309.180.4.el9uek.aarch64.rpm"
@@ -333,10 +333,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "b1d63fb838010b55bdc2d4d176937025425b2600f60dad324bb5866dfda80991"
+                "last_hash": "287a0c33aedd6a62a8bd38770f172f272f3a68eb28c26a95c4bb4c412d80eac8"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "9eda399e473ed853620661cbd7cfed1fccbab0d83ab6140f73daf351c5c6b209"
+                "last_hash": "4210a96b3dd582d1aba4467c668fd1accb1be8cc3048056cf4f3b412c48c7564"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -520,10 +520,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/19cdefe1affbbf10aad4154b73a4e83d230a18d21e0a1bdac84b626fa5f694d0-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/693220093cd32852aea37f52a9a40a2841aa2f2ef6a03a54e1c80136f605b4c9-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/0136982b8fcd03914d9a69e5a01299d7d0937a136fcaf7156a4513c98573b527-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/231c5ea1afe5fa53cee98e2fd4beadb892f217d532b89f6d1d56589459bd38da-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/2c5622ec3d9449d90bc094ea2b29ed0af990ffde28021c43e059b4910bbf4566-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/f24ba7fe687b91353606cc1712344a5b60477391e8ac12faea71443455865a6e-primary.sqlite.bz2"
