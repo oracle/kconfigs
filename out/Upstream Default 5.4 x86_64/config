@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.4.294 Kernel Configuration
+# Linux/x86_64 5.4.295 Kernel Configuration
 #
 
 #
@@ -3691,6 +3691,7 @@ CONFIG_PMC_ATOM=y
 # CONFIG_MFD_CROS_EC is not set
 # CONFIG_CHROME_PLATFORMS is not set
 # CONFIG_MELLANOX_PLATFORM is not set
+CONFIG_SURFACE_PLATFORMS=y
 CONFIG_CLKDEV_LOOKUP=y
 CONFIG_HAVE_CLK_PREPARE=y
 CONFIG_COMMON_CLK=y
