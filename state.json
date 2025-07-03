@@ -37,10 +37,10 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-5.15-2025-05_r2.zip"
         },
         "Android 14 (6.1) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-06_r3.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-06_r4.zip"
         },
         "Android 15 (6.6) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-06_r5.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-06_r6.zip"
         },
         "Arch x86_64": {
             "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.15.4.arch2-1-x86_64.pkg.tar.zst"
@@ -333,10 +333,10 @@
                 "last_hash": "5384109c4b8ee015a5a913b150f7e07216af14eac5dc1d55e83deee2bb159b95"
             },
             "http://ftp.us.debian.org/debian/-trixie-amd64-None": {
-                "last_hash": "e0a1f8ba284a89838ee789ea1ef3065269903dfbd21e9d56bbb1463ace601896"
+                "last_hash": "0b7344cfb43f448f13c103e6a215891b4ac963b7abd1870cf440e47f465ff2de"
             },
             "http://ftp.us.debian.org/debian/-trixie-arm64-None": {
-                "last_hash": "5217cbf290a6c18f10b6351f046e617636071721bb815c52ef15597f1de3fcc1"
+                "last_hash": "a433dc313ac412d0855c51a0f940b19fac8b931ac9ca546392488f5f54c4c7a4"
             },
             "http://ports.ubuntu.com/-focal-arm64-None": {
                 "last_hash": "e014b241021d8c0cf16cb94f44f4cafb7746507769baf36b77845d3ae22e2c1b"
@@ -359,7 +359,7 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 02 Jul 2025 10:40:47 GMT"
+                "last_modified": "Thu, 03 Jul 2025 16:41:06 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
@@ -505,10 +505,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/1766492202051ccbdac0d75cbcce54bf3ad076f648924dd5ff01315d2e157479-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/9d113b61cb1f0611a7049e3b1110526f098aeb9d1aea69b66d4c5ab2f0cb2355-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/fad0ac91b8acf1eb17847d5095e04b870832ac256a11eff2f276f0a7cdfb590a-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/bac8eefb798ec9b9010615eb6eaa0c33fe5ee6741b54a17ed45bd915514c4ac5-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/8bbe0e03e34010c15e0bf9e62c68ab074d23d93a176baf67367fc32cd2e38105-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/8d9d84acd914feb3d3ed9c016909775899d2ea484ff41119543d696d72bd48d2-primary.sqlite.bz2"
