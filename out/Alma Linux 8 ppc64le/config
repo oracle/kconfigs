@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/powerpc 4.18.0-553.62.1.el8_10.ppc64le Kernel Configuration
+# Linux/powerpc 4.18.0-553.64.1.el8_10.ppc64le Kernel Configuration
 #
 
 #
@@ -6364,3 +6364,4 @@ CONFIG_LIVEPATCH=y
 #
 CONFIG_RHEL_DIFFERENCES=y
 CONFIG_RH_KABI_SIZE_ALIGN_CHECKS=y
+CONFIG_RH_KABI_STABLE_ASM_OFFSETS=y

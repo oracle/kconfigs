@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 4.18.0-553.60.1.el8_10.x86_64 Kernel Configuration
+# Linux/x86_64 4.18.0-553.64.1.el8_10.x86_64 Kernel Configuration
 #
 
 #
@@ -8220,3 +8220,4 @@ CONFIG_OBJAGG=m
 #
 CONFIG_RHEL_DIFFERENCES=y
 CONFIG_RH_KABI_SIZE_ALIGN_CHECKS=y
+CONFIG_RH_KABI_STABLE_ASM_OFFSETS=y

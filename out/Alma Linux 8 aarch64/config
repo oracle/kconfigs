@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.18.0-553.62.1.el8_10.aarch64 Kernel Configuration
+# Linux/arm64 4.18.0-553.64.1.el8_10.aarch64 Kernel Configuration
 #
 
 #
@@ -5962,3 +5962,4 @@ CONFIG_OBJAGG=m
 #
 CONFIG_RHEL_DIFFERENCES=y
 CONFIG_RH_KABI_SIZE_ALIGN_CHECKS=y
+CONFIG_RH_KABI_STABLE_ASM_OFFSETS=y
