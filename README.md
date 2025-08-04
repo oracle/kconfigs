@@ -13,14 +13,14 @@ keep the configurations up-to-date.
 
 ## Browsing Configurations Locally
 
-While the [webpage][1] is convenient, you can also directly clone the `gh-pages`
-branch of this repository to explore locally:
+In addition to the [web interface][1], you can also browse the full list of
+configuration files in the [`gh-pages` branch on Github][2], or [download a
+tarball][3] to browse on your computer. You could also use git to clone the
+`gh-pages` branch, but that's not recommended because the frequent automated
+updates make the git history somewhat large.
 
-``` sh
-git clone https://github.com/oracle/kconfigs -b gh-pages
-cd kconfigs
-grep -r IKCONFIG_PROC out/
-```
+[2]: https://github.com/oracle/kconfigs/tree/gh-pages/out
+[3]: https://codeload.github.com/oracle/kconfigs/tar.gz/refs/heads/gh-pages
 
 ## How to Run
 
