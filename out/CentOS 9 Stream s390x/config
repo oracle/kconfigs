@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/s390 5.14.0-603.el9.s390x Kernel Configuration
+# Linux/s390 5.14.0-605.el9.s390x Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-9)"
 CONFIG_CC_IS_GCC=y
@@ -31,7 +31,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="5.14.0-603.el9.s390x"
+CONFIG_BUILD_SALT="5.14.0-605.el9.s390x"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_BZIP2=y
 CONFIG_HAVE_KERNEL_LZMA=y
@@ -2589,15 +2589,6 @@ CONFIG_DRM_BUDDY=m
 CONFIG_DRM_GEM_SHMEM_HELPER=m
 
 #
-# I2C encoder or helper chips
-#
-# CONFIG_DRM_I2C_CH7006 is not set
-# CONFIG_DRM_I2C_SIL164 is not set
-# CONFIG_DRM_I2C_NXP_TDA998X is not set
-# CONFIG_DRM_I2C_NXP_TDA9950 is not set
-# end of I2C encoder or helper chips
-
-#
 # ARM devices
 #
 # end of ARM devices
@@ -2625,6 +2616,7 @@ CONFIG_DRM_PANEL_BRIDGE=y
 #
 # Display Interface Bridges
 #
+# CONFIG_DRM_I2C_NXP_TDA998X is not set
 # CONFIG_DRM_ANALOGIX_ANX78XX is not set
 # end of Display Interface Bridges
 
