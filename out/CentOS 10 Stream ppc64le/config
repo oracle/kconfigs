@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/powerpc 6.12.0-126.el10.ppc64le Kernel Configuration
+# Linux/powerpc 6.12.0-128.el10.ppc64le Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2)"
 CONFIG_CC_IS_GCC=y
@@ -34,7 +34,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="6.12.0-126.el10.ppc64le"
+CONFIG_BUILD_SALT="6.12.0-128.el10.ppc64le"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_XZ=y
 CONFIG_KERNEL_GZIP=y
@@ -3454,6 +3454,14 @@ CONFIG_PTP_1588_CLOCK_MOCK=m
 # CONFIG_PTP_1588_CLOCK_OCP is not set
 # end of PTP clock support
 
+#
+# DPLL device support
+#
+CONFIG_DPLL=y
+CONFIG_ZL3073X=m
+CONFIG_ZL3073X_I2C=m
+# end of DPLL device support
+
 # CONFIG_PINCTRL is not set
 CONFIG_GPIOLIB=y
 CONFIG_GPIOLIB_FASTPATH_LIMIT=512
@@ -5013,7 +5021,7 @@ CONFIG_HID_KUNIT_TEST=m
 #
 # HID-BPF support
 #
-CONFIG_HID_BPF=y
+# CONFIG_HID_BPF is not set
 # end of HID-BPF support
 
 CONFIG_I2C_HID=y
@@ -5961,7 +5969,6 @@ CONFIG_INTERCONNECT=y
 # CONFIG_MOST is not set
 # CONFIG_PECI is not set
 # CONFIG_HTE is not set
-CONFIG_DPLL=y
 # end of Device Drivers
 
 #
