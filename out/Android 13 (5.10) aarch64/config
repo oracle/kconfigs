@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.10.238 Kernel Configuration
+# Linux/arm64 5.10.243 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (8508608, based on r450784e) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)"
 CONFIG_GCC_VERSION=0
@@ -609,6 +609,7 @@ CONFIG_ARM_SCMI_PROTOCOL=y
 # CONFIG_ARM_SCMI_POWER_DOMAIN is not set
 CONFIG_ARM_SCPI_PROTOCOL=y
 # CONFIG_ARM_SCPI_POWER_DOMAIN is not set
+# CONFIG_ARM_SDE_INTERFACE is not set
 # CONFIG_FIRMWARE_MEMMAP is not set
 # CONFIG_FW_CFG_SYSFS is not set
 # CONFIG_QCOM_SCM is not set
@@ -817,7 +818,7 @@ CONFIG_MODULE_SIG_HASH="sha1"
 # CONFIG_MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS is not set
 # CONFIG_UNUSED_SYMBOLS is not set
 CONFIG_TRIM_UNUSED_KSYMS=y
-CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.10-2025-07/out/android13-5.10/common/abi_symbollist.raw"
+CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.10-2025-10/out/android13-5.10/common/abi_symbollist.raw"
 CONFIG_MODULES_TREE_LOOKUP=y
 CONFIG_BLOCK=y
 CONFIG_BLK_RQ_ALLOC_TIME=y
@@ -1613,6 +1614,7 @@ CONFIG_NFC=y
 # CONFIG_LWTUNNEL is not set
 CONFIG_DST_CACHE=y
 CONFIG_GRO_CELLS=y
+CONFIG_NET_SOCK_MSG=y
 CONFIG_PAGE_POOL=y
 # CONFIG_FAILOVER is not set
 CONFIG_ETHTOOL_NETLINK=y
@@ -5052,6 +5054,7 @@ CONFIG_DEBUG_KINFO=y
 # CONFIG_GOLDFISH is not set
 # CONFIG_CHROME_PLATFORMS is not set
 # CONFIG_MELLANOX_PLATFORM is not set
+CONFIG_SURFACE_PLATFORMS=y
 CONFIG_HAVE_CLK=y
 CONFIG_CLKDEV_LOOKUP=y
 CONFIG_HAVE_CLK_PREPARE=y
