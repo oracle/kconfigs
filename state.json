@@ -54,6 +54,9 @@
         "Android 15 (6.6) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-10_r9.zip"
         },
+        "Android 16 (6.12) aarch64": {
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2025-09_r11.zip"
+        },
         "Arch x86_64": {
             "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.17.7.arch1-2-x86_64.pkg.tar.zst"
         },
@@ -329,7 +332,8 @@
             "https://source.android.com/docs/core/architecture/kernel/gki-android13-5_15-release-builds": {},
             "https://source.android.com/docs/core/architecture/kernel/gki-android14-5_15-release-builds": {},
             "https://source.android.com/docs/core/architecture/kernel/gki-android14-6_1-release-builds": {},
-            "https://source.android.com/docs/core/architecture/kernel/gki-android15-6_6-release-builds": {}
+            "https://source.android.com/docs/core/architecture/kernel/gki-android15-6_6-release-builds": {},
+            "https://source.android.com/docs/core/architecture/kernel/gki-android16-6_12-release-builds": {}
         },
         "kconfigs.deb.DebFetcher": {
             "http://archive.ubuntu.com/ubuntu/-focal-amd64-None": {
