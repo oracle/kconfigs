@@ -34,8 +34,11 @@ def main() -> None:
     names = set(d.unique_name for d in distros)
     for path in args.input_dir.iterdir():
         if path.name not in names:
-            shutil.rmtree(path)
             print(f'Removing "{path.name}"')
+            if path.is_dir():
+                shutil.rmtree(path)
+            else:
+                path.unlink()
 
 
 if __name__ == "__main__":
