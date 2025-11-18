@@ -5,7 +5,7 @@ import shutil
 from configparser import ConfigParser
 from pathlib import Path
 
-from kconfigs.fetcher import DistroConfig
+from kconfigs.main import get_distros
 
 
 def main() -> None:
@@ -23,14 +23,20 @@ def main() -> None:
         type=Path,
         default=Path.cwd() / "out",
     )
+    parser.add_argument(
+        "--filter",
+        "-f",
+        action="append",
+        default=[],
+        help="Filter to only the given config.ini sections (fnmatch(3) patterns"
+        "are accepted)",
+    )
 
     args = parser.parse_args()
 
     cfg = ConfigParser()
     cfg.read(args.config)
-    distros = [
-        DistroConfig(**dict(cfg[sec])) for sec in cfg.sections()  # type: ignore
-    ]
+    distros = get_distros(cfg, args.filter)
     names = set(d.unique_name for d in distros)
     for path in args.input_dir.iterdir():
         if path.name not in names:

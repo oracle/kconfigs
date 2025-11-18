@@ -6,7 +6,7 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import TextIO
 
-from kconfigs.fetcher import DistroConfig
+from kconfigs.main import get_distros
 
 
 def parse_kconfig(filp: TextIO) -> dict[str, str | None]:
@@ -52,14 +52,20 @@ def main() -> None:
         type=Path,
         default=Path.cwd() / "out/summary.json",
     )
+    parser.add_argument(
+        "--filter",
+        "-f",
+        action="append",
+        default=[],
+        help="Filter to only the given config.ini sections (fnmatch(3) patterns"
+        "are accepted)",
+    )
 
     args = parser.parse_args()
 
     cfg = ConfigParser()
     cfg.read(args.config)
-    distros = [
-        DistroConfig(**dict(cfg[sec])) for sec in cfg.sections()  # type: ignore
-    ]
+    distros = get_distros(cfg, args.filter)
 
     kconfigs = {}
     kconfig_keys: set[str] = set()
