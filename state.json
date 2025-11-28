@@ -49,7 +49,7 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-5.15-2025-10_r1.zip"
         },
         "Android 14 (6.1) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-09_r16.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2025-09_r17.zip"
         },
         "Android 15 (6.6) aarch64": {
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-10_r14.zip"
@@ -145,10 +145,10 @@
             "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/09587882-kernel/kernel-core-6.16.8-400.asahi.fc44.aarch64.rpm"
         },
         "Fedora Rawhide aarch64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/k/kernel-core-6.18.0-0.rc7.58.fc44.aarch64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/k/kernel-core-6.18.0-0.rc7.251127g765e56e41a5a.61.fc44.aarch64.rpm"
         },
         "Fedora Rawhide x86_64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/k/kernel-core-6.18.0-0.rc7.58.fc44.x86_64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/k/kernel-core-6.18.0-0.rc7.251127g765e56e41a5a.61.fc44.x86_64.rpm"
         },
         "Oracle Linux 10 (Red Hat Compatible) x86_64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/developer/x86_64/getPackage/kernel-core-6.11.0-0.rc5.23.el10.x86_64.rpm"
@@ -316,7 +316,7 @@
             "latest_url": "https://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/s390x/kernel-default-6.17.8-2.1.s390x.rpm"
         },
         "openSUSE Tumbleweed x86_64": {
-            "latest_url": "https://download.opensuse.org/tumbleweed/repo/oss/x86_64/kernel-default-6.17.8-2.1.x86_64.rpm"
+            "latest_url": "https://download.opensuse.org/tumbleweed/repo/oss/x86_64/kernel-default-6.17.9-1.1.x86_64.rpm"
         }
     },
     "fetchers": {
@@ -378,15 +378,15 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 26 Nov 2025 08:48:08 GMT"
+                "last_modified": "Thu, 27 Nov 2025 19:51:59 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/21fd37915f95141dad99d96f88fa673c3df083a19fd72c92a88ed6aa7f965f82-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/120c47be275db0943f6b692940c7787b2a9cfbf4324369b42b549f276abb2568-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/20506e07a21e6ab080994f54b81b50fda69bf22fe2cc94f57744a20efba185d0-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/742ba2df0a2f0f4575c7c69b236972c97b0d336c63cdb12f1fc27f5a63a8cecf-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/aarch64/os/": {
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/aarch64/os/repodata/77554651ef7f8c8cd8c7f9c8564635b17b23caabbb6545514ff3a95854d4c6f2-primary.sqlite.gz"
@@ -419,16 +419,16 @@
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/f30df5197f37a1f24d88a8ad5a1db33560908346d841c307457942a2b2a20b18-primary.xml.gz"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/repodata/49f95d04df113db5b7b809ec070d10b5dbb0e99785bce0c266cd77b00ffffb0e3e5fd6358a37a5aef0b022360aa3f7a527ef8a047daead566aa13e21f09c1761-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/repodata/6f8b57df687bcda59a8e641a5e4492252dfc1760b7db470e2a7bf7e4ddb8715a646abe4c10c3238d4de56cf334b6d436c81d67ca972871d62b2e11a6047efb03-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/repodata/414ca08771a79b8f8b1791f1efeb96b2e3a182e987f2556621c058e35a88ae8cbe304ee2d0b5ed771c9844d2058c5c08effa0a82d184f53fb0c02f0cd1cb1afb-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/repodata/a65f6c637c109d569196e34cd3478ffea3cb4fb4211aa38870de18662fe1d3b41bcc6d9467b8b312487deddd5bf77b9b9a68820dbeddd3c106c75d5ff91f9169-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/repodata/6c196788fea9c0e5d012e97141ed9e5c70895cbb5eb6ca42e540a09e6666245554c93c67dea6a1a3284ba3ac0c99f057f64752519c9f61f2fc026d2d5ba36f3b-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/repodata/6f3dd35324b0604c363b85712ac36bcd385c4fb89dc9ef28fcf6a0c8f72fbf367881f783ea01c2d16d248b84b88c22fee01362ca13ee12a958304190d0e01b25-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/repodata/bb76aafea1a91a624d2141e60cafa59486a94916cc8328c380a681d6e03583507b68de1607d8fd2dfee18766a77969b5431163338ad8304dba98a11203e98a9c-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/repodata/5024e36d785930a4f373ad3f0f449e2d1040996e686fd743c4b801887e105eeadc331501c7a18d05e45f2ed8d75144d45b2c41991d2dea6184fc5236ad596ee2-primary.xml.zst"
             },
             "https://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss/aarch64/": {
                 "last_db": "https://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss/aarch64/repodata/69ec824f5949b41b7ab386d66053b62e6184f86e5e66ae5bc753b474cccccef5ba37cc2b6d5f284d18d48cb92df8856ac80905f2d4abf7ceeb5aa780d39bbced-primary.xml.zst"
@@ -443,7 +443,7 @@
                 "last_db": "https://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/repodata/11a40c42154b0dbddc7742643cbfb69a72918d9efa9085c672531160668770cbe3283d252607f5e62d7746c448071c9718998b6e1ba901ffb70ce92fbcdb189b-primary.xml.zst"
             },
             "https://download.opensuse.org/tumbleweed/repo/oss/": {
-                "last_db": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/13ea0ea8c5a362d2cc2908d8c7c5f52017f1b1b434d18afdb0f780077c62c151a0cc96c298f2e2c385005258e96ec7e5e0c8df045a9caca3e650b0485655c253-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/8f949ed3bdcc84050d4e3d06c7af3ed57e7a6bd47d94c8930c7f8197644d728cb5c2182076fad1abc11385cbe753ffdff8ba30f4439ada0c322d1be0809b9c65-primary.xml.zst"
             },
             "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/": {
                 "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/repodata/6f2905a08c1bb0028a1e23d879db3ead805b361001a7eefaf060651e7e19d902-primary.sqlite.xz"
