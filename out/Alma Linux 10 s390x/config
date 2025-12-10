@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/s390 6.12.0-124.16.1.el10_1.s390x Kernel Configuration
+# Linux/s390 6.12.0-124.20.1.el10_1.s390x Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2)"
 CONFIG_CC_IS_GCC=y
@@ -33,7 +33,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="6.12.0-124.16.1.el10_1.s390x"
+CONFIG_BUILD_SALT="6.12.0-124.20.1.el10_1.s390x"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_BZIP2=y
 CONFIG_HAVE_KERNEL_LZMA=y
@@ -2499,6 +2499,13 @@ CONFIG_PTP_1588_CLOCK_OPTIONAL=y
 CONFIG_PTP_1588_CLOCK_MOCK=m
 # end of PTP clock support
 
+#
+# DPLL device support
+#
+CONFIG_DPLL=y
+# CONFIG_ZL3073X_I2C is not set
+# end of DPLL device support
+
 # CONFIG_PINCTRL is not set
 CONFIG_GPIOLIB=y
 CONFIG_GPIOLIB_FASTPATH_LIMIT=512
@@ -3155,7 +3162,6 @@ CONFIG_INTERCONNECT=y
 # CONFIG_MOST is not set
 # CONFIG_PECI is not set
 # CONFIG_HTE is not set
-CONFIG_DPLL=y
 # end of Device Drivers
 
 #
