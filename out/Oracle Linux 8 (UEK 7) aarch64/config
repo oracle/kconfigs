@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.15.0-314.193.5.5.el8uek.aarch64 Kernel Configuration
+# Linux/arm64 5.15.0-315.196.5.1.el8uek.aarch64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-2.0.1)"
 CONFIG_CC_IS_GCC=y
@@ -10037,7 +10037,7 @@ CONFIG_EVM_ATTR_FSUUID=y
 # CONFIG_EVM_LOAD_X509 is not set
 CONFIG_DEFAULT_SECURITY_SELINUX=y
 # CONFIG_DEFAULT_SECURITY_DAC is not set
-CONFIG_LSM="lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor"
+CONFIG_LSM="lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,bpf"
 
 #
 # Kernel hardening options
@@ -10600,7 +10600,7 @@ CONFIG_CC_HAS_WORKING_NOSANITIZE_ADDRESS=y
 # CONFIG_KASAN is not set
 CONFIG_HAVE_ARCH_KFENCE=y
 CONFIG_KFENCE=y
-CONFIG_KFENCE_SAMPLE_INTERVAL=0
+CONFIG_KFENCE_SAMPLE_INTERVAL=100
 CONFIG_KFENCE_NUM_OBJECTS=255
 # CONFIG_KFENCE_DEFERRABLE is not set
 # CONFIG_KFENCE_STATIC_KEYS is not set
