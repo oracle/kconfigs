@@ -55,34 +55,34 @@
             "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2025-10_r18.zip"
         },
         "Android 16 (6.12) aarch64": {
-            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2025-12_r5.zip"
+            "latest_url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2025-12_r6.zip"
         },
         "Arch x86_64": {
             "latest_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-6.18.2.arch2-1-x86_64.pkg.tar.zst"
         },
         "CentOS 10 Stream aarch64": {
-            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-172.el10.aarch64.rpm"
+            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-174.el10.aarch64.rpm"
         },
         "CentOS 10 Stream ppc64le": {
-            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-172.el10.ppc64le.rpm"
+            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-174.el10.ppc64le.rpm"
         },
         "CentOS 10 Stream s390x": {
-            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/os/Packages/kernel-core-6.12.0-172.el10.s390x.rpm"
+            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/os/Packages/kernel-core-6.12.0-174.el10.s390x.rpm"
         },
         "CentOS 10 Stream x86_64": {
-            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-172.el10.x86_64.rpm"
+            "latest_url": "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-174.el10.x86_64.rpm"
         },
         "CentOS 9 Stream aarch64": {
-            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/Packages/kernel-core-5.14.0-651.el9.aarch64.rpm"
+            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/Packages/kernel-core-5.14.0-654.el9.aarch64.rpm"
         },
         "CentOS 9 Stream ppc64le": {
-            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/Packages/kernel-core-5.14.0-651.el9.ppc64le.rpm"
+            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/Packages/kernel-core-5.14.0-654.el9.ppc64le.rpm"
         },
         "CentOS 9 Stream s390x": {
-            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/Packages/kernel-core-5.14.0-651.el9.s390x.rpm"
+            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/Packages/kernel-core-5.14.0-654.el9.s390x.rpm"
         },
         "CentOS 9 Stream x86_64": {
-            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/kernel-core-5.14.0-651.el9.x86_64.rpm"
+            "latest_url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/kernel-core-5.14.0-654.el9.x86_64.rpm"
         },
         "CentOS Hyperscale 10 aarch64": {
             "latest_url": "https://mirror.stream.centos.org/SIGs/10-stream/hyperscale/aarch64/packages-kernel/Packages/k/kernel-core-6.16.4-0.hs1.hsk.el10.aarch64.rpm"
@@ -389,10 +389,10 @@
         },
         "kconfigs.rpm.RpmFetcher": {
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/ae0af3b5d1f538695f11cb121529507ff177d3e34157e7dc0cd45fc03f70158a-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/02bb8cbcd8715ab98cf2008f55c80624ef444804e0e32a05b0928db0ce2c013e-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/740bf227f9e1c1ab8c4bbfb49405a61d6ff21f166408f81c42dfaa20d4b18942-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/552e06387b1c250c3fd8ab86876588274501c8a17213c69401e55489ff45bc0b-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/aarch64/os/": {
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Everything/aarch64/os/repodata/77554651ef7f8c8cd8c7f9c8564635b17b23caabbb6545514ff3a95854d4c6f2-primary.sqlite.gz"
@@ -425,16 +425,16 @@
                 "last_db": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/repodata/6ac6300d7ed345adf7e5a42c4ac07ab056a2ead0ae0db4d5c9a6bf65995ce9f2-primary.xml.gz"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/repodata/e8992f3914a8a80c4c0b9dcc9790b81fee81861a57ae89a795a42ce06d6102a9461f042954455204c5f03a7926ebbe071fce4948a1758d3cf0303b4dce5a4efe-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/aarch64/repodata/a90838b8665fc5d03b0d95d47ff8f83bd87e7b4d7dc9f226cb1b54b543da689e2bdefe3b2031407a2ae291cd897b7479584e70bba5da460e65446d2713f86ee0-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/repodata/87483f239227c67410fa9c5dbe61091a9a4fa7252c08c532388ff532ca472013998383d4fd18e27b78d91ba0f7b4b9814f2e51a9a0536b5d391ee535e4e52d4a-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/ppc64le/repodata/32ac81f34d06869ebfcccb7e9fb047e889c38a126d1d538d929c73f6f4c97c0bbabacfeaf0f0ae50e662a150e62b698e2b333285270a75bd0a3f8820f5c8af23-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/repodata/4cf0e8f97c8efb43c8f86ccafd55bdb9b83547ceaf886f1bb5e19240d76885973796a3237f26340119368e1a9184b237302ed74293915d48fc887ecd98a336ce-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/s390x/repodata/e07d8918cabff6ca48ca9c6f4687b1505257a4fb3e039eb6a035d4b8795bf675591e88d0591741237542b79ff7c1ae27a1e99b62005d74839c34dc007dbc6d6f-primary.xml.zst"
             },
             "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/": {
-                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/repodata/8b738607f6e42f7013e68e4d305ca38ec74c6463a741d5e5de632dea6a51f418e04ff59e742a3052c300f45cb0669b1f605b2a09d8e1597acae9235efa30ed13-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/distribution/leap/16.0/repo/oss/x86_64/repodata/781a7c8bee4198b1f4ee8e253bcf741737663444f490dc2dfc28e5eb6f63509139218faf5d3597a73453fb983c27cc0bbc55155e9978add7e62d020c4cc71532-primary.xml.zst"
             },
             "https://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss/aarch64/": {
                 "last_db": "https://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss/aarch64/repodata/1062ea5bd9f74bca0f442a5f04f0602f38d8394beed433a5e0ae2308dde0fb6964df14f145782c94b707ce0148bc24b18dcc21dadcc917c5c79c06fc5b695670-primary.xml.zst"
@@ -449,31 +449,31 @@
                 "last_db": "https://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/repodata/723b69841fb01282efcae49172f8bd2c70e18aba68a9a7c38de7852a71714748e95bfb80880ddd8fb64d70a624516abaec14ede91be7a4612d7a93d5a241f1a7-primary.xml.zst"
             },
             "https://download.opensuse.org/tumbleweed/repo/oss/": {
-                "last_db": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/2d0af6b4b2847a4c686181699c9d29ccd06044aa706e0044b3e06ddbf5c46dbd4a2991141ff103998222527cbc52c2e8343968d0fc3bfee903f96c54cea76167-primary.xml.zst"
+                "last_db": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/a0b7662bb0514c4e31f76b4e19164f30b804c130788f25ef3483fa70cba005495e990b4506ad554a3bc8b9e36b2bea39120e7eee656b5b846cef866b9ef43fbf-primary.xml.zst"
             },
             "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/": {
-                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/repodata/7e50ddd41eb14ed2cee908e46659d0fcd2805de0340e916dfc0f946ae822549c-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/repodata/e905d770256ace017b6483df2b85cf7e961047c1c0632860fda1329a00edc83c-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/os/": {
-                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/os/repodata/c9513cac7675edbd000dba0cd5d2770f5bd2e891bcd320ac5e738f82fe13b293-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/os/repodata/e3c3466bef97aa56308f40d52915d85cdc12f7b4f33976827660efcf98d1306e-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/os/": {
-                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/os/repodata/131f765c889c0a8e3016e7990d0b782db0d720b1dbe917b050d7958e79672b88-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/os/repodata/fa305250829ed9a70be8d457e483b86f85200a3e36091cb1f1425bf4d1d0486d-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/": {
-                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/repodata/bb200db958f131fb9ae59b32dd92c7edeacb7efac80dc758ad2cd1e11258a520-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/repodata/9ef777cce87753b53b603b14a0b9e8fd1d53f48c5ee8e0e1bd1056b179a5e14c-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/4a853175f32488a4a13e72670a0b66dad9e4caaaca3c64989a23204759655231-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/13fa6179c0444ad7ecead0ab3c3a3090a7bb00350188724546616edc4d76fd7b-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/repodata/4b6ff5f1e5117acb4f81c1f714e4a6421c64e6229b7e881ec51a98f1b4298dec-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/repodata/50ac682c90c384a59aef4291e60932091f9fa605806920f00aa8ba8478fd67aa-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/repodata/fa6ec947086584877126cbec5cafb10b670ed6ec520217745c3026d9fcaeaa6a-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/repodata/6ef068228d5340513582efe0663e1f44f68181589a6332c13da8cb0a05348741-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/": {
-                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/6cfa9f4820bddff6d28d488b477fc4730c8de465b2d78dfd21c531f2f000faac-primary.sqlite.xz"
+                "last_db": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/0d772c578a3434de36515ebd67761ef422c658c05cc4fd90eba83a1135718704-primary.sqlite.xz"
             },
             "https://mirror.stream.centos.org/SIGs/10-stream/hyperscale/aarch64/packages-kernel/": {
                 "last_db": "https://mirror.stream.centos.org/SIGs/10-stream/hyperscale/aarch64/packages-kernel/repodata/5be4998c3768efd097fee66f0c23dd1821b281a340fcca4c577ae89e0c75e7b7-primary.sqlite.bz2"
