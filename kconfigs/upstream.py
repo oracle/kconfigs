@@ -1,5 +1,6 @@
 # Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
+import os
 import posixpath
 import re
 import shutil
@@ -129,6 +130,12 @@ class DefconfigExtractor(Extractor):
         output: Path,
         dc: DistroConfig,
     ) -> None:
+        # The O= inherited in the environment from "make run" is also used in
+        # the kernel makefiles. Strip it out here to avoid issues.
+        if "O" in os.environ:
+            del os.environ["O"]
+        if "MAKEFLAGS" in os.environ:
+            del os.environ["MAKEFLAGS"]
         async with TemporaryDirectory() as td:
             tdpath = Path(td)
             arch = UPSTREAM_ARCH.get(dc.arch, dc.arch)

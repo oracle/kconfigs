@@ -109,6 +109,10 @@ def get_distros(
     return distros
 
 
+def AbsPath(s: str) -> Path:
+    return Path(s).absolute()
+
+
 async def main() -> None:
     parser = argparse.ArgumentParser(
         description="downloads and catalogs kernel configs"
@@ -119,20 +123,20 @@ async def main() -> None:
     )
     parser.add_argument(
         "--state",
-        default=Path("state.json"),
-        type=Path,
+        default=AbsPath("state.json"),
+        type=AbsPath,
         help="JSON file which will hold state of last download",
     )
     parser.add_argument(
         "--download-dir",
         default=Path.cwd() / "save",
-        type=Path,
+        type=AbsPath,
         help="directory where downloads will get stored",
     )
     parser.add_argument(
         "--output-dir",
         default=Path.cwd() / "out",
-        type=Path,
+        type=AbsPath,
         help="directory where configs are stored",
     )
     parser.add_argument(

@@ -2,6 +2,8 @@
 # Licensed under the terms of the GNU General Public License.
 
 PYTHON ?= python3.12
+O?=.
+F?=*
 
 .PHONY: venv
 venv:
@@ -11,9 +13,19 @@ venv:
 
 .PHONY: run
 run:
-	.venv/bin/python -m kconfigs.main config.ini
-	.venv/bin/python -m kconfigs.cleanup config.ini
-	.venv/bin/python -m kconfigs.analyzer config.ini
+	@mkdir -p "$(O)/out" "$(O)/save"
+	.venv/bin/python -m kconfigs.main config.ini \
+		--state "$(O)/state.json" \
+		--download-dir "$(O)/save" \
+		--output-dir "$(O)/out" \
+		--filter "$(F)"
+	[ "$(F)" != "*" ] || .venv/bin/python -m kconfigs.cleanup config.ini \
+		--input-dir "$(O)/out" \
+		--filter "$(F)"
+	.venv/bin/python -m kconfigs.analyzer config.ini \
+		--input-dir "$(O)/out" \
+		--output-file "$(O)/out/summary.json" \
+		--filter "$(F)"
 
 .PHONY: dev
 dev:
