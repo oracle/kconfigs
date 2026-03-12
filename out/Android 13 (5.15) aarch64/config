@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.15.194 Kernel Configuration
+# Linux/arm64 5.15.197 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (8508608, based on r450784e) clang version 14.0.7 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)"
 CONFIG_GCC_VERSION=0
@@ -794,7 +794,7 @@ CONFIG_MODULE_COMPRESS_NONE=y
 # CONFIG_MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS is not set
 CONFIG_MODPROBE_PATH="/sbin/modprobe"
 CONFIG_TRIM_UNUSED_KSYMS=y
-CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.15-2025-12/out/android13-5.15/common/abi_symbollist.raw"
+CONFIG_UNUSED_KSYMS_WHITELIST="/mnt/disks/build-disk/src/android/common-android13-5.15-2026-03/out/android13-5.15/common/abi_symbollist.raw"
 CONFIG_MODULES_TREE_LOOKUP=y
 CONFIG_BLOCK=y
 CONFIG_BLOCK_LEGACY_AUTOLOAD=y
@@ -3186,6 +3186,7 @@ CONFIG_HISI_THERMAL=y
 #
 # CONFIG_QCOM_SPMI_ADC_TM5 is not set
 # CONFIG_QCOM_SPMI_TEMP_ALARM is not set
+# CONFIG_QCOM_LMH is not set
 # end of Qualcomm thermal drivers
 
 CONFIG_WATCHDOG=y
@@ -6292,7 +6293,7 @@ CONFIG_SECURITY_SELINUX_SID2STR_CACHE_SIZE=256
 # CONFIG_SECURITY_APPARMOR is not set
 # CONFIG_SECURITY_LOADPIN is not set
 # CONFIG_SECURITY_YAMA is not set
-# CONFIG_SECURITY_SAFESETID is not set
+CONFIG_SECURITY_SAFESETID=y
 # CONFIG_SECURITY_LOCKDOWN_LSM is not set
 # CONFIG_SECURITY_LANDLOCK is not set
 CONFIG_INTEGRITY=y
