@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.12.77 Kernel Configuration
+# Linux/arm64 6.12.78 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -70,6 +70,7 @@ CONFIG_IRQ_MSI_IOMMU=y
 CONFIG_IRQ_FORCED_THREADING=y
 CONFIG_SPARSE_IRQ=y
 # CONFIG_GENERIC_IRQ_DEBUGFS is not set
+CONFIG_GENERIC_IRQ_KEXEC_CLEAR_VM_FORWARD=y
 # end of IRQ subsystem
 
 CONFIG_GENERIC_TIME_VSYSCALL=y
