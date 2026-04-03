@@ -1,16 +1,16 @@
 {
     "distros": {
         "Alma Linux 10 aarch64": {
-            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-124.45.1.el10_1.aarch64.rpm"
+            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-124.47.1.el10_1.aarch64.rpm"
         },
         "Alma Linux 10 ppc64le": {
-            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-124.45.1.el10_1.ppc64le.rpm"
+            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-124.47.1.el10_1.ppc64le.rpm"
         },
         "Alma Linux 10 s390x": {
-            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/Packages/kernel-core-6.12.0-124.45.1.el10_1.s390x.rpm"
+            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/Packages/kernel-core-6.12.0-124.47.1.el10_1.s390x.rpm"
         },
         "Alma Linux 10 x86_64": {
-            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-124.45.1.el10_1.x86_64.rpm"
+            "latest_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-124.47.1.el10_1.x86_64.rpm"
         },
         "Alma Linux 8 aarch64": {
             "latest_url": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/Packages/kernel-core-4.18.0-553.115.1.el8_10.aarch64.rpm"
@@ -136,10 +136,10 @@
             "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-rawhide-aarch64/Packages/k/kernel-core-6.18.15-400.asahi.fc45.aarch64.rpm"
         },
         "Fedora Rawhide aarch64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/k/kernel-core-7.0.0-0.rc6.260331gd0c3bcd5b897.50.fc45.aarch64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/k/kernel-core-7.0.0-0.rc6.260401g9147566d8016.51.fc45.aarch64.rpm"
         },
         "Fedora Rawhide x86_64": {
-            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/k/kernel-core-7.0.0-0.rc6.260331gd0c3bcd5b897.50.fc45.x86_64.rpm"
+            "latest_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/k/kernel-core-7.0.0-0.rc6.260401g9147566d8016.51.fc45.x86_64.rpm"
         },
         "Oracle Linux 10 (Red Hat Compatible) x86_64": {
             "latest_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/getPackage/kernel-core-6.12.0-124.47.1.el10_1.x86_64.rpm"
@@ -363,15 +363,15 @@
         },
         "kconfigs.pacman.PacmanFetcher": {
             "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/": {
-                "last_modified": "Wed, 01 Apr 2026 10:26:14 GMT"
+                "last_modified": "Fri, 03 Apr 2026 09:50:33 GMT"
             }
         },
         "kconfigs.rpm.RpmFetcher": {
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/5b5458eef9c6adfedad90d17b473068276f39bc87f021f905df910e8b47444f7-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/c7dfc887bfe65b42e84766379f36374c8edd00a3a42bf5843e592ec76f230561-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/": {
-                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/83b7fd34576d5e3cce98f9ec5835beeba79ec064487c3cc27f3363661471dfbf-primary.sqlite.zst"
+                "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/0496b184883031ea313642fd202298972b5ef5fa8a0ecd9a474dccafc67ae3f0-primary.sqlite.zst"
             },
             "https://dl.fedoraproject.org/pub/fedora/linux/releases/42/Everything/aarch64/os/": {
                 "last_db": "https://dl.fedoraproject.org/pub/fedora/linux/releases/42/Everything/aarch64/os/repodata/97601ea9757673cecc8ebcad44c42b7fd7f5107769b6ec969d3e3d4c73c51020-primary.xml.zst"
@@ -458,40 +458,40 @@
                 "last_db": "https://mirror.stream.centos.org/SIGs/9-stream/hyperscale/x86_64/packages-experimental/repodata/8b5029056bad993b39d8e65a67628b2e66525ca9a474c129030e3b8fd43ea7a0-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/00c353f8390f643468502bed36f1eeaa8f990debbd40534935aff8a6d3d03bd4-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/63441b01d1701300d4bd3290edec2c44246e35c3da1e763f2cbb11b3e632b649-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/4ec54c6979ec43772e285db4cd1b6d386c9fdef030905195c4e936abe5ec9225-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/32cf6bc92873422b18a7c422c54a8e583df03e62831be709aa3681373c32f92a-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/8e072d82e229c3521f5f8f588b5fc8e87c7b142684a5208f08eb76ada4ebaa0b-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/e77d6e69fb287fd414749cd4c42b999a9b93a375fba5e02d92b25c25747e6a3d-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/a030a72e02cb5ff4ec83589541203e4e3c78e3b4b46db82445af21de3ba1689c-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/e6871ebf79a736530dfc521b4a58da8646efcbeef83177559ffbf17a1c5a7dd4-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/repodata/088fe1573d8190fca5e381c374c36e9ebb98f0cb8bea7ae7e9244f1bac00070c-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/aarch64/os/repodata/bdce8c8afcd18150409caf0958909936cdaf03fceabceb04e74acd3ba002035b-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/repodata/01bc8e6ab3bc2fef491902afd0fae3de3e17cd16be9ba48fceb62e59a9926e93-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/ppc64le/os/repodata/2fdffce5f0870c8435bd58f1b08291bea18ddf708493c0250f743f1c1b4b759f-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/repodata/8628033683be18c57efa436493eedf844e792a17d6a0ab78a2a52bdf9e0c76da-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/s390x/os/repodata/28cee996ad28009868d7915e272c683bc66f0e721e0807835ed2bc5380ef571c-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/repodata/264895c87856c0a75bdaa819f9a4b8eebe5c3e72c0437e22cdb85ba907dc4961-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/repodata/a94c997fd1b38b6228893853398c6b6e2c2d1358820971efa198864ca60f1bc9-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/0a395700836b879c0370efe8a669066e4cfc747b1e26d0485abbe744bb57ecfa-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/d3cd8c8751fac49b404f7f08964d048b2aa12a27275279d8bfdc32537c462f37-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/repodata/fc2906b9c7e72071b7151590c05b284ac11173e9c94155285c4c08ab1f4798f4-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/repodata/823c2c04b450c4be23615040195dba79a9d7ba5ec06486c09bf032d0708e816d-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/repodata/921fe0afa5ac13a017b4378b6ba0c3975bc9ffd9fd7b6303e84f00756a45170d-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/repodata/3b114841d9b5d861e3456640038691ce1a98ffbdec06a3535bfe54c0c8aaf900-primary.sqlite.bz2"
             },
             "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/": {
-                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/repodata/c1a3e19e10f5ec0d6b2eea44be038b32d3cf333a0177c9d0901990c9ba5d3149-primary.sqlite.bz2"
+                "last_db": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/repodata/7c395f2620ee9094fe21bbe08931151690d1a5a3b344ae64e2d624c9b7e8069a-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/repodata/4dc6dad1b1a4973d3498aa252f8f54498a6f5056-primary.sqlite.bz2"
@@ -500,7 +500,7 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/repodata/ce20aac4a254f16e74132b6840964326bb8be1ac-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/ee1ac6c349abb1ce44f671b7a5035a1ab2e48084-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/7d5164f20d4fc059745fe6ef41251b9a43eeaf02-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/repodata/29e5a8fc1ad50d653fba69f3bb44b66ab20c0ffb-primary.sqlite.bz2"
@@ -536,10 +536,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/ad7a07624dd540f4e571015f0022eceb0c600e8dc1bc563afb8af456665c9bc2-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/35347fc00349ff0fe96700ead03dc9ba297fb02f33f67f5716fddbda9099d0e0-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/2eb403fb05fa7a0b26803522808130ccb530652db195b635336b24a7fba2b108-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/04fe4961ddfe3e6856c73444c4090d1f39719ce165a0d4c027beadd8b4d69c82-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/71883d7e3140a4d39eb4814bb56cfae1c39e02c951dd7045d6a93a55a5f9ef29-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/db8898d8a152dad61a39220bf43954124f0b7ce5542594b7feb5d905cea58aad-primary.sqlite.bz2"
@@ -551,10 +551,10 @@
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/6608951cdf94e80fbe06638b48f10fed6b559d3cb5bfe835878240bacca09302-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/43c803b6bcb3e8180ad2cc542e387b955066dcc945ac6f3e7575ff8129ab6fda-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/59fcbb2cd63f98f673491e8b7a39020d441a78db9cc5d86e695d25e3e1307e9f-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/": {
-                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/e06d0851e2d1ccf6017e30d62361c0c37e1a302a944c833b814c25744c595f11-primary.sqlite.bz2"
+                "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/291e7ca5781a5ca5b9fe1e8746a9ccf1ae11a0d5a6b9d5deb9bcc4840425dacc-primary.sqlite.bz2"
             },
             "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/": {
                 "last_db": "https://yum.oracle.com/repo/OracleLinux/OL9/developer/UEKnext/aarch64/repodata/4b43d12a0cd914df19783514eb2629b441259f1091e95a2caebb8745a3aa3171-primary.sqlite.bz2"
