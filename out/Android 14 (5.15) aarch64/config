@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.15.196 Kernel Configuration
+# Linux/arm64 5.15.202 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="Android (10087095, +pgo, +bolt, +lto, -mlgo, based on r487747c) clang version 17.0.2 (https://android.googlesource.com/toolchain/llvm-project d9f89f4d16663d5012e5c09495f3b30ece3d2362)"
 CONFIG_GCC_VERSION=0
@@ -976,7 +976,6 @@ CONFIG_ANON_VMA_NAME=y
 CONFIG_LRU_GEN=y
 CONFIG_LRU_GEN_ENABLED=y
 # CONFIG_LRU_GEN_STATS is not set
-CONFIG_MEMFD_ASHMEM_SHIM=y
 
 #
 # Data Access Monitoring
@@ -6363,7 +6362,7 @@ CONFIG_SECURITY_SELINUX_SID2STR_CACHE_SIZE=256
 # CONFIG_SECURITY_APPARMOR is not set
 # CONFIG_SECURITY_LOADPIN is not set
 # CONFIG_SECURITY_YAMA is not set
-# CONFIG_SECURITY_SAFESETID is not set
+CONFIG_SECURITY_SAFESETID=y
 # CONFIG_SECURITY_LOCKDOWN_LSM is not set
 # CONFIG_SECURITY_LANDLOCK is not set
 CONFIG_INTEGRITY=y
