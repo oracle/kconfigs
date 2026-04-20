@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/powerpc 6.19.11 Kernel Configuration
+# Linux/powerpc 6.19.12 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (SUSE Linux) 15.2.1 20260202"
 CONFIG_CC_IS_GCC=y
@@ -5998,7 +5998,7 @@ CONFIG_TRACE_GPU_MEM=y
 # end of Graphics support
 
 CONFIG_DRM_ACCEL=y
-CONFIG_DRM_ACCEL_ARM_ETHOSU=m
+# CONFIG_DRM_ACCEL_ARM_ETHOSU is not set
 CONFIG_DRM_ACCEL_QAIC=m
 CONFIG_SOUND=m
 CONFIG_SOUND_OSS_CORE=y
