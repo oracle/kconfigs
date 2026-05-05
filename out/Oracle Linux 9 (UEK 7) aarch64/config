@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.15.0-319.201.4.3.el9uek.aarch64 Kernel Configuration
+# Linux/arm64 5.15.0-319.201.4.4.el9uek.aarch64 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)"
 CONFIG_CC_IS_GCC=y
@@ -2291,7 +2291,9 @@ CONFIG_ZYNQMP_FIRMWARE=y
 # CONFIG_MARVELL_UB is not set
 # end of Firmware Drivers
 
-# CONFIG_FWCTL is not set
+CONFIG_FWCTL=m
+CONFIG_FWCTL_MLX5=m
+CONFIG_FWCTL_PDS=m
 CONFIG_GNSS=m
 # CONFIG_GNSS_MTK_SERIAL is not set
 # CONFIG_GNSS_SIRF_SERIAL is not set
