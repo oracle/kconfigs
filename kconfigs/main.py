@@ -17,7 +17,6 @@ from kconfigs.fetcher import Fetcher
 from kconfigs.util import download_file
 from kconfigs.util import download_manager
 
-
 # Extraction is CPU-bound, and it also consumes quite a bit of disk space.
 # Limit the number of CPUs which can do extraction in parallel.
 extract_sem = asyncio.Semaphore(multiprocessing.cpu_count() + 1)

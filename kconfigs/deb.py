@@ -18,7 +18,6 @@ from kconfigs.util import download_file
 from kconfigs.util import download_file_mem_verified
 from kconfigs.util import maybe_decompress
 
-
 RPM_TO_DEB_ARCH = {
     "x86_64": "amd64",
     "aarch64": "arm64",

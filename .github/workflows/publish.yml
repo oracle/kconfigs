@@ -19,16 +19,23 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GNUPGHOME: /tmp  # avoid "gpg: Fatal: can't create directory '/home/runner/.gnupg': File exists"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Install uv
+        run: python -m pip install uv
+      - uses: actions/cache@v5
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-py3.12-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-py3.12-
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install gzip bzip2 xz-utils zstd tar rpm cpio dpkg make
-          pip install pipenv
-          mkdir -p .venv && pipenv install
+          uv sync --python 3.12 --frozen --no-dev --no-python-downloads
       - name: Checkout gh-pages and setup git
         run: |
           git fetch origin gh-pages --depth=1
@@ -37,12 +44,12 @@ jobs:
           git config --global user.email 'noreply@example.com'
       - name: Fetch updates and build page
         run: |
-          .venv/bin/python -m kconfigs.main config.ini \
+          uv run --frozen --no-dev --no-sync python -m kconfigs.main config.ini \
               --state ../gh-pages/state.json \
               --output-dir ../gh-pages/out
-          .venv/bin/python -m kconfigs.cleanup config.ini \
+          uv run --frozen --no-dev --no-sync python -m kconfigs.cleanup config.ini \
               --input-dir ../gh-pages/out
-          .venv/bin/python -m kconfigs.analyzer config.ini \
+          uv run --frozen --no-dev --no-sync python -m kconfigs.analyzer config.ini \
               --input-dir ../gh-pages/out \
               --output-file ../gh-pages/docs/summary.json
           cp index.html tux-sm.png ../gh-pages/docs/

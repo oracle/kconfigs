@@ -38,14 +38,8 @@ can be accepted.
 
 ### Development Environment
 
-Follow the "How to Run" section of the README first. Then, you can install
-additional development dependencies:
-
-```sh
-dnf install -y pre-commit  # ensure EPEL is enabled
-```
-
-Then, setup the development environment and commit hooks:
+Follow the "How to Run" section of the README first. Then, setup the development
+environment and commit hooks:
 
 ```sh
 make dev

@@ -21,7 +21,6 @@ from kconfigs.util import download_file_mem
 from kconfigs.util import gpg_verify
 from kconfigs.util import maybe_decompress
 
-
 UPSTREAM_ARCH = {
     "aarch64": "arm64",
 }

@@ -3,6 +3,7 @@
 """
 Interface for fetchers, which get the latest kernel releases
 """
+
 import abc
 import importlib
 from dataclasses import dataclass
@@ -10,7 +11,6 @@ from functools import cache
 from pathlib import Path
 from typing import Any
 from typing import Type
-
 
 Checksum = tuple[str, str]
 

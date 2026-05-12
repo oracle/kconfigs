@@ -5,8 +5,8 @@ import hashlib
 import io
 import posixpath
 from asyncio import Semaphore
-from asyncio.subprocess import create_subprocess_exec
 from asyncio.subprocess import PIPE
+from asyncio.subprocess import create_subprocess_exec
 from functools import cache
 from pathlib import Path
 from typing import Any
@@ -17,7 +17,6 @@ from aiofiles.tempfile import TemporaryDirectory
 from aiohttp import ClientResponseError
 from aiohttp import ClientSession
 from multidict import CIMultiDictProxy
-
 
 HTTPS_HOSTS = {
     "yum.oracle.com",
@@ -60,9 +59,10 @@ class DownloadManager:
                     print(
                         f"Download {url} to {file} [try {i + 1}/{self.RETRIES}]"
                     )
-                    async with self.session.get(url) as resp, aiofiles.open(
-                        file, "wb"
-                    ) as out:
+                    async with (
+                        self.session.get(url) as resp,
+                        aiofiles.open(file, "wb") as out,
+                    ):
                         async for chunk in resp.content.iter_chunked(4096):
                             if checksum:
                                 h.update(chunk)
