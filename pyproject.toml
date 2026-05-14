@@ -17,6 +17,7 @@ dev = [
     "mypy",
     "pre-commit",
     "ptpython",
+    "pytest>=9.0.3",
     "ruff",
     "types-aiofiles",
 ]
@@ -34,3 +35,6 @@ force-single-line = true
 
 [tool.uv]
 package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
