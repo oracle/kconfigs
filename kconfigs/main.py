@@ -1,4 +1,4 @@
-# Copyright (c) 2024, Oracle and/or its affiliates.
+# Copyright (c) 2024, 2026 Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
 import argparse
 import asyncio
@@ -7,9 +7,15 @@ import json
 import multiprocessing
 import posixpath
 import shutil
+import sys
+import traceback
+from collections.abc import AsyncIterator
+from collections.abc import Coroutine
 from fnmatch import fnmatch
 from pathlib import Path
+from types import TracebackType
 from typing import Any
+from typing import Self
 
 from kconfigs.extractor import Extractor
 from kconfigs.fetcher import DistroConfig
@@ -112,6 +118,105 @@ def AbsPath(s: str) -> Path:
     return Path(s).absolute()
 
 
+class TaskTracker:
+    """
+    A simple tracker for asyncio.Task objects that cancels on exit.
+
+    Where TaskGroup cancels tasks on the first failure, TaskTracker is less
+    opinionated. It just maintains the lists of tasks, and when you exit its
+    context, it cancels any pending ones and waits for everything to complete.
+    This means you can implement either fail-fast logic, or logic to fail once
+    all are complete.
+    """
+
+    def __init__(self) -> None:
+        self.pending: set[asyncio.Task[Any]] = set()
+        self.failed: set[asyncio.Task[Any]] = set()
+        self.cancelled: set[asyncio.Task[Any]] = set()
+        self.succeeded: set[asyncio.Task[Any]] = set()
+        self.in_context = False
+        self.done = False
+        self.success = True
+
+    async def __aenter__(self) -> Self:
+        self.in_context = True
+        return self
+
+    def _account_completed(self, task: asyncio.Task[Any]) -> bool:
+        self.pending.remove(task)
+        if task.cancelled():
+            self.success = False
+            self.cancelled.add(task)
+            return False
+        elif task.exception():
+            self.success = False
+            self.failed.add(task)
+            return False
+        else:
+            self.succeeded.add(task)
+            return True
+
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> None:
+        # Cancel any task not yet complete
+        for task in self.pending:
+            if not task.done():
+                task.cancel()
+        # Wait for all tasks.
+        if self.pending:
+            done, _ = await asyncio.wait(self.pending)
+            for task in done:
+                self._account_completed(task)
+        assert not self.pending
+        self.done = True
+
+    def create_task(self, coro: Coroutine[Any, Any, Any]) -> asyncio.Task[Any]:
+        if not self.in_context:
+            raise RuntimeError("You must enter the context before adding tasks")
+        task = asyncio.create_task(coro)
+        self.pending.add(task)
+        return task
+
+    async def as_completed(
+        self,
+    ) -> AsyncIterator[tuple[bool, asyncio.Task[Any]]]:
+        while self.pending:
+            done, _ = await asyncio.wait(
+                self.pending, return_when=asyncio.FIRST_COMPLETED
+            )
+            for task in done:
+                success = self._account_completed(task)
+                yield success, task
+            if not self.pending:
+                self.done = True
+
+    def _report_names(self, ts: set[asyncio.Task[Any]], kind: str) -> None:
+        cns = ", ".join(t.get_name() for t in ts)
+        cns = f" ({cns})" if cns else cns
+        print(f"{len(ts)} task(s) {kind}")
+
+    def report(self) -> None:
+        if not self.done:
+            raise RuntimeError("Report can only be printed on completion")
+        if self.failed or self.cancelled:
+            for task in self.failed:
+                print(f"TASK FAILED: {task.get_name()}")
+                exc = task.exception()
+                assert exc is not None
+                traceback.print_exception(exc)
+                print("-" * 60)
+            print(f"{len(self.failed)} task(s) failed")
+            self._report_names(self.cancelled, "cancelled")
+            self._report_names(self.succeeded, "succeeded")
+            print("FAILURE")
+        else:
+            print("All tasks succeeded!")
+
+
 async def main() -> None:
     parser = argparse.ArgumentParser(
         description="downloads and catalogs kernel configs"
@@ -146,6 +251,11 @@ async def main() -> None:
         help="Filter to only the given config.ini sections (fnmatch(3) patterns"
         "are accepted)",
     )
+    parser.add_argument(
+        "--fail-fast",
+        action="store_true",
+        help="Fail immediately on error, canceling other work",
+    )
 
     args = parser.parse_args()
     cfg = configparser.ConfigParser()
@@ -170,21 +280,26 @@ async def main() -> None:
         new_fetcher_state = {}
         new_distro_state = {}
 
-    async with asyncio.TaskGroup() as tg:
+    async with TaskTracker() as tg:
         tasks = []
         for distro in distros:
             fetcher = fetchers.get(distro)
             state = distro_state.get(distro.unique_name, {})
-            fut = tg.create_task(
+            task = tg.create_task(
                 run_for_distro(
                     distro, fetcher, state, args.download_dir, args.output_dir
                 )
             )
-            fut.set_name(distro.unique_name)
-            tasks.append(fut)
+            task.set_name(distro.unique_name)
+            tasks.append(task)
 
-        for fut in asyncio.as_completed(tasks):  # type: ignore
-            distro, state = await fut
+        async for success, task in tg.as_completed():
+            if not success:
+                if args.fail_fast:
+                    break
+                else:
+                    continue
+            distro, state = await task
             new_distro_state[distro.unique_name] = state
 
     new_fetcher_state.update(fetchers.save_state())
@@ -198,6 +313,9 @@ async def main() -> None:
         f.write("\n")  # newline at end of file for the git hooks
 
     await download_manager().session.close()
+    tg.report()
+    if not tg.success:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
