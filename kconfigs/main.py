@@ -11,15 +11,21 @@ import sys
 import traceback
 from collections.abc import AsyncIterator
 from collections.abc import Coroutine
+from collections.abc import Mapping
 from fnmatch import fnmatch
 from pathlib import Path
 from types import TracebackType
 from typing import Any
 from typing import Self
+from typing import cast
 
 from kconfigs.extractor import Extractor
 from kconfigs.fetcher import DistroConfig
 from kconfigs.fetcher import Fetcher
+from kconfigs.index import Index
+from kconfigs.index import IndexRegistry
+from kconfigs.index import load_implementation
+from kconfigs.model import Artifact
 from kconfigs.util import download_file
 from kconfigs.util import download_manager
 
@@ -56,7 +62,48 @@ class FetcherFactory:
         return new_state
 
 
-async def run_for_distro(
+def artifact_from_state(state: dict[str, Any]) -> Artifact | None:
+    artifact_data = state.get("artifact")
+    if not isinstance(artifact_data, Mapping):
+        return None
+    return Artifact.from_json(cast(Mapping[str, object], artifact_data))
+
+
+def success_state(artifact: Artifact) -> dict[str, Any]:
+    return {"artifact": artifact.to_json()}
+
+
+async def download_and_extract_artifact(
+    d: DistroConfig,
+    artifact: Artifact,
+    workdir: Path,
+    out: Path,
+) -> None:
+    if workdir.exists():
+        shutil.rmtree(workdir)
+    workdir.mkdir(parents=True)
+    try:
+        async with extract_sem:
+            name = posixpath.basename(artifact.url)
+            file = workdir / name
+            await download_file(artifact.url, file, checksum=artifact.checksum)
+
+            extractor = Extractor.get(d.extractor)
+
+            if artifact.signature_url:
+                signame = posixpath.basename(artifact.signature_url)
+                sigfile = workdir / signame
+                await download_file(artifact.signature_url, sigfile)
+                await extractor.verify_signature(file, sigfile, d)
+
+            print(f"Extract config of {d.unique_name}")
+            await extractor.extract_kconfig(file, out, d)
+    finally:
+        if workdir.exists():
+            shutil.rmtree(workdir)
+
+
+async def run_for_fetcher_distro(
     d: DistroConfig,
     fetcher: Fetcher,
     state: dict[str, Any],
@@ -97,6 +144,51 @@ async def run_for_distro(
         # Clear the distro's work directory to conserve space
         shutil.rmtree(workdir)
     return d, {"latest_url": latest_url}
+
+
+async def run_for_index_distro(
+    d: DistroConfig,
+    index: Index,
+    state: dict[str, Any],
+    save_dir: Path,
+    out_dir: Path,
+) -> tuple[DistroConfig, dict[str, Any]]:
+    workdir = save_dir / "distro" / d.unique_name
+
+    out = out_dir / d.unique_name / "config"
+    out.parent.mkdir(exist_ok=True, parents=True)
+
+    old_artifact = artifact_from_state(state)
+
+    if not d.do_update:
+        if old_artifact and not out.exists():
+            await download_and_extract_artifact(d, old_artifact, workdir, out)
+            return d, success_state(old_artifact)
+        return d, state
+
+    index_state = await index.sync()
+
+    if old_artifact and old_artifact.source_index_state == index_state:
+        if out.exists():
+            return d, success_state(old_artifact)
+        await download_and_extract_artifact(d, old_artifact, workdir, out)
+        return d, success_state(old_artifact)
+
+    artifact = await index.resolve(index_state, d)
+    if artifact.source_index_state != index_state:
+        raise ValueError(
+            f"{type(index).__name__}.resolve() returned an artifact for a "
+            "different index state"
+        )
+    if (
+        old_artifact
+        and old_artifact.same_download_as(artifact)
+        and out.exists()
+    ):
+        return d, success_state(artifact)
+
+    await download_and_extract_artifact(d, artifact, workdir, out)
+    return d, success_state(artifact)
 
 
 def get_distros(
@@ -217,6 +309,76 @@ class TaskTracker:
             print("All tasks succeeded!")
 
 
+async def run_distro_tasks(
+    distros: list[DistroConfig],
+    fetcher_state: dict[str, Any],
+    distro_state: dict[str, Any],
+    download_dir: Path,
+    output_dir: Path,
+    *,
+    filtered: bool,
+    fail_fast: bool,
+) -> tuple[dict[str, Any], dict[str, Any], TaskTracker]:
+    fetchers = FetcherFactory(fetcher_state, download_dir)
+    indexes = IndexRegistry(download_dir)
+
+    if filtered:
+        new_fetcher_state = fetcher_state.copy()
+        new_distro_state = distro_state.copy()
+    else:
+        new_fetcher_state = {}
+        selected_distros = {d.unique_name for d in distros}
+        new_distro_state = {
+            name: state
+            for name, state in distro_state.items()
+            if name in selected_distros
+        }
+
+    async with TaskTracker() as tg:
+        for distro in distros:
+            impl_cls = load_implementation(distro.fetcher)
+            state = distro_state.get(distro.unique_name, {})
+            if issubclass(impl_cls, Index):
+                index = indexes.get(distro)
+                task = tg.create_task(
+                    run_for_index_distro(
+                        distro,
+                        index,
+                        state,
+                        download_dir,
+                        output_dir,
+                    )
+                )
+            elif issubclass(impl_cls, Fetcher):
+                fetcher = fetchers.get(distro)
+                task = tg.create_task(
+                    run_for_fetcher_distro(
+                        distro,
+                        fetcher,
+                        state,
+                        download_dir,
+                        output_dir,
+                    )
+                )
+            else:
+                raise TypeError(
+                    f"{distro.fetcher} is neither an Index nor a Fetcher"
+                )
+            task.set_name(distro.unique_name)
+
+        async for success, task in tg.as_completed():
+            if not success:
+                if fail_fast:
+                    break
+                else:
+                    continue
+            distro, state = await task
+            new_distro_state[distro.unique_name] = state
+
+    new_fetcher_state.update(fetchers.save_state())
+    return new_fetcher_state, new_distro_state, tg
+
+
 async def main() -> None:
     parser = argparse.ArgumentParser(
         description="downloads and catalogs kernel configs"
@@ -271,38 +433,15 @@ async def main() -> None:
     distro_state = state.get("distros", {})
 
     distros = get_distros(cfg, args.filter)
-    fetchers = FetcherFactory(fetcher_state, args.download_dir)
-
-    if args.filter:
-        new_fetcher_state = fetcher_state.copy()
-        new_distro_state = distro_state.copy()
-    else:
-        new_fetcher_state = {}
-        new_distro_state = {}
-
-    async with TaskTracker() as tg:
-        tasks = []
-        for distro in distros:
-            fetcher = fetchers.get(distro)
-            state = distro_state.get(distro.unique_name, {})
-            task = tg.create_task(
-                run_for_distro(
-                    distro, fetcher, state, args.download_dir, args.output_dir
-                )
-            )
-            task.set_name(distro.unique_name)
-            tasks.append(task)
-
-        async for success, task in tg.as_completed():
-            if not success:
-                if args.fail_fast:
-                    break
-                else:
-                    continue
-            distro, state = await task
-            new_distro_state[distro.unique_name] = state
-
-    new_fetcher_state.update(fetchers.save_state())
+    new_fetcher_state, new_distro_state, tg = await run_distro_tasks(
+        distros,
+        fetcher_state,
+        distro_state,
+        args.download_dir,
+        args.output_dir,
+        filtered=bool(args.filter),
+        fail_fast=args.fail_fast,
+    )
 
     with args.state.open("wt") as f:
         data = {
