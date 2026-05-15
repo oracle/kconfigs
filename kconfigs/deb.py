@@ -6,6 +6,10 @@ import re
 import shutil
 from pathlib import Path
 from typing import Any
+from typing import Mapping
+from typing import NamedTuple
+from typing import TypedDict
+from typing import cast
 
 import aiofiles
 from aiofiles.tempfile import TemporaryDirectory
@@ -14,6 +18,12 @@ from kconfigs.extractor import Extractor
 from kconfigs.fetcher import Checksum
 from kconfigs.fetcher import DistroConfig
 from kconfigs.fetcher import Fetcher
+from kconfigs.index import Index
+from kconfigs.index import IndexId
+from kconfigs.index import alru_cache
+from kconfigs.model import JSON
+from kconfigs.model import Artifact
+from kconfigs.model import IndexState
 from kconfigs.util import download_file
 from kconfigs.util import download_file_mem_verified
 from kconfigs.util import maybe_decompress
@@ -22,6 +32,151 @@ RPM_TO_DEB_ARCH = {
     "x86_64": "amd64",
     "aarch64": "arm64",
 }
+
+
+class DebIndexId(NamedTuple):
+    repo_url: str
+    codename: str
+    arch: str
+    category: str
+    key: str
+
+    def __str__(self) -> str:
+        return (
+            f"{self.repo_url} dists/{self.codename}/{self.category}/"
+            f"binary-{self.arch} key={self.key}"
+        )
+
+
+class DebIndexStateData(TypedDict):
+    packages_path: str
+    checksum: Checksum
+
+
+def deb_data(state: IndexState) -> DebIndexStateData:
+    return cast(DebIndexStateData, state.data)
+
+
+def _deb_arch(arch: str) -> str:
+    return RPM_TO_DEB_ARCH.get(arch, arch)
+
+
+def _parse_release_hashes(data: str, section: str) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    in_section = False
+    for line in data.splitlines():
+        if line == f"{section}:":
+            in_section = True
+            continue
+        if not in_section:
+            continue
+        if not line.startswith(" "):
+            break
+        parts = line.split()
+        if len(parts) >= 3:
+            entries[parts[2]] = parts[0]
+    return entries
+
+
+async def _query_packages_metadata(
+    index: str,
+    key: str,
+    codename: str,
+    category: str,
+    arch: str,
+) -> DebIndexStateData:
+    url = posixpath.join(index, "dists", codename, "Release")
+    data_bytes = await download_file_mem_verified(url, key, suffix=".gpg")
+    file_to_hash = _parse_release_hashes(data_bytes.decode("utf-8"), "SHA256")
+    desired_entries = [
+        f"{category}/binary-{arch}/Packages.xz",
+        f"{category}/binary-{arch}/Packages.bz2",
+        f"{category}/binary-{arch}/Packages.gz",
+    ]
+    for file in desired_entries:
+        if file in file_to_hash:
+            return {
+                "packages_path": file,
+                "checksum": ("sha256", file_to_hash[file]),
+            }
+    raise Exception("Could not find Packages file")
+
+
+def _metadata_cache_path(
+    savedir: Path, packages_path: str, checksum: Checksum
+) -> Path:
+    name = posixpath.basename(packages_path)
+    checksum_name = re.sub(r"[^A-Za-z0-9_.-]", "_", "-".join(checksum))
+    return savedir / f"{checksum_name}-{name}"
+
+
+def _parse_package_stanzas(data: str) -> list[dict[str, str]]:
+    stanzas: list[dict[str, str]] = []
+    stanza: dict[str, str] = {}
+    current_key: str | None = None
+    for line in data.splitlines():
+        if not line:
+            if stanza:
+                stanzas.append(stanza)
+            stanza = {}
+            current_key = None
+            continue
+        if line[0].isspace():
+            if current_key is None:
+                raise Exception("Malformed Packages stanza continuation")
+            stanza[current_key] += "\n" + line.strip()
+            continue
+        key, sep, value = line.partition(":")
+        if not sep:
+            raise Exception(f"Malformed Packages line: {line}")
+        current_key = key
+        stanza[key] = value.strip()
+    if stanza:
+        stanzas.append(stanza)
+    return stanzas
+
+
+async def _get_relevant_keys(
+    packages_local: Path, flavor: str
+) -> dict[str, dict[str, str]]:
+    async with aiofiles.open(packages_local, "rt") as f:
+        data = await f.read()
+    keys: dict[str, dict[str, str]] = {}
+    pkg_re = re.compile(rf"linux-.*{re.escape(flavor)}")
+    for stanza in _parse_package_stanzas(data):
+        name = stanza.get("Package")
+        if name and pkg_re.fullmatch(name):
+            keys[name] = stanza
+    return keys
+
+
+def _dependency_name(dep: str) -> str:
+    dep = dep.split("|", maxsplit=1)[0].strip()
+    if " " in dep:
+        dep, _ = dep.split(maxsplit=1)
+    return dep
+
+
+def _resolve_concrete_package(
+    keys: dict[str, dict[str, str]], flavor: str
+) -> str:
+    deps = (
+        keys[f"linux-image-{flavor}"]["Depends"].replace("\n", " ").split(",")
+    )
+    for dep in deps:
+        pkg = _dependency_name(dep)
+        if pkg.startswith("linux-image"):
+            # Debian Forky now has linux-base instead.
+            base_pkg = pkg.replace("linux-image", "linux-base")
+            if base_pkg in keys:
+                return base_pkg
+            modules_pkg = pkg.replace("linux-image", "linux-modules")
+            if modules_pkg in keys:
+                return modules_pkg
+            if pkg in keys:
+                return pkg
+            raise Exception(f"Could not find concrete package: {pkg}")
+    raise Exception("Could not find specific linux-modules package")
 
 
 class DebFetcher(Fetcher):
@@ -50,28 +205,15 @@ class DebFetcher(Fetcher):
         return {"last_hash": self.__latest_hash or self.__last_hash}
 
     async def __query_latest_hash(self) -> None:
-        url = posixpath.join(self.index, "dists", self.__codename, "Release")
-        data_bytes = await download_file_mem_verified(
-            url, self.key, suffix=".gpg"
+        metadata = await _query_packages_metadata(
+            self.index,
+            self.key,
+            self.__codename,
+            self.__category,
+            self.__arch,
         )
-        data = data_bytes.decode("utf-8")
-        entry_re = re.compile(r"^\s*([0-9a-f]+)\s+\d+\s+(.*)$", re.M)
-        ix = data.index("SHA256:\n")
-        desired_entries = [
-            f"{self.__category}/binary-{self.__arch}/Packages.xz",
-            f"{self.__category}/binary-{self.__arch}/Packages.bz2",
-            f"{self.__category}/binary-{self.__arch}/Packages.gz",
-        ]
-        file_to_hash = {
-            m.group(2): m.group(1) for m in entry_re.finditer(data, ix)
-        }
-        for file in desired_entries:
-            if file in file_to_hash:
-                self.__latest_hash = file_to_hash[file]
-                self.__packages_path = file
-                break
-        else:
-            raise Exception("Could not find Packages file")
+        self.__latest_hash = metadata["checksum"][1]
+        self.__packages_path = metadata["packages_path"]
 
     async def is_updated(self) -> bool:
         if not self.__latest_hash:
@@ -100,20 +242,7 @@ class DebFetcher(Fetcher):
         self, flavor: str
     ) -> dict[str, dict[str, str]]:
         assert self.__packages_local
-        async with aiofiles.open(self.__packages_local, "rt") as f:
-            keys: dict[str, dict[str, str]] = {}
-            in_sec = None
-            pkgline = re.compile(f"Package: (linux-.*{flavor})")
-            for line in await f.readlines():
-                if in_sec and line.strip():
-                    k, v = line.split(":", 1)
-                    keys[in_sec][k.strip()] = v.strip()
-                elif in_sec:
-                    in_sec = None
-                elif m := pkgline.fullmatch(line.strip()):
-                    keys[m.group(1)] = {}
-                    in_sec = m.group(1)
-        return keys
+        return await _get_relevant_keys(self.__packages_local, flavor)
 
     async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
         if not self.__packages_local:
@@ -132,21 +261,84 @@ class DebFetcher(Fetcher):
         # quickest route to this is to find "linux-image-$FLAVOR", get the
         # specific package name dependency ("linux-image-$UNAME-$FLAVOR"),
         # and then replace that with linux-modules.
-        deps = keys[f"linux-image-{flavor}"]["Depends"].split(", ")
-        for dep in deps:
-            if " " in dep:
-                # Contains " (additional junk)", strip it out
-                dep, _ = dep.split(maxsplit=1)
-            if dep.startswith("linux-image"):
-                pkg = dep.replace("linux-image", "linux-modules")
-                if pkg not in keys:
-                    pkg = dep
-                break
-        else:
-            raise Exception("Could not find specific linux-modules package")
+        pkg = _resolve_concrete_package(keys, flavor)
         url = posixpath.join(self.index, keys[pkg]["Filename"])
         checksum = ("sha256", keys[pkg]["SHA256"])
         return (url, checksum)
+
+
+class DebIndex(Index):
+    def __init__(self, index_id: IndexId, path: Path):
+        super().__init__(index_id, path)
+        if not isinstance(index_id, DebIndexId):
+            raise TypeError(
+                f"{type(self).__name__} requires DebIndexId, "
+                f"not {type(index_id).__name__}"
+            )
+        self.index = index_id.repo_url
+        self.savedir = path
+        self.savedir.mkdir(parents=True, exist_ok=True)
+        self.codename = index_id.codename
+        self.arch = index_id.arch
+        self.category = index_id.category
+        self.key = index_id.key
+
+    @classmethod
+    def index_id(cls, dc: DistroConfig) -> DebIndexId:
+        assert dc.codename is not None
+        assert dc.key
+        return DebIndexId(
+            dc.index,
+            dc.codename,
+            _deb_arch(dc.arch),
+            dc.category or "main",
+            dc.key,
+        )
+
+    @alru_cache
+    async def check(self) -> IndexState:
+        metadata = await _query_packages_metadata(
+            self.index,
+            self.key,
+            self.codename,
+            self.category,
+            self.arch,
+        )
+        return IndexState(
+            self.name, str(self.id), cast(Mapping[str, JSON], metadata)
+        )
+
+    @alru_cache
+    async def _materialized_packages(self) -> Path:
+        state = await self.check()
+        data = deb_data(state)
+        packages_path = data["packages_path"]
+        checksum = data["checksum"]
+        url = posixpath.join(self.index, "dists", self.codename, packages_path)
+        file = _metadata_cache_path(self.savedir, packages_path, checksum)
+        await download_file(url, file, checksum=checksum)
+        return await maybe_decompress(file)
+
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        if self.index_id(dc) != self.id:
+            raise ValueError(
+                f"{type(self).__name__}.resolve() got distro for "
+                f"{self.index_id(dc)}, expected {self.id}"
+            )
+        state = await self.check()
+        packages_local = await self._materialized_packages()
+        m = re.fullmatch(r"linux-(.*)", dc.package)
+        assert m
+        flavor = m.group(1)
+        keys = await _get_relevant_keys(packages_local, flavor)
+        pkg = _resolve_concrete_package(keys, flavor)
+        return Artifact(
+            url=posixpath.join(self.index, keys[pkg]["Filename"]),
+            checksum=("sha256", keys[pkg]["SHA256"]),
+            signature_url=None,
+            source_index_state=state,
+            version=keys[pkg].get("Version"),
+        )
 
 
 class DebExtractor(Extractor):
