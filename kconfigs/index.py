@@ -1,19 +1,29 @@
 # Copyright (c) 2026, Oracle and/or its affiliates.
 # Licensed under the terms of the GNU General Public License.
 """
-Interface for indexes, which synchronize metadata and resolve artifacts.
+Interface for indexes, which check metadata and resolve artifacts.
 """
 
 import abc
 import asyncio
 import importlib
+from collections.abc import Callable
+from collections.abc import Coroutine
+from collections.abc import Hashable
 from functools import cache
+from functools import wraps
 from pathlib import Path
 from typing import Any
+from typing import TypeAlias
+from typing import TypeVar
+from typing import cast
 
 from kconfigs.fetcher import DistroConfig
 from kconfigs.model import Artifact
 from kconfigs.model import IndexState
+
+IndexId: TypeAlias = Hashable
+R = TypeVar("R")
 
 
 @cache
@@ -26,55 +36,67 @@ def load_implementation(kind: str) -> type[Any]:
     return klass
 
 
+def alru_cache(
+    func: Callable[..., Coroutine[Any, Any, R]],
+) -> Callable[..., Coroutine[Any, Any, R]]:
+    """
+    Cache async function calls by argument, sharing one task among callers.
+    """
+    tasks: dict[tuple[object, ...], asyncio.Task[R]] = {}
+
+    @wraps(func)
+    async def wrapper(*args: object) -> R:
+        key = args
+        task = tasks.get(key)
+        if task is None:
+            task = asyncio.create_task(func(*args))
+            tasks[key] = task
+        return await asyncio.shield(task)
+
+    return cast(Callable[..., Coroutine[Any, Any, R]], wrapper)
+
+
 class Index(abc.ABC):
     """
     Shared source of package metadata.
 
-    One Index may serve multiple distro targets when those targets share the
-    same implementation and UID.
+    One Index may serve multiple distros when those targets share the same Index
+    kind and ID. For instance, a single Yum repo could provide multiple kernel
+    packages (kernel-a, kernel-b). Both packages could be independent targets
+    and share the same Index.
     """
 
     name: str
-    _sync_lock: asyncio.Lock
-    _sync_task: asyncio.Task[IndexState] | None
+    id: IndexId
+    path: Path
 
-    def __init__(self, dc: DistroConfig, savedir: Path):
+    def __init__(self, index_id: IndexId, path: Path):
         """
-        Initialize the index with configuration and a persistent cache directory.
+        Initialize the index ID and persistent cache directory.
         """
-        self._sync_lock = asyncio.Lock()
-        self._sync_task = None
+        self.name = getattr(
+            type(self), "name", f"{type(self).__module__}.{type(self).__name__}"
+        )
+        self.id = index_id
+        self.path = path
 
     @classmethod
     @abc.abstractmethod
-    def uid(cls, dc: DistroConfig) -> str:
+    def index_id(cls, dc: DistroConfig) -> IndexId:
         """
-        Return the sharing boundary for this index implementation.
-        """
-
-    async def sync(self) -> IndexState:
-        """
-        Synchronize lightweight metadata and return the current index state.
-        """
-        async with self._sync_lock:
-            if self._sync_task is None:
-                self._sync_task = asyncio.create_task(self._sync())
-            task = self._sync_task
-        return await task
-
-    @abc.abstractmethod
-    async def _sync(self) -> IndexState:
-        """
-        Implementation hook for sync().
-
-        The public sync() method coalesces concurrent callers and calls this
-        hook exactly once per Index object.
+        Return the unique identifier of the index, which determines sharing
         """
 
     @abc.abstractmethod
-    async def resolve(self, state: IndexState, dc: DistroConfig) -> Artifact:
+    async def check(self) -> IndexState:
         """
-        Resolve an artifact for one distro target from a synchronized state.
+        Check lightweight metadata and return the current index state.
+        """
+
+    @abc.abstractmethod
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        """
+        Resolve an artifact for one distro target from the current checked state.
         """
 
     @classmethod
@@ -89,17 +111,22 @@ class Index(abc.ABC):
 
 class IndexRegistry:
     def __init__(self, workdir: Path):
-        self.registry: dict[tuple[str, str], Index] = {}
+        self.registry: dict[tuple[str, IndexId], Index] = {}
         self.workdir = workdir
 
     def get(self, dc: DistroConfig) -> Index:
         index_cls = Index.get(dc.fetcher)
-        uid = index_cls.uid(dc)
-        if (dc.fetcher, uid) not in self.registry:
+        index_id = index_cls.index_id(dc)
+        if (dc.fetcher, index_id) not in self.registry:
             trans = str.maketrans(":/?", "___")
             index_dir = (
-                self.workdir / "index" / dc.fetcher / uid.translate(trans)
+                self.workdir
+                / "index"
+                / dc.fetcher
+                / str(index_id).translate(trans)
             )
             index_dir.mkdir(exist_ok=True, parents=True)
-            self.registry[(dc.fetcher, uid)] = index_cls(dc, index_dir)
-        return self.registry[(dc.fetcher, uid)]
+            self.registry[(dc.fetcher, index_id)] = index_cls(
+                index_id, index_dir
+            )
+        return self.registry[(dc.fetcher, index_id)]

@@ -10,7 +10,9 @@ import kconfigs.main as main_module
 from kconfigs.extractor import Extractor
 from kconfigs.fetcher import DistroConfig
 from kconfigs.index import Index
+from kconfigs.index import IndexId
 from kconfigs.index import IndexRegistry
+from kconfigs.index import alru_cache
 from kconfigs.model import Artifact
 from kconfigs.model import Checksum
 from kconfigs.model import IndexState
@@ -19,21 +21,22 @@ from kconfigs.model import IndexState
 class RegistryFakeIndex(Index):
     created: ClassVar[list["RegistryFakeIndex"]] = []
 
-    def __init__(self, dc: DistroConfig, savedir: Path):
-        super().__init__(dc, savedir)
-        self.dc = dc
-        self.savedir = savedir
+    def __init__(self, index_id: IndexId, path: Path):
+        super().__init__(index_id, path)
+        self.path = path
         self.created.append(self)
 
     @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
+    def index_id(cls, dc: DistroConfig) -> str:
         assert dc.repo is not None
         return f"{dc.index}:{dc.repo}"
 
-    async def _sync(self) -> IndexState:
-        return IndexState(self.name, self.uid(self.dc), {})
+    @alru_cache
+    async def check(self) -> IndexState:
+        return IndexState(self.name, str(self.id), {})
 
-    async def resolve(self, state: IndexState, dc: DistroConfig) -> Artifact:
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        state = await self.check()
         return Artifact(
             url=f"{dc.index}/package.rpm",
             checksum=None,
@@ -44,45 +47,48 @@ class RegistryFakeIndex(Index):
 
 class StaticIndex(Index):
     def __init__(self, state: IndexState, artifact: Artifact):
-        super().__init__(make_distro(), Path("."))
+        super().__init__(state.uid, Path("."))
         self.state = state
         self.artifact = artifact
-        self.sync_calls = 0
+        self.check_calls = 0
         self.resolve_calls = 0
 
     @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
+    def index_id(cls, dc: DistroConfig) -> str:
         return dc.index
 
-    async def _sync(self) -> IndexState:
-        self.sync_calls += 1
+    @alru_cache
+    async def check(self) -> IndexState:
+        self.check_calls += 1
         return self.state
 
-    async def resolve(self, state: IndexState, dc: DistroConfig) -> Artifact:
+    async def resolve(self, dc: DistroConfig) -> Artifact:
         self.resolve_calls += 1
-        assert state == self.state
+        assert await self.check() == self.state
         return self.artifact
 
 
-class BlockingSyncIndex(Index):
+class BlockingCheckIndex(Index):
     def __init__(self, state: IndexState):
-        super().__init__(make_distro(), Path("."))
+        super().__init__(state.uid, Path("."))
         self.state = state
-        self.sync_calls = 0
+        self.check_calls = 0
         self.started = asyncio.Event()
         self.release = asyncio.Event()
 
     @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
+    def index_id(cls, dc: DistroConfig) -> str:
         return dc.index
 
-    async def _sync(self) -> IndexState:
-        self.sync_calls += 1
+    @alru_cache
+    async def check(self) -> IndexState:
+        self.check_calls += 1
         self.started.set()
         await self.release.wait()
         return self.state
 
-    async def resolve(self, state: IndexState, dc: DistroConfig) -> Artifact:
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        state = await self.check()
         return Artifact(
             url=f"{dc.index}/package.rpm",
             checksum=None,
@@ -143,7 +149,7 @@ def install_extractor(
     monkeypatch.setattr(Extractor, "get", classmethod(get_extractor))
 
 
-def test_index_registry_reuses_same_kind_and_uid(tmp_path: Path) -> None:
+def test_index_registry_reuses_same_kind_and_index_id(tmp_path: Path) -> None:
     RegistryFakeIndex.created = []
     registry = IndexRegistry(tmp_path)
     distro = make_distro()
@@ -156,24 +162,24 @@ def test_index_registry_reuses_same_kind_and_uid(tmp_path: Path) -> None:
     assert registry.get(same_index_distro) is index
     assert registry.get(different_index_distro) is not index
     assert len(RegistryFakeIndex.created) == 2
-    assert RegistryFakeIndex.created[0].savedir.exists()
+    assert RegistryFakeIndex.created[0].path.exists()
 
 
-def test_index_sync_coalesces_concurrent_callers() -> None:
+def test_alru_cache_coalesces_concurrent_index_checks() -> None:
     async def exercise() -> None:
         state = IndexState("fake.Index", "uid", {"revision": "one"})
-        index = BlockingSyncIndex(state)
-        sync_tasks = [asyncio.create_task(index.sync()) for _ in range(3)]
+        index = BlockingCheckIndex(state)
+        check_tasks = [asyncio.create_task(index.check()) for _ in range(3)]
 
         await index.started.wait()
         await asyncio.sleep(0)
 
-        assert index.sync_calls == 1
+        assert index.check_calls == 1
 
         index.release.set()
-        assert await asyncio.gather(*sync_tasks) == [state, state, state]
-        assert await index.sync() == state
-        assert index.sync_calls == 1
+        assert await asyncio.gather(*check_tasks) == [state, state, state]
+        assert await index.check() == state
+        assert index.check_calls == 1
 
     asyncio.run(exercise())
 
@@ -222,7 +228,7 @@ def test_failed_index_target_does_not_advance_state(
     assert new_fetcher_state == {}
     assert new_distro_state[distro.unique_name] == prior_state
     assert not tracker.success
-    assert index.sync_calls == 1
+    assert index.check_calls == 1
     assert index.resolve_calls == 1
     assert extractor.extract_calls == 1
     assert len(downloader.calls) == 1
@@ -276,7 +282,7 @@ def test_metadata_only_index_update_advances_state_without_download(
         "artifact": new_artifact.to_json()
     }
     assert tracker.success
-    assert index.sync_calls == 1
+    assert index.check_calls == 1
     assert index.resolve_calls == 1
     assert extractor.extract_calls == 0
     assert downloader.calls == []

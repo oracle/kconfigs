@@ -12,8 +12,11 @@ from functools import cmp_to_key
 from itertools import zip_longest
 from pathlib import Path
 from typing import Any
+from typing import Mapping
 from typing import NamedTuple
+from typing import TypedDict
 from typing import TypeVar
+from typing import cast
 
 import aiosqlite
 from aiofiles.tempfile import TemporaryDirectory
@@ -22,6 +25,12 @@ from kconfigs.extractor import Extractor
 from kconfigs.fetcher import Checksum
 from kconfigs.fetcher import DistroConfig
 from kconfigs.fetcher import Fetcher
+from kconfigs.index import Index
+from kconfigs.index import IndexId
+from kconfigs.index import alru_cache
+from kconfigs.model import JSON
+from kconfigs.model import Artifact
+from kconfigs.model import IndexState
 from kconfigs.util import check_call
 from kconfigs.util import download_file
 from kconfigs.util import download_file_mem_verified
@@ -40,6 +49,126 @@ class PkgMeta(NamedTuple):
     href: str
     checksum: str
     checksum_type: str
+
+
+class RpmIndexId(NamedTuple):
+    repo_url: str
+    key: str
+
+    def __str__(self) -> str:
+        return f"{self.repo_url} key={self.key}"
+
+
+class RpmIndexStateData(TypedDict):
+    primary_url: str
+    checksum: Checksum
+
+
+def rpm_data(state: IndexState) -> RpmIndexStateData:
+    return cast(RpmIndexStateData, state.data)
+
+
+def _absolute_url(index: str, href: str) -> str:
+    if href.startswith(("http:", "https:")):
+        return href
+    return posixpath.join(index, href)
+
+
+async def _query_primary_metadata(index: str, key: str) -> RpmIndexStateData:
+    yum_base = posixpath.join(index, REPODATA)
+    data = await download_file_mem_verified(yum_base, key, https_ok=True)
+    return _parse_primary_metadata(data, index)
+
+
+def _parse_primary_metadata(data: bytes, index: str) -> RpmIndexStateData:
+    tree = ET.fromstring(data.decode("utf-8"))
+    # prefer primary_db because it's sqlite, which is faster to query
+    primary_db_list = tree.findall(".//{*}data[@type='primary_db']")
+    if not primary_db_list:
+        # fall back to XML where necessary
+        primary_db_list = tree.findall(".//{*}data[@type='primary']")
+    if not primary_db_list:
+        raise Exception("Could not find RPM primary metadata")
+    primary_db_data = primary_db_list[0]
+    location = primary_db_data.findall("{*}location")[0]
+    checksum = primary_db_data.findall("{*}checksum")[0]
+    href = location.attrib["href"]
+    if checksum.text is None:
+        raise Exception("RPM primary metadata checksum is missing")
+    return {
+        "primary_url": _absolute_url(index, href),
+        "checksum": (checksum.attrib["type"], checksum.text),
+    }
+
+
+async def _packages_from_sqlite(db_path: Path, pkg: str) -> list[PkgMeta]:
+    async with aiosqlite.connect(db_path) as conn:
+        result = await conn.execute(
+            """
+            SELECT version, release, location_href, pkgId, checksum_type FROM packages
+            WHERE name=? AND location_href NOT LIKE '%.src.rpm';
+            """,
+            (pkg,),
+        )
+        rows = await result.fetchall()
+        await result.close()
+        return [PkgMeta(*row) for row in rows]
+
+
+async def _packages_from_xml(db_path: Path, pkg: str) -> list[PkgMeta]:
+    with open(db_path, "rt") as f:
+        tree = ET.parse(f)
+    res = []
+    for pkg_elem in tree.findall("{*}package"):
+        name_elem = pkg_elem.find("{*}name")
+        if name_elem is None or name_elem.text != pkg:
+            continue
+        ver_elem = pkg_elem.find("{*}version")
+        csum_elem = pkg_elem.find("{*}checksum")
+        loc_elem = pkg_elem.find("{*}location")
+        assert (
+            ver_elem is not None
+            and csum_elem is not None
+            and loc_elem is not None
+        )
+        res.append(
+            PkgMeta(
+                ver_elem.attrib["ver"],
+                ver_elem.attrib["rel"],
+                loc_elem.attrib["href"],
+                csum_elem.text or "",  # satisfy mypy here :/
+                csum_elem.attrib["type"],
+            )
+        )
+    return res
+
+
+async def _packages_from_metadata(db_path: Path, pkg: str) -> list[PkgMeta]:
+    if db_path.suffix == ".xml":
+        return await _packages_from_xml(db_path, pkg)
+    return await _packages_from_sqlite(db_path, pkg)
+
+
+def _latest_package(rows: list[PkgMeta], pkg: str) -> PkgMeta:
+    if not rows:
+        raise Exception(f"Could not find RPM package {pkg}")
+
+    def cmp(t1: PkgMeta, t2: PkgMeta) -> int:
+        val = rpmvercmp(t1.version, t2.version)
+        if val == 0:
+            val = rpmvercmp(t1.release, t2.release)
+        return val
+
+    rows.sort(key=cmp_to_key(cmp))
+    return rows[-1]
+
+
+def _metadata_cache_path(
+    savedir: Path, primary_url: str, checksum: Checksum
+) -> Path:
+    name = posixpath.basename(primary_url)
+    checksum_name = re.sub(r"[^A-Za-z0-9_.-]", "_", "-".join(checksum))
+    return savedir / f"{checksum_name}-{name}"
 
 
 def samekindcmp(s1: T, s2: T) -> int:
@@ -109,25 +238,9 @@ class RpmFetcher(Fetcher):
         return {"last_db": self.__latest_db or self.__last_db}
 
     async def __query_latest_db(self) -> None:
-        yum_base = posixpath.join(self.index, REPODATA)
-        data = await download_file_mem_verified(
-            yum_base, self.key, https_ok=True
-        )
-        tree = ET.fromstring(data.decode("utf-8"))
-        # prefer primary_db because it's sqlite, which is faster to query
-        primary_db_list = tree.findall(".//{*}data[@type='primary_db']")
-        if not primary_db_list:
-            # fall back to XML where necessary
-            primary_db_list = tree.findall(".//{*}data[@type='primary']")
-        primary_db_data = primary_db_list[0]
-        location = primary_db_data.findall("{*}location")[0]
-        checksum = primary_db_data.findall("{*}checksum")[0]
-        href = location.attrib["href"]
-        if not href.startswith("http:") or href.startswith("https:"):
-            href = posixpath.join(self.index, href)
-        self.__latest_db = href
-        assert checksum.text
-        self.__latest_checksum = (checksum.attrib["type"], checksum.text)
+        metadata = await _query_primary_metadata(self.index, self.key)
+        self.__latest_db = metadata["primary_url"]
+        self.__latest_checksum = metadata["checksum"]
 
     async def is_updated(self) -> bool:
         async with self.__mutex:
@@ -149,42 +262,11 @@ class RpmFetcher(Fetcher):
 
     async def __packages_from_sqlite(self, pkg: str) -> list[PkgMeta]:
         assert self.__latest_db_path
-        async with aiosqlite.connect(self.__latest_db_path) as conn:
-            result = await conn.execute(
-                """
-                SELECT version, release, location_href, pkgId, checksum_type FROM packages
-                WHERE name=? AND location_href NOT LIKE '%.src.rpm';
-                """,
-                (pkg,),
-            )
-            rows = await result.fetchall()
-            return [PkgMeta(*row) for row in rows]
+        return await _packages_from_sqlite(self.__latest_db_path, pkg)
 
     async def __packages_from_xml(self, pkg: str) -> list[PkgMeta]:
         assert self.__latest_db_path
-        with open(self.__latest_db_path, "rt") as f:
-            tree = ET.parse(f)
-        pkgs = tree.findall("{*}package[{*}name='%s']" % pkg)
-        res = []
-        for pkg_elem in pkgs:
-            ver_elem = pkg_elem.find("{*}version")
-            csum_elem = pkg_elem.find("{*}checksum")
-            loc_elem = pkg_elem.find("{*}location")
-            assert (
-                ver_elem is not None
-                and csum_elem is not None
-                and loc_elem is not None
-            )
-            res.append(
-                PkgMeta(
-                    ver_elem.attrib["ver"],
-                    ver_elem.attrib["rel"],
-                    loc_elem.attrib["href"],
-                    csum_elem.text or "",  # satisfy mypy here :/
-                    csum_elem.attrib["type"],
-                )
-            )
-        return res
+        return await _packages_from_xml(self.__latest_db_path, pkg)
 
     async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
         async with self.__mutex:
@@ -197,19 +279,66 @@ class RpmFetcher(Fetcher):
         else:
             rows = await self.__packages_from_sqlite(pkg)
 
-        def cmp(t1: PkgMeta, t2: PkgMeta) -> int:
-            val = rpmvercmp(t1.version, t2.version)
-            if val == 0:
-                val = rpmvercmp(t1.release, t2.release)
-            return val
-
-        rows.sort(key=cmp_to_key(cmp))
-        href = rows[-1].href
-        csum = rows[-1].checksum
-        csum_type = rows[-1].checksum_type
-        if not href.startswith("http:") or href.startswith("https:"):
-            href = posixpath.join(self.index, href)
+        latest = _latest_package(rows, pkg)
+        href = _absolute_url(self.index, latest.href)
+        csum = latest.checksum
+        csum_type = latest.checksum_type
         return (href, (csum_type, csum))
+
+
+class RpmIndex(Index):
+    def __init__(self, index_id: IndexId, path: Path):
+        super().__init__(index_id, path)
+        if not isinstance(index_id, RpmIndexId):
+            raise TypeError(
+                f"{type(self).__name__} requires RpmIndexId, "
+                f"not {type(index_id).__name__}"
+            )
+        self.index = index_id.repo_url
+        self.savedir = path
+        self.savedir.mkdir(parents=True, exist_ok=True)
+        self.key = index_id.key
+
+    @classmethod
+    def index_id(cls, dc: DistroConfig) -> RpmIndexId:
+        assert dc.key
+        return RpmIndexId(dc.index, dc.key)
+
+    @alru_cache
+    async def check(self) -> IndexState:
+        metadata = await _query_primary_metadata(self.index, self.key)
+        return IndexState(
+            self.name, str(self.id), cast(Mapping[str, JSON], metadata)
+        )
+
+    @alru_cache
+    async def _materialized_metadata(self) -> Path:
+        state = await self.check()
+        data = rpm_data(state)
+        primary_url = data["primary_url"]
+        checksum = data["checksum"]
+        file = _metadata_cache_path(self.savedir, primary_url, checksum)
+        await download_file(primary_url, file, checksum=checksum)
+        return await maybe_decompress(file)
+
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        if self.index_id(dc) != self.id:
+            raise ValueError(
+                f"{type(self).__name__}.resolve() got distro for "
+                f"{self.index_id(dc)}, expected {self.id}"
+            )
+        state = await self.check()
+        db_path = await self._materialized_metadata()
+        latest = _latest_package(
+            await _packages_from_metadata(db_path, dc.package), dc.package
+        )
+        return Artifact(
+            url=_absolute_url(self.index, latest.href),
+            checksum=(latest.checksum_type, latest.checksum),
+            signature_url=None,
+            source_index_state=state,
+            version=f"{latest.version}-{latest.release}",
+        )
 
 
 async def extract_rpm_file(

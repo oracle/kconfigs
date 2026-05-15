@@ -166,7 +166,7 @@ async def run_for_index_distro(
             return d, success_state(old_artifact)
         return d, state
 
-    index_state = await index.sync()
+    index_state = await index.check()
 
     if old_artifact and old_artifact.source_index_state == index_state:
         if out.exists():
@@ -174,7 +174,7 @@ async def run_for_index_distro(
         await download_and_extract_artifact(d, old_artifact, workdir, out)
         return d, success_state(old_artifact)
 
-    artifact = await index.resolve(index_state, d)
+    artifact = await index.resolve(d)
     if artifact.source_index_state != index_state:
         raise ValueError(
             f"{type(index).__name__}.resolve() returned an artifact for a "
