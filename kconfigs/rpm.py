@@ -11,7 +11,6 @@ from asyncio.subprocess import PIPE
 from functools import cmp_to_key
 from itertools import zip_longest
 from pathlib import Path
-from typing import Any
 from typing import Mapping
 from typing import NamedTuple
 from typing import TypedDict
@@ -21,15 +20,14 @@ from typing import cast
 import aiosqlite
 from aiofiles.tempfile import TemporaryDirectory
 
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import Checksum
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import alru_cache
 from kconfigs.model import JSON
 from kconfigs.model import Artifact
+from kconfigs.model import Checksum
 from kconfigs.model import IndexState
 from kconfigs.util import check_call
 from kconfigs.util import download_file
@@ -214,76 +212,6 @@ def rpmvercmp(l1: str, l2: str) -> int:
         if cmp != 0:
             return cmp
     return 0
-
-
-class RpmFetcher(Fetcher):
-    def __init__(
-        self, saved_data: dict[str, Any], dc: DistroConfig, savedir: Path
-    ):
-        self.__last_db: None | str = saved_data.get("last_db")
-        self.__latest_db: None | str = None
-        self.__latest_checksum: None | tuple[str, str] = None
-        self.__latest_db_path: None | Path = None
-        self.__mutex = asyncio.Lock()
-        self.index = dc.index
-        self.savedir = savedir
-        assert dc.key
-        self.key = dc.key
-
-    @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
-        return dc.index
-
-    def save_data(self) -> dict[str, Any]:
-        return {"last_db": self.__latest_db or self.__last_db}
-
-    async def __query_latest_db(self) -> None:
-        metadata = await _query_primary_metadata(self.index, self.key)
-        self.__latest_db = metadata["primary_url"]
-        self.__latest_checksum = metadata["checksum"]
-
-    async def is_updated(self) -> bool:
-        async with self.__mutex:
-            if not self.__latest_db:
-                await self.__query_latest_db()
-            return self.__latest_db != self.__last_db
-
-    async def __fetch_latest_db(self) -> None:
-        if not self.__latest_db:
-            await self.__query_latest_db()
-        assert self.__latest_db
-        assert self.__latest_checksum
-        name = posixpath.basename(self.__latest_db)
-        file = self.savedir / name
-        await download_file(
-            self.__latest_db, file, checksum=self.__latest_checksum
-        )
-        self.__latest_db_path = await maybe_decompress(file)
-
-    async def __packages_from_sqlite(self, pkg: str) -> list[PkgMeta]:
-        assert self.__latest_db_path
-        return await _packages_from_sqlite(self.__latest_db_path, pkg)
-
-    async def __packages_from_xml(self, pkg: str) -> list[PkgMeta]:
-        assert self.__latest_db_path
-        return await _packages_from_xml(self.__latest_db_path, pkg)
-
-    async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
-        async with self.__mutex:
-            if not self.__latest_db_path:
-                await self.__fetch_latest_db()
-            assert self.__latest_db_path
-
-        if self.__latest_db_path.suffix == ".xml":
-            rows = await self.__packages_from_xml(pkg)
-        else:
-            rows = await self.__packages_from_sqlite(pkg)
-
-        latest = _latest_package(rows, pkg)
-        href = _absolute_url(self.index, latest.href)
-        csum = latest.checksum
-        csum_type = latest.checksum_type
-        return (href, (csum_type, csum))
 
 
 class RpmIndex(Index):

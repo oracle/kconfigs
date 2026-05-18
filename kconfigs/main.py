@@ -19,12 +19,10 @@ from typing import Any
 from typing import Self
 from typing import cast
 
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
 from kconfigs.index import Index
 from kconfigs.index import IndexRegistry
-from kconfigs.index import load_implementation
 from kconfigs.model import Artifact
 from kconfigs.util import download_file
 from kconfigs.util import download_manager
@@ -34,39 +32,18 @@ from kconfigs.util import download_manager
 extract_sem = asyncio.Semaphore(multiprocessing.cpu_count() + 1)
 
 
-class FetcherFactory:
-    def __init__(self, state: dict[str, Any], workdir: Path):
-        self.registry: dict[tuple[str, str], Fetcher] = {}
-        self.state = state
-        self.workdir = workdir
-
-    def get(self, dc: DistroConfig) -> Fetcher:
-        fetcher_cls = Fetcher.get(dc.fetcher)
-        uid = fetcher_cls.uid(dc)
-        if (dc.fetcher, uid) not in self.registry:
-            trans = str.maketrans(":/?", "___")
-            fetcher_state = self.state.get(dc.fetcher, {}).get(uid, {})
-            fetcher_dir = (
-                self.workdir / "fetcher" / dc.fetcher / uid.translate(trans)
-            )
-            fetcher_dir.mkdir(exist_ok=True, parents=True)
-            self.registry[(dc.fetcher, uid)] = fetcher_cls(
-                fetcher_state, dc, fetcher_dir
-            )
-        return self.registry[(dc.fetcher, uid)]
-
-    def save_state(self) -> dict[str, dict[str, Any]]:
-        new_state: dict[str, dict[str, dict[str, Any]]] = {}
-        for (kind, uid), fetcher in self.registry.items():
-            new_state.setdefault(kind, {})[uid] = fetcher.save_data()
-        return new_state
-
-
 def artifact_from_state(state: dict[str, Any]) -> Artifact | None:
     artifact_data = state.get("artifact")
     if not isinstance(artifact_data, Mapping):
         return None
     return Artifact.from_json(cast(Mapping[str, object], artifact_data))
+
+
+def legacy_latest_url_from_state(state: dict[str, Any]) -> str | None:
+    latest_url = state.get("latest_url")
+    if isinstance(latest_url, str) and latest_url != "NONE":
+        return latest_url
+    return None
 
 
 def success_state(artifact: Artifact) -> dict[str, Any]:
@@ -103,49 +80,6 @@ async def download_and_extract_artifact(
             shutil.rmtree(workdir)
 
 
-async def run_for_fetcher_distro(
-    d: DistroConfig,
-    fetcher: Fetcher,
-    state: dict[str, Any],
-    save_dir: Path,
-    out_dir: Path,
-) -> tuple[DistroConfig, dict[str, Any]]:
-    workdir = save_dir / "distro" / d.unique_name
-
-    out = out_dir / d.unique_name / "config"
-    out.parent.mkdir(exist_ok=True, parents=True)
-
-    previous_url = state.get("latest_url", "NONE")
-    if d.do_update and await fetcher.is_updated():
-        if workdir.exists():
-            shutil.rmtree(workdir)
-        workdir.mkdir(parents=True)
-        latest_url, maybe_csum = await fetcher.latest_version_url(d.package)
-        if latest_url != previous_url:
-            async with extract_sem:
-                name = posixpath.basename(latest_url)
-                file = workdir / name
-                await download_file(latest_url, file, checksum=maybe_csum)
-
-                extractor = Extractor.get(d.extractor)
-
-                maybe_sig = await fetcher.signature_url(d.package)
-                if maybe_sig:
-                    signame = posixpath.basename(maybe_sig)
-                    sigfile = workdir / signame
-                    await download_file(maybe_sig, sigfile)
-                    await extractor.verify_signature(file, sigfile, d)
-
-                print(f"Extract config of {d.unique_name}")
-                await extractor.extract_kconfig(file, out, d)
-    else:
-        latest_url = previous_url
-    if workdir.exists():
-        # Clear the distro's work directory to conserve space
-        shutil.rmtree(workdir)
-    return d, {"latest_url": latest_url}
-
-
 async def run_for_index_distro(
     d: DistroConfig,
     index: Index,
@@ -159,6 +93,7 @@ async def run_for_index_distro(
     out.parent.mkdir(exist_ok=True, parents=True)
 
     old_artifact = artifact_from_state(state)
+    legacy_latest_url = legacy_latest_url_from_state(state)
 
     if not d.do_update:
         if old_artifact and not out.exists():
@@ -183,6 +118,12 @@ async def run_for_index_distro(
     if (
         old_artifact
         and old_artifact.same_download_as(artifact)
+        and out.exists()
+    ):
+        return d, success_state(artifact)
+    if (
+        old_artifact is None
+        and legacy_latest_url == artifact.url
         and out.exists()
     ):
         return d, success_state(artifact)
@@ -311,22 +252,18 @@ class TaskTracker:
 
 async def run_distro_tasks(
     distros: list[DistroConfig],
-    fetcher_state: dict[str, Any],
     distro_state: dict[str, Any],
     download_dir: Path,
     output_dir: Path,
     *,
     filtered: bool,
     fail_fast: bool,
-) -> tuple[dict[str, Any], dict[str, Any], TaskTracker]:
-    fetchers = FetcherFactory(fetcher_state, download_dir)
+) -> tuple[dict[str, Any], TaskTracker]:
     indexes = IndexRegistry(download_dir)
 
     if filtered:
-        new_fetcher_state = fetcher_state.copy()
         new_distro_state = distro_state.copy()
     else:
-        new_fetcher_state = {}
         selected_distros = {d.unique_name for d in distros}
         new_distro_state = {
             name: state
@@ -336,34 +273,17 @@ async def run_distro_tasks(
 
     async with TaskTracker() as tg:
         for distro in distros:
-            impl_cls = load_implementation(distro.fetcher)
             state = distro_state.get(distro.unique_name, {})
-            if issubclass(impl_cls, Index):
-                index = indexes.get(distro)
-                task = tg.create_task(
-                    run_for_index_distro(
-                        distro,
-                        index,
-                        state,
-                        download_dir,
-                        output_dir,
-                    )
+            index = indexes.get(distro)
+            task = tg.create_task(
+                run_for_index_distro(
+                    distro,
+                    index,
+                    state,
+                    download_dir,
+                    output_dir,
                 )
-            elif issubclass(impl_cls, Fetcher):
-                fetcher = fetchers.get(distro)
-                task = tg.create_task(
-                    run_for_fetcher_distro(
-                        distro,
-                        fetcher,
-                        state,
-                        download_dir,
-                        output_dir,
-                    )
-                )
-            else:
-                raise TypeError(
-                    f"{distro.fetcher} is neither an Index nor a Fetcher"
-                )
+            )
             task.set_name(distro.unique_name)
 
         async for success, task in tg.as_completed():
@@ -375,8 +295,7 @@ async def run_distro_tasks(
             distro, state = await task
             new_distro_state[distro.unique_name] = state
 
-    new_fetcher_state.update(fetchers.save_state())
-    return new_fetcher_state, new_distro_state, tg
+    return new_distro_state, tg
 
 
 async def main() -> None:
@@ -429,13 +348,11 @@ async def main() -> None:
     else:
         state = {}
 
-    fetcher_state = state.get("fetchers", {})
     distro_state = state.get("distros", {})
 
     distros = get_distros(cfg, args.filter)
-    new_fetcher_state, new_distro_state, tg = await run_distro_tasks(
+    new_distro_state, tg = await run_distro_tasks(
         distros,
-        fetcher_state,
         distro_state,
         args.download_dir,
         args.output_dir,
@@ -445,7 +362,6 @@ async def main() -> None:
 
     with args.state.open("wt") as f:
         data = {
-            "fetchers": new_fetcher_state,
             "distros": new_distro_state,
         }
         json.dump(data, f, sort_keys=True, indent=4)

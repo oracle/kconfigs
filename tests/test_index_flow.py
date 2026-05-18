@@ -7,8 +7,8 @@ from typing import ClassVar
 import pytest
 
 import kconfigs.main as main_module
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import DistroConfig
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import IndexRegistry
@@ -213,10 +213,9 @@ def test_failed_index_target_does_not_advance_state(
     monkeypatch.setattr(main_module, "download_file", downloader)
     monkeypatch.setattr(IndexRegistry, "get", lambda self, dc: index)
 
-    new_fetcher_state, new_distro_state, tracker = asyncio.run(
+    new_distro_state, tracker = asyncio.run(
         main_module.run_distro_tasks(
             [distro],
-            {},
             {distro.unique_name: prior_state},
             tmp_path / "save",
             tmp_path / "out",
@@ -225,7 +224,6 @@ def test_failed_index_target_does_not_advance_state(
         )
     )
 
-    assert new_fetcher_state == {}
     assert new_distro_state[distro.unique_name] == prior_state
     assert not tracker.success
     assert index.check_calls == 1
@@ -265,10 +263,9 @@ def test_metadata_only_index_update_advances_state_without_download(
     monkeypatch.setattr(main_module, "download_file", downloader)
     monkeypatch.setattr(IndexRegistry, "get", lambda self, dc: index)
 
-    new_fetcher_state, new_distro_state, tracker = asyncio.run(
+    new_distro_state, tracker = asyncio.run(
         main_module.run_distro_tasks(
             [distro],
-            {},
             {distro.unique_name: {"artifact": old_artifact.to_json()}},
             tmp_path / "save",
             tmp_path / "out",
@@ -277,9 +274,53 @@ def test_metadata_only_index_update_advances_state_without_download(
         )
     )
 
-    assert new_fetcher_state == {}
     assert new_distro_state[distro.unique_name] == {
         "artifact": new_artifact.to_json()
+    }
+    assert tracker.success
+    assert index.check_calls == 1
+    assert index.resolve_calls == 1
+    assert extractor.extract_calls == 0
+    assert downloader.calls == []
+    assert output.read_text() == "CONFIG_OLD=y\n"
+
+
+def test_legacy_latest_url_state_migrates_without_download_when_output_exists(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    distro = make_distro()
+    index_state = IndexState("fake.Index", "uid", {"revision": "new"})
+    artifact = Artifact(
+        url="https://example.com/kernel.rpm",
+        checksum=("sha256", "package"),
+        signature_url=None,
+        source_index_state=index_state,
+        version="1",
+    )
+    index = StaticIndex(index_state, artifact)
+    extractor = RecordingExtractor()
+    downloader = DownloadRecorder()
+    output = tmp_path / "out" / distro.unique_name / "config"
+    output.parent.mkdir(parents=True)
+    output.write_text("CONFIG_OLD=y\n")
+
+    install_extractor(monkeypatch, extractor)
+    monkeypatch.setattr(main_module, "download_file", downloader)
+    monkeypatch.setattr(IndexRegistry, "get", lambda self, dc: index)
+
+    new_distro_state, tracker = asyncio.run(
+        main_module.run_distro_tasks(
+            [distro],
+            {distro.unique_name: {"latest_url": artifact.url}},
+            tmp_path / "save",
+            tmp_path / "out",
+            filtered=False,
+            fail_fast=False,
+        )
+    )
+
+    assert new_distro_state[distro.unique_name] == {
+        "artifact": artifact.to_json()
     }
     assert tracker.success
     assert index.check_calls == 1

@@ -3,14 +3,12 @@
 import json
 import urllib.parse
 from pathlib import Path
-from typing import Any
 from typing import Mapping
 from typing import NamedTuple
 from typing import TypedDict
 from typing import cast
 
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
+from kconfigs.distro import DistroConfig
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import alru_cache
@@ -53,41 +51,6 @@ async def _query_latest_release(owner: str, repo: str) -> GithubIndexStateData:
         "tag_name": release.get("tag_name", ""),
         "tarball_url": release["tarball_url"],
     }
-
-
-class GithubFetcher(Fetcher):
-    """
-    Fetcher for Github releases.
-
-    Uses the Github API to fetch the latest release tarball asset. From there,
-    you can then use the DefconfigExtractor to generate the default config for
-    various architectures.
-
-    To use this, the DistroConfig should set the "index" configuration to be the
-    repository URL. You'll also want to set the "key" to "NOVERIFY-GITHUB" so
-    that the DefconfigExtractor will not try to verify a non-existing GPG
-    signature.
-    """
-
-    def __init__(
-        self, saved_state: dict[str, Any], dc: DistroConfig, savedir: Path
-    ):
-        self.user, self.repo = _repo_parts(dc.index)
-
-    def save_data(self) -> dict[str, Any]:
-        return {}
-
-    @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
-        user, repo = _repo_parts(dc.index)
-        return f"github-{user}-{repo}"
-
-    async def is_updated(self) -> bool:
-        return True  # there's no extra index to check
-
-    async def latest_version_url(self, package: str) -> tuple[str, None]:
-        data = await _query_latest_release(self.user, self.repo)
-        return data["tarball_url"], None
 
 
 class GithubIndex(Index):

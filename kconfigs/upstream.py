@@ -8,17 +8,14 @@ import xml.etree.ElementTree as ET
 from asyncio.subprocess import DEVNULL
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 from typing import Mapping
 from typing import TypedDict
 from typing import cast
 
 from aiofiles.tempfile import TemporaryDirectory
 
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import Checksum
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import alru_cache
@@ -93,57 +90,6 @@ def _signature_url(url: str, key: str | None) -> str | None:
         return None
     tarbase, _ = posixpath.splitext(url)
     return tarbase + ".sign"
-
-
-class UpstreamFetcher(Fetcher):
-    def __init__(
-        self, saved_state: dict[str, Any], dc: DistroConfig, savedir: Path
-    ):
-        # This is the full version of the last release downloaded
-        self.__last_version: None | str = saved_state.get("last_version")
-        self.__latest_version: None | str = None
-        self.__latest_url: None | str = None
-        # This is the prefix of the stable release, e.g. 4.14 or 6.5
-        assert dc.version is not None
-        self.release = dc.version
-        self.index = dc.index
-        self.arch = dc.arch
-        self.savedir = savedir
-        self.key = dc.key
-
-    @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
-        return f"upstream-{dc.version}-{dc.arch}"
-
-    def save_data(self) -> dict[str, Any]:
-        return {"last_version": self.__latest_version or self.__last_version}
-
-    async def is_updated(self) -> bool:
-        if not self.__latest_version:
-            kernels = _parse_feed(await download_file_mem(self.index))
-            for kernel in kernels:
-                # Use 6.1.15 or 6.1-rc5 for release "6.1",
-                # but do not use 6.10!
-                if _kernel_matches_release(
-                    {"version": kernel.version, "url": kernel.url},
-                    self.release,
-                ):
-                    self.__latest_version = kernel.version
-                    self.__latest_url = kernel.url
-                    break
-            else:
-                raise Exception(
-                    f"Could not find upstream kernel {self.release}"
-                )
-        return self.__latest_version != self.__last_version
-
-    async def signature_url(self, _: str) -> str | None:
-        assert self.__latest_url
-        return _signature_url(self.__latest_url, self.key)
-
-    async def latest_version_url(self, _: str) -> tuple[str, Checksum | None]:
-        assert self.__latest_url
-        return (self.__latest_url, None)
 
 
 class UpstreamIndex(Index):

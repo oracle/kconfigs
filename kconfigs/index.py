@@ -18,7 +18,7 @@ from typing import TypeAlias
 from typing import TypeVar
 from typing import cast
 
-from kconfigs.fetcher import DistroConfig
+from kconfigs.distro import DistroConfig
 from kconfigs.model import Artifact
 from kconfigs.model import IndexState
 

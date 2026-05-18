@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 import kconfigs.pacman as pacman_module
-from kconfigs.fetcher import DistroConfig
+from kconfigs.distro import DistroConfig
 from kconfigs.model import Checksum
 from kconfigs.model import IndexState
 from kconfigs.pacman import PacmanIndex

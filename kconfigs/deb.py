@@ -5,7 +5,6 @@ import posixpath
 import re
 import shutil
 from pathlib import Path
-from typing import Any
 from typing import Mapping
 from typing import NamedTuple
 from typing import TypedDict
@@ -14,15 +13,14 @@ from typing import cast
 import aiofiles
 from aiofiles.tempfile import TemporaryDirectory
 
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import Checksum
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import alru_cache
 from kconfigs.model import JSON
 from kconfigs.model import Artifact
+from kconfigs.model import Checksum
 from kconfigs.model import IndexState
 from kconfigs.util import download_file
 from kconfigs.util import download_file_mem_verified
@@ -177,94 +175,6 @@ def _resolve_concrete_package(
                 return pkg
             raise Exception(f"Could not find concrete package: {pkg}")
     raise Exception("Could not find specific linux-modules package")
-
-
-class DebFetcher(Fetcher):
-    def __init__(
-        self, saved_data: dict[str, Any], dc: DistroConfig, savedir: Path
-    ):
-        self.index = dc.index
-        self.savedir = savedir
-        self.__last_hash: None | str = saved_data.get("last_hash")
-        self.__latest_hash: None | str = None
-        self.__packages_path: None | str = None
-        self.__packages_local: None | Path = None
-        self.__arch = RPM_TO_DEB_ARCH.get(dc.arch, dc.arch)
-        self.__category = dc.category or "main"
-        assert dc.codename is not None
-        self.__codename = dc.codename
-        assert dc.key
-        self.key = dc.key
-
-    @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
-        arch = RPM_TO_DEB_ARCH.get(dc.arch, dc.arch)
-        return "-".join([dc.index, str(dc.codename), arch, str(dc.category)])
-
-    def save_data(self) -> dict[str, Any]:
-        return {"last_hash": self.__latest_hash or self.__last_hash}
-
-    async def __query_latest_hash(self) -> None:
-        metadata = await _query_packages_metadata(
-            self.index,
-            self.key,
-            self.__codename,
-            self.__category,
-            self.__arch,
-        )
-        self.__latest_hash = metadata["checksum"][1]
-        self.__packages_path = metadata["packages_path"]
-
-    async def is_updated(self) -> bool:
-        if not self.__latest_hash:
-            await self.__query_latest_hash()
-        return self.__latest_hash != self.__last_hash
-
-    async def __fetch_latest_packages(self) -> None:
-        if not self.__latest_hash:
-            await self.__query_latest_hash()
-        assert self.__latest_hash
-        assert self.__packages_path
-        url = posixpath.join(
-            self.index, "dists", self.__codename, self.__packages_path
-        )
-        name = posixpath.basename(url)
-        file = self.savedir / name
-        await download_file(
-            url,
-            file,
-            always_download=await self.is_updated(),
-            checksum=("sha256", self.__latest_hash),
-        )
-        self.__packages_local = await maybe_decompress(file)
-
-    async def __get_relevant_keys(
-        self, flavor: str
-    ) -> dict[str, dict[str, str]]:
-        assert self.__packages_local
-        return await _get_relevant_keys(self.__packages_local, flavor)
-
-    async def latest_version_url(self, pkg: str) -> tuple[str, Checksum | None]:
-        if not self.__packages_local:
-            await self.__fetch_latest_packages()
-        m = re.fullmatch(r"linux-(.*)", pkg)
-        assert m
-        flavor = m.group(1)
-        keys = await self.__get_relevant_keys(flavor)
-
-        # For Ubuntu at least, the packages are wildly messed up.
-        # Assume for a moment we're looking at flavor=generic.
-        # We have "linux-generic" depending on "linux-image-generic", which
-        # depends on "linux-image-$UNAME-generic" which depends on
-        # "linux-modules-$UNAME-generic". Whew. All *we* want is the config,
-        # which seems to be contained in linux-modules-$UNAME-generic. The
-        # quickest route to this is to find "linux-image-$FLAVOR", get the
-        # specific package name dependency ("linux-image-$UNAME-$FLAVOR"),
-        # and then replace that with linux-modules.
-        pkg = _resolve_concrete_package(keys, flavor)
-        url = posixpath.join(self.index, keys[pkg]["Filename"])
-        checksum = ("sha256", keys[pkg]["SHA256"])
-        return (url, checksum)
 
 
 class DebIndex(Index):

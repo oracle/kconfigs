@@ -3,7 +3,6 @@
 import re
 from asyncio.subprocess import DEVNULL
 from pathlib import Path
-from typing import Any
 from typing import Mapping
 from typing import TypedDict
 from typing import cast
@@ -11,10 +10,8 @@ from typing import cast
 import aiofiles
 from aiofiles.tempfile import TemporaryDirectory
 
+from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
-from kconfigs.fetcher import Checksum
-from kconfigs.fetcher import DistroConfig
-from kconfigs.fetcher import Fetcher
 from kconfigs.index import Index
 from kconfigs.index import IndexId
 from kconfigs.index import alru_cache
@@ -71,27 +68,6 @@ def _latest_gki_link(page: str) -> AndroidGkiIndexStateData:
 
 async def _query_latest_gki(index: str) -> AndroidGkiIndexStateData:
     return _latest_gki_link((await download_file_mem(index)).decode("utf-8"))
-
-
-class AndroidGkiFetcher(Fetcher):
-    def __init__(
-        self, saved_state: dict[str, Any], dc: DistroConfig, savedir: Path
-    ):
-        self.index = dc.index
-
-    @classmethod
-    def uid(cls, dc: DistroConfig) -> str:
-        return dc.index
-
-    def save_data(self) -> dict[str, Any]:
-        return {}
-
-    async def is_updated(self) -> bool:
-        return True
-
-    async def latest_version_url(self, _: str) -> tuple[str, Checksum | None]:
-        data = await _query_latest_gki(self.index)
-        return (data["url"], None)
 
 
 class AndroidGkiIndex(Index):

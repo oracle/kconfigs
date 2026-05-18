@@ -10,7 +10,7 @@ import kconfigs.android as android_module
 import kconfigs.github as github_module
 import kconfigs.upstream as upstream_module
 from kconfigs.android import AndroidGkiIndex
-from kconfigs.fetcher import DistroConfig
+from kconfigs.distro import DistroConfig
 from kconfigs.github import GithubIndex
 from kconfigs.model import IndexState
 from kconfigs.upstream import UpstreamIndex

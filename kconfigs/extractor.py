@@ -5,7 +5,7 @@ import importlib
 from functools import cache
 from pathlib import Path
 
-from kconfigs.fetcher import DistroConfig
+from kconfigs.distro import DistroConfig
 from kconfigs.util import gpg_verify
 
 

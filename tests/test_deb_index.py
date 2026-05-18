@@ -8,7 +8,7 @@ import pytest
 
 import kconfigs.deb as deb_module
 from kconfigs.deb import DebIndex
-from kconfigs.fetcher import DistroConfig
+from kconfigs.distro import DistroConfig
 from kconfigs.model import Checksum
 from kconfigs.model import IndexState
 
