@@ -9,6 +9,9 @@ from asyncio.subprocess import DEVNULL
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from typing import Mapping
+from typing import TypedDict
+from typing import cast
 
 from aiofiles.tempfile import TemporaryDirectory
 
@@ -16,6 +19,12 @@ from kconfigs.extractor import Extractor
 from kconfigs.fetcher import Checksum
 from kconfigs.fetcher import DistroConfig
 from kconfigs.fetcher import Fetcher
+from kconfigs.index import Index
+from kconfigs.index import IndexId
+from kconfigs.index import alru_cache
+from kconfigs.model import JSON
+from kconfigs.model import Artifact
+from kconfigs.model import IndexState
 from kconfigs.util import check_call
 from kconfigs.util import download_file_mem
 from kconfigs.util import gpg_verify
@@ -50,6 +59,42 @@ class UpstreamKernel:
         return cls(version, url)
 
 
+class UpstreamKernelData(TypedDict):
+    version: str
+    url: str
+
+
+class UpstreamIndexStateData(TypedDict):
+    kernels: tuple[UpstreamKernelData, ...]
+
+
+def upstream_data(state: IndexState) -> UpstreamIndexStateData:
+    return cast(UpstreamIndexStateData, state.data)
+
+
+def _parse_feed(data: bytes) -> list[UpstreamKernel]:
+    tree = ET.fromstring(data.decode("utf-8"))
+    return [
+        UpstreamKernel.from_item(item)
+        for item in tree.findall("./channel/item")
+    ]
+
+
+def _kernel_matches_release(kernel: UpstreamKernelData, release: str) -> bool:
+    return (
+        kernel["version"] == release
+        or kernel["version"].startswith(release + ".")
+        or kernel["version"].startswith(release + "-")
+    )
+
+
+def _signature_url(url: str, key: str | None) -> str | None:
+    if not key:
+        return None
+    tarbase, _ = posixpath.splitext(url)
+    return tarbase + ".sign"
+
+
 class UpstreamFetcher(Fetcher):
     def __init__(
         self, saved_state: dict[str, Any], dc: DistroConfig, savedir: Path
@@ -75,16 +120,13 @@ class UpstreamFetcher(Fetcher):
 
     async def is_updated(self) -> bool:
         if not self.__latest_version:
-            data = await download_file_mem(self.index)
-            tree = ET.fromstring(data.decode("utf-8"))
-            for item in tree.findall("./channel/item"):
-                kernel = UpstreamKernel.from_item(item)
+            kernels = _parse_feed(await download_file_mem(self.index))
+            for kernel in kernels:
                 # Use 6.1.15 or 6.1-rc5 for release "6.1",
                 # but do not use 6.10!
-                if (
-                    kernel.version == self.release
-                    or kernel.version.startswith(self.release + ".")
-                    or kernel.version.startswith(self.release + "-")
+                if _kernel_matches_release(
+                    {"version": kernel.version, "url": kernel.url},
+                    self.release,
                 ):
                     self.__latest_version = kernel.version
                     self.__latest_url = kernel.url
@@ -97,15 +139,56 @@ class UpstreamFetcher(Fetcher):
 
     async def signature_url(self, _: str) -> str | None:
         assert self.__latest_url
-        if self.key:
-            tarbase, _ = posixpath.splitext(self.__latest_url)
-            return tarbase + ".sign"
-        else:
-            return None
+        return _signature_url(self.__latest_url, self.key)
 
     async def latest_version_url(self, _: str) -> tuple[str, Checksum | None]:
         assert self.__latest_url
         return (self.__latest_url, None)
+
+
+class UpstreamIndex(Index):
+    def __init__(self, index_id: IndexId, path: Path):
+        super().__init__(index_id, path)
+        if not isinstance(index_id, str):
+            raise TypeError(
+                f"{type(self).__name__} requires str index ID, "
+                f"not {type(index_id).__name__}"
+            )
+        self.index = index_id
+
+    @classmethod
+    def index_id(cls, dc: DistroConfig) -> str:
+        return dc.index
+
+    @alru_cache
+    async def check(self) -> IndexState:
+        kernels = tuple(
+            UpstreamKernelData(version=kernel.version, url=kernel.url)
+            for kernel in _parse_feed(await download_file_mem(self.index))
+        )
+        data: UpstreamIndexStateData = {"kernels": kernels}
+        return IndexState(
+            self.name, str(self.id), cast(Mapping[str, JSON], data)
+        )
+
+    async def resolve(self, dc: DistroConfig) -> Artifact:
+        if self.index_id(dc) != self.id:
+            raise ValueError(
+                f"{type(self).__name__}.resolve() got distro for "
+                f"{self.index_id(dc)}, expected {self.id}"
+            )
+        assert dc.version is not None
+        state = await self.check()
+        for kernel in upstream_data(state)["kernels"]:
+            if _kernel_matches_release(kernel, dc.version):
+                return Artifact(
+                    url=kernel["url"],
+                    checksum=None,
+                    signature_url=_signature_url(kernel["url"], dc.key),
+                    source_index_state=state,
+                    version=kernel["version"],
+                )
+        raise Exception(f"Could not find upstream kernel {dc.version}")
 
 
 class DefconfigExtractor(Extractor):
