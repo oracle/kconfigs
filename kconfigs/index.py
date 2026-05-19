@@ -7,6 +7,7 @@ Interface for indexes, which check metadata and resolve artifacts.
 import abc
 import asyncio
 import importlib
+import shutil
 from collections.abc import Callable
 from collections.abc import Coroutine
 from collections.abc import Hashable
@@ -23,6 +24,7 @@ from kconfigs.model import Artifact
 from kconfigs.model import IndexState
 
 IndexId: TypeAlias = Hashable
+IndexKey: TypeAlias = tuple[str, IndexId]
 R = TypeVar("R")
 
 
@@ -99,6 +101,15 @@ class Index(abc.ABC):
         Resolve an artifact for one distro target from the current checked state.
         """
 
+    def cleanup(self) -> None:
+        """
+        Remove this index's local metadata cache.
+
+        The index should not be used for check() or resolve() after cleanup.
+        """
+        if self.path.exists():
+            shutil.rmtree(self.path)
+
     @classmethod
     @cache
     def get(cls, kind: str) -> type["Index"]:
@@ -111,22 +122,26 @@ class Index(abc.ABC):
 
 class IndexRegistry:
     def __init__(self, workdir: Path):
-        self.registry: dict[tuple[str, IndexId], Index] = {}
+        self.registry: dict[IndexKey, Index] = {}
         self.workdir = workdir
+
+    @staticmethod
+    def index_key(dc: DistroConfig) -> IndexKey:
+        index_cls = Index.get(dc.fetcher)
+        return (dc.fetcher, index_cls.index_id(dc))
 
     def get(self, dc: DistroConfig) -> Index:
         index_cls = Index.get(dc.fetcher)
-        index_id = index_cls.index_id(dc)
-        if (dc.fetcher, index_id) not in self.registry:
+        key = self.index_key(dc)
+        fetcher, index_id = key
+        if key not in self.registry:
             trans = str.maketrans(":/?", "___")
             index_dir = (
                 self.workdir
                 / "index"
-                / dc.fetcher
+                / fetcher
                 / str(index_id).translate(trans)
             )
             index_dir.mkdir(exist_ok=True, parents=True)
-            self.registry[(dc.fetcher, index_id)] = index_cls(
-                index_id, index_dir
-            )
-        return self.registry[(dc.fetcher, index_id)]
+            self.registry[key] = index_cls(index_id, index_dir)
+        return self.registry[key]

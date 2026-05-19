@@ -22,6 +22,7 @@ from typing import cast
 from kconfigs.distro import DistroConfig
 from kconfigs.extractor import Extractor
 from kconfigs.index import Index
+from kconfigs.index import IndexKey
 from kconfigs.index import IndexRegistry
 from kconfigs.model import Artifact
 from kconfigs.util import download_file
@@ -151,6 +152,33 @@ def AbsPath(s: str) -> Path:
     return Path(s).absolute()
 
 
+def index_target_groups(
+    distros: list[DistroConfig],
+) -> dict[IndexKey, set[str]]:
+    groups: dict[IndexKey, set[str]] = {}
+    for distro in distros:
+        key = IndexRegistry.index_key(distro)
+        groups.setdefault(key, set()).add(distro.unique_name)
+    return groups
+
+
+def cleanup_completed_indexes(
+    indexes: IndexRegistry,
+    configured_index_targets: dict[IndexKey, set[str]],
+    selected_index_targets: dict[IndexKey, set[str]],
+    succeeded_index_targets: dict[IndexKey, set[str]],
+) -> None:
+    for key, selected_targets in selected_index_targets.items():
+        configured_targets = configured_index_targets[key]
+        succeeded_targets = succeeded_index_targets.get(key, set())
+        if (
+            selected_targets == configured_targets
+            and succeeded_targets == configured_targets
+            and key in indexes.registry
+        ):
+            indexes.registry[key].cleanup()
+
+
 class TaskTracker:
     """
     A simple tracker for asyncio.Task objects that cancels on exit.
@@ -258,8 +286,15 @@ async def run_distro_tasks(
     *,
     filtered: bool,
     fail_fast: bool,
+    all_distros: list[DistroConfig] | None = None,
 ) -> tuple[dict[str, Any], TaskTracker]:
+    if all_distros is None:
+        all_distros = distros
     indexes = IndexRegistry(download_dir)
+    configured_index_targets = index_target_groups(all_distros)
+    selected_index_targets = index_target_groups(distros)
+    succeeded_index_targets: dict[IndexKey, set[str]] = {}
+    task_index_keys: dict[asyncio.Task[Any], IndexKey] = {}
 
     if filtered:
         new_distro_state = distro_state.copy()
@@ -274,6 +309,7 @@ async def run_distro_tasks(
     async with TaskTracker() as tg:
         for distro in distros:
             state = distro_state.get(distro.unique_name, {})
+            key = IndexRegistry.index_key(distro)
             index = indexes.get(distro)
             task = tg.create_task(
                 run_for_index_distro(
@@ -285,6 +321,7 @@ async def run_distro_tasks(
                 )
             )
             task.set_name(distro.unique_name)
+            task_index_keys[task] = key
 
         async for success, task in tg.as_completed():
             if not success:
@@ -294,7 +331,17 @@ async def run_distro_tasks(
                     continue
             distro, state = await task
             new_distro_state[distro.unique_name] = state
+            key = task_index_keys[task]
+            succeeded_index_targets.setdefault(key, set()).add(
+                distro.unique_name
+            )
 
+    cleanup_completed_indexes(
+        indexes,
+        configured_index_targets,
+        selected_index_targets,
+        succeeded_index_targets,
+    )
     return new_distro_state, tg
 
 
@@ -350,6 +397,7 @@ async def main() -> None:
 
     distro_state = state.get("distros", {})
 
+    all_distros = get_distros(cfg, [])
     distros = get_distros(cfg, args.filter)
     new_distro_state, tg = await run_distro_tasks(
         distros,
@@ -358,6 +406,7 @@ async def main() -> None:
         args.output_dir,
         filtered=bool(args.filter),
         fail_fast=args.fail_fast,
+        all_distros=all_distros,
     )
 
     with args.state.open("wt") as f:

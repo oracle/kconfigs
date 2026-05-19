@@ -24,6 +24,7 @@ class RegistryFakeIndex(Index):
     def __init__(self, index_id: IndexId, path: Path):
         super().__init__(index_id, path)
         self.path = path
+        self.cleanup_calls = 0
         self.created.append(self)
 
     @classmethod
@@ -43,6 +44,16 @@ class RegistryFakeIndex(Index):
             signature_url=None,
             source_index_state=state,
         )
+
+    def cleanup(self) -> None:
+        self.cleanup_calls += 1
+        super().cleanup()
+
+
+class FailingCleanupIndex(RegistryFakeIndex):
+    def cleanup(self) -> None:
+        self.cleanup_calls += 1
+        raise RuntimeError("cleanup failed")
 
 
 class StaticIndex(Index):
@@ -98,15 +109,18 @@ class BlockingCheckIndex(Index):
 
 
 class RecordingExtractor(Extractor):
-    def __init__(self, *, fail: bool = False):
+    def __init__(
+        self, *, fail: bool = False, fail_names: set[str] | None = None
+    ):
         self.fail = fail
+        self.fail_names = fail_names or set()
         self.extract_calls = 0
 
     async def extract_kconfig(
         self, package: Path, output: Path, dc: DistroConfig
     ) -> None:
         self.extract_calls += 1
-        if self.fail:
+        if self.fail or dc.unique_name in self.fail_names:
             raise RuntimeError("extract failed")
         output.write_text("CONFIG_FAKE=y\n")
 
@@ -127,12 +141,16 @@ class DownloadRecorder:
         file.write_bytes(b"package")
 
 
-def make_distro(name: str = "Test Distro") -> DistroConfig:
+def make_distro(
+    name: str = "Test Distro",
+    *,
+    fetcher: str = f"{__name__}.RegistryFakeIndex",
+) -> DistroConfig:
     return DistroConfig(
         name=name,
         arch="x86_64",
         package="kernel",
-        fetcher=f"{__name__}.RegistryFakeIndex",
+        fetcher=fetcher,
         extractor="unused.extractor",
         index="https://example.com/repo",
         repo="core",
@@ -163,6 +181,124 @@ def test_index_registry_reuses_same_kind_and_index_id(tmp_path: Path) -> None:
     assert registry.get(different_index_distro) is not index
     assert len(RegistryFakeIndex.created) == 2
     assert RegistryFakeIndex.created[0].path.exists()
+
+
+def test_successful_index_targets_cleanup_shared_index(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    RegistryFakeIndex.created = []
+    distros = [make_distro(), make_distro(name="Same Index")]
+    extractor = RecordingExtractor()
+    downloader = DownloadRecorder()
+
+    install_extractor(monkeypatch, extractor)
+    monkeypatch.setattr(main_module, "download_file", downloader)
+
+    new_distro_state, tracker = asyncio.run(
+        main_module.run_distro_tasks(
+            distros,
+            {},
+            tmp_path / "save",
+            tmp_path / "out",
+            filtered=False,
+            fail_fast=False,
+            all_distros=distros,
+        )
+    )
+
+    assert tracker.success
+    assert set(new_distro_state) == {d.unique_name for d in distros}
+    assert len(RegistryFakeIndex.created) == 1
+    assert RegistryFakeIndex.created[0].cleanup_calls == 1
+    assert not RegistryFakeIndex.created[0].path.exists()
+
+
+def test_filtered_partial_index_group_skips_cleanup(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    RegistryFakeIndex.created = []
+    selected = make_distro()
+    omitted = make_distro(name="Same Index")
+    extractor = RecordingExtractor()
+    downloader = DownloadRecorder()
+
+    install_extractor(monkeypatch, extractor)
+    monkeypatch.setattr(main_module, "download_file", downloader)
+
+    _, tracker = asyncio.run(
+        main_module.run_distro_tasks(
+            [selected],
+            {},
+            tmp_path / "save",
+            tmp_path / "out",
+            filtered=True,
+            fail_fast=False,
+            all_distros=[selected, omitted],
+        )
+    )
+
+    assert tracker.success
+    assert len(RegistryFakeIndex.created) == 1
+    assert RegistryFakeIndex.created[0].cleanup_calls == 0
+    assert RegistryFakeIndex.created[0].path.exists()
+
+
+def test_failed_index_group_skips_cleanup(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    RegistryFakeIndex.created = []
+    good = make_distro()
+    bad = make_distro(name="Same Index")
+    extractor = RecordingExtractor(fail_names={bad.unique_name})
+    downloader = DownloadRecorder()
+
+    install_extractor(monkeypatch, extractor)
+    monkeypatch.setattr(main_module, "download_file", downloader)
+
+    _, tracker = asyncio.run(
+        main_module.run_distro_tasks(
+            [good, bad],
+            {},
+            tmp_path / "save",
+            tmp_path / "out",
+            filtered=False,
+            fail_fast=False,
+            all_distros=[good, bad],
+        )
+    )
+
+    assert not tracker.success
+    assert len(RegistryFakeIndex.created) == 1
+    assert RegistryFakeIndex.created[0].cleanup_calls == 0
+    assert RegistryFakeIndex.created[0].path.exists()
+
+
+def test_index_cleanup_failure_fails_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    RegistryFakeIndex.created = []
+    distro = make_distro(fetcher=f"{__name__}.FailingCleanupIndex")
+    extractor = RecordingExtractor()
+    downloader = DownloadRecorder()
+
+    install_extractor(monkeypatch, extractor)
+    monkeypatch.setattr(main_module, "download_file", downloader)
+
+    with pytest.raises(RuntimeError, match="cleanup failed"):
+        asyncio.run(
+            main_module.run_distro_tasks(
+                [distro],
+                {},
+                tmp_path / "save",
+                tmp_path / "out",
+                filtered=False,
+                fail_fast=False,
+                all_distros=[distro],
+            )
+        )
+
+    assert len(RegistryFakeIndex.created) == 1
+    assert RegistryFakeIndex.created[0].cleanup_calls == 1
 
 
 def test_alru_cache_coalesces_concurrent_index_checks() -> None:
