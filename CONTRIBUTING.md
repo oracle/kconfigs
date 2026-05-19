@@ -108,11 +108,11 @@ key = GPG-KEY-NAME
 # meaning will depend on which distribution you're using.
 index = https://yum.example.com/version1/x86_64/
 
-# These refer to Python classes that implement the core functionality: "fetchers"
-# can check for updates and fetch the kernel package, and "extractors" can take a
-# kernel package and extract the kernel file from it. See kconfigs/fetcher.py and
-# kconfigs/extractor.py for API details, and further info below.
-fetcher = FETCHER HERE
+# These refer to Python classes that implement the core functionality: indexes
+# check repository metadata and resolve kernel package artifacts, and extractors
+# extract a config from a downloaded package. The configuration key is still
+# named "fetcher" for compatibility, but it must point to an Index class.
+fetcher = INDEX HERE
 extractor = EXTRACTOR HERE
 ```
 
@@ -133,7 +133,7 @@ as a reference.
 Use the following:
 
 ```ini
-fetcher = kconfigs.rpm.RpmFetcher
+fetcher = kconfigs.rpm.RpmIndex
 extractor = kconfigs.rpm.RpmExtractor
 ```
 
@@ -142,7 +142,7 @@ extractor = kconfigs.rpm.RpmExtractor
 Use:
 
 ```ini
-fetcher = kconfigs.deb.DebFetcher
+fetcher = kconfigs.deb.DebIndex
 extractor = kconfigs.deb.DebExtractor
 codename = release codename
 package = linux-FLAVOR
@@ -168,42 +168,63 @@ and we'll try to sort it out.
 Use:
 
 ```ini
-fetcher = kconfigs.pacman.PacmanFetcher
+fetcher = kconfigs.pacman.PacmanIndex
 extractor = kconfigs.pacman.PacmanExtractor
 repo = core
 ```
 
 Note that the index URL also includes the repo name (typically "core"). See the
-existing configurations for furthe reference.
+existing configurations for further reference.
 
 ## Adding Other Kinds of Distributions
 
 If you want to add a distro which uses some other package format, you'll need to
-implement a fetcher and/or extractor. This section gives you an idea of the
-architecture of the code. See the corresponding files for the APIs you'll need
-to implement, and see `kconfigs/main.py` for the code that actually uses it.
+implement an index and/or extractor. This section gives you an idea of the
+architecture of the code. See `kconfigs/index.py`, `kconfigs/model.py`, and
+`kconfigs/main.py` for the APIs and orchestration.
 
-### Fetchers
+### Indexes and Artifacts
 
-Fetchers (see `kconfigs/fetcher.py`) understand the package manager's repository
-metadata, at least well enough to check for the latest version of the kernel
-package and get its URL, along with any available checksum and/or signature.
-Each distribution has its own fetcher implementation.
+Indexes understand repository metadata well enough to find the latest kernel
+package for one or more configured distro targets. An index has three phases:
 
-Normally, package manager based fetchers have three parts:
+1. `index_id()` takes a distribution configuration, and returns the unique
+   identifier for this index. Distro targets with the same index ID will share
+   the index, avoiding duplicated work.
+1. `check()` performs the smallest useful metadata operation and returns an
+   `IndexState`.
+1. `resolve(dc)` uses the checked state and any larger package metadata to
+   return an `Artifact` for one `DistroConfig`.
 
-1. Checking whether the package database has changed. This might be done by a
-   small metadata file, or even by a HTTP head request to see the last modified
-   time.
-2. If the database is changed, then it needs to be fetched in order to check
-   whether the kernel package has an update.
-3. Finally, if the package is updated, then it needs to be downloaded.
+As a concrete example, consider the RPM index:
 
-When the program is run, we provide a directory where repository metadata can be
-downloaded to. We also provide a `state.json` file where fetcher can cache
-information. For instance, they could store the last modified time of the
-database, or the previous checksum of the database, to use when checking for
-updates.
+1. The `index_id()` for RPM is the repository URL. (For simplicity, it also
+   includes the GPG key used to verify packages from the URL).
+1. The `check()` method fetches the `repomd.xml` file and checks to see what the
+   latest database version is. The `IndexState` is the database URL (which
+   includes the version in it).
+1. The `resolve()` method downloads the database and queries for the matching
+   kernel package. It returns an `Artifact` describing that kernel URL.
+
+The returned `Artifact` contains the package URL, optional checksum, optional
+detached signature URL, optional package version, and the `IndexState` it was
+resolved from. `Artifact` objects just describe the downloads; they do not
+download or extract anything themselves.
+
+`IndexState` should be small, immutable, and JSON-serializable. If it matches
+the `IndexState` from the previous artifact, then we know that the latest
+artifact has not changed. It's just a convenient way to avoid doing extra work.
+
+Since multiple distributions could share the same index, it's important for
+`check()` and `resolve()` to be able to be called concurrently and share their
+work. For this purpose, the `@alru_cache` helper can be used to ensure that
+downloads or extractions only happen once, even when called multiple times or
+concurrently.
+
+To avoid redoing work, kconfigs maintains caches. First is the `state.json`,
+which contains the latest artifact for each distribution. Since the artifact
+contains the `IndexState` it was derived from, many distributions can be skipped
+when no new package is available.
 
 ### Extractors
 
