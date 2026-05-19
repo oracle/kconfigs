@@ -33,6 +33,22 @@ class DownloadManager:
         self.session = ClientSession(raise_for_status=True)
         self.sem = Semaphore(max_downloads)
 
+    async def _verify_file_checksum(
+        self, url: str, file: Path, checksum: tuple[str, str]
+    ) -> None:
+        h = hashlib.new(checksum[0], usedforsecurity=True)
+        async with aiofiles.open(file, "rb") as f:
+            while chunk := await f.read(4096):
+                h.update(chunk)
+        digest = h.hexdigest()
+        if digest != checksum[1]:
+            raise Exception(
+                f"Failed to verify {checksum[0]} checksum of {url}:\n"
+                f"Expected: {checksum[1]}\n"
+                f"Actual  : {digest}"
+            )
+        print(f"Verified {checksum[0]} of {url}")
+
     async def head(self, url: str) -> CIMultiDictProxy[str]:
         async with self.sem:
             print(f"HTTP HEAD {url}")
@@ -46,14 +62,24 @@ class DownloadManager:
         always_download: bool = False,
         checksum: tuple[str, str] | None = None,
     ) -> None:
-        if checksum:
-            h = hashlib.new(checksum[0], usedforsecurity=True)
         if file.exists() and not always_download:
-            # Prevents duplicate work during development
-            print(f"Skip download {file}")
-            return
+            if checksum:
+                try:
+                    await self._verify_file_checksum(url, file, checksum)
+                except Exception:
+                    file.unlink(missing_ok=True)
+                else:
+                    print(f"Skip download {file}")
+                    return
+            else:
+                print(f"Skip download {file}")
+                return
+        tmp_file = file.with_name(f".{file.name}.tmp")
+        tmp_file.unlink(missing_ok=True)
         errors = []
         for i in range(self.RETRIES):
+            if checksum:
+                h = hashlib.new(checksum[0], usedforsecurity=True)
             async with self.sem:
                 try:
                     print(
@@ -61,22 +87,32 @@ class DownloadManager:
                     )
                     async with (
                         self.session.get(url) as resp,
-                        aiofiles.open(file, "wb") as out,
+                        aiofiles.open(tmp_file, "wb") as out,
                     ):
                         async for chunk in resp.content.iter_chunked(4096):
                             if checksum:
                                 h.update(chunk)
                             await out.write(chunk)
+                    if checksum:
+                        digest = h.hexdigest()
+                        if digest != checksum[1]:
+                            raise Exception(
+                                f"Failed to verify {checksum[0]} checksum of {url}:\n"
+                                f"Expected: {checksum[1]}\n"
+                                f"Actual  : {digest}"
+                            )
+                        print(f"Verified {checksum[0]} of {url}")
+                    tmp_file.replace(file)
                     break
                 except ClientResponseError as err:
-                    file.unlink(missing_ok=True)
+                    tmp_file.unlink(missing_ok=True)
                     if err.status == 404:
                         # retrying won't help, raise
                         raise
                     # otherwise, wait a second and retry
                     errors.append(err)
                 except BaseException:
-                    file.unlink(missing_ok=True)
+                    tmp_file.unlink(missing_ok=True)
                     raise
             await asyncio.sleep(1)
         else:
@@ -85,24 +121,14 @@ class DownloadManager:
                 f"Failed to download {url} after {self.RETRIES} retries: "
                 f"{errors}"
             )
-        if checksum:
-            digest = h.hexdigest()
-            if digest != checksum[1]:
-                raise Exception(
-                    f"Failed to verify {checksum[0]} checksum of {url}:\n"
-                    f"Expected: {checksum[1]}\n",
-                    f"Actual  : {digest}",
-                )
-            else:
-                print(f"Verified {checksum[0]} of {url}")
 
     async def download_file_mem(
         self, url: str, checksum: tuple[str, str] | None = None
     ) -> bytes:
-        if checksum:
-            h = hashlib.new(checksum[0])
         errors = []
         for i in range(self.RETRIES):
+            if checksum:
+                h = hashlib.new(checksum[0])
             out = io.BytesIO()
             try:
                 async with self.sem, self.session.get(url) as resp:
@@ -128,8 +154,8 @@ class DownloadManager:
             if digest != checksum[1]:
                 raise Exception(
                     f"Failed to verify {checksum[0]} checksum of {url}:\n"
-                    f"Expected: {checksum[1]}\n",
-                    f"Actual  : {digest}",
+                    f"Expected: {checksum[1]}\n"
+                    f"Actual  : {digest}"
                 )
             else:
                 print(f"Verified {checksum[0]} of {url}")
@@ -196,7 +222,11 @@ async def maybe_decompress(file: Path) -> Path:
 
     decomp = file.parent / file.name[: -1 - len(ext)]
     if not decomp.exists():
-        await check_call([compressors[ext], "-kq", file])
+        try:
+            await check_call([compressors[ext], "-kq", file])
+        except BaseException:
+            decomp.unlink(missing_ok=True)
+            raise
     return decomp
 
 

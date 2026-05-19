@@ -132,13 +132,19 @@ class PacmanIndex(Index):
         dbpath = self.savedir / _cache_file_name(data["db_url"], token)
         extract_dir = self.savedir / f"{token}-db"
         if not extract_dir.exists():
-            await download_file(data["db_url"], dbpath)
             tmp_dir = self.savedir / f"{token}-db.tmp"
             if tmp_dir.exists():
                 shutil.rmtree(tmp_dir)
-            tmp_dir.mkdir()
-            await check_call(["tar", "xf", dbpath], cwd=tmp_dir)
-            tmp_dir.rename(extract_dir)
+            try:
+                await download_file(data["db_url"], dbpath)
+                tmp_dir.mkdir()
+                await check_call(["tar", "xf", dbpath], cwd=tmp_dir)
+                tmp_dir.rename(extract_dir)
+            except BaseException:
+                if tmp_dir.exists():
+                    shutil.rmtree(tmp_dir)
+                dbpath.unlink(missing_ok=True)
+                raise
         return extract_dir
 
     async def resolve(self, dc: DistroConfig) -> Artifact:

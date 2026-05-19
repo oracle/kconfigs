@@ -153,3 +153,37 @@ def test_pacman_index_resolve_materializes_db_once_for_shared_index(
         "https://mirror.example.com/archlinux/core/os/x86_64/core.db.tar.gz"
     )
     assert materialize_calls[0][2] is None
+
+
+def test_pacman_index_cleans_failed_materialization(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    async def head_file(url: str) -> dict[str, str]:
+        del url
+        return {"Last-Modified": "Fri, 01 May 2026 00:00:00 GMT"}
+
+    async def download_file(
+        url: str,
+        file: Path,
+        always_download: bool = False,
+        checksum: Checksum | None = None,
+    ) -> None:
+        del url, always_download, checksum
+        file.write_bytes(b"not a tarball")
+
+    async def check_call(cmd: list[str | Path], **kwargs: object) -> bytes:
+        del cmd, kwargs
+        raise RuntimeError("tar failed")
+
+    monkeypatch.setattr(pacman_module, "head_file", head_file)
+    monkeypatch.setattr(pacman_module, "download_file", download_file)
+    monkeypatch.setattr(pacman_module, "check_call", check_call)
+
+    dc = make_distro()
+    cache = tmp_path / "cache"
+    index = PacmanIndex(PacmanIndex.index_id(dc), cache)
+
+    with pytest.raises(RuntimeError, match="tar failed"):
+        asyncio.run(index.resolve(dc))
+
+    assert list(cache.iterdir()) == []
