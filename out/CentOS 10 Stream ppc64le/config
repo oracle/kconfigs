@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/powerpc 6.12.0-226.el10.ppc64le Kernel Configuration
+# Linux/powerpc 6.12.0-228.el10.ppc64le Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4)"
 CONFIG_CC_IS_GCC=y
@@ -34,7 +34,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="6.12.0-226.el10.ppc64le"
+CONFIG_BUILD_SALT="6.12.0-228.el10.ppc64le"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_XZ=y
 CONFIG_KERNEL_GZIP=y
@@ -3446,6 +3446,7 @@ CONFIG_I2C_STUB=m
 # end of I2C support
 
 # CONFIG_I3C is not set
+CONFIG_I3C_OR_I2C=y
 # CONFIG_SPI is not set
 # CONFIG_SPMI is not set
 # CONFIG_HSI is not set

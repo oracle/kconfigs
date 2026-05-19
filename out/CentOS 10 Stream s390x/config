@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/s390 6.12.0-226.el10.s390x Kernel Configuration
+# Linux/s390 6.12.0-228.el10.s390x Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4)"
 CONFIG_CC_IS_GCC=y
@@ -33,7 +33,7 @@ CONFIG_WERROR=y
 CONFIG_UAPI_HEADER_TEST=y
 CONFIG_LOCALVERSION=""
 # CONFIG_LOCALVERSION_AUTO is not set
-CONFIG_BUILD_SALT="6.12.0-226.el10.s390x"
+CONFIG_BUILD_SALT="6.12.0-228.el10.s390x"
 CONFIG_HAVE_KERNEL_GZIP=y
 CONFIG_HAVE_KERNEL_BZIP2=y
 CONFIG_HAVE_KERNEL_LZMA=y
@@ -2474,6 +2474,7 @@ CONFIG_I2C_ALGOBIT=m
 # end of I2C support
 
 # CONFIG_I3C is not set
+CONFIG_I3C_OR_I2C=m
 # CONFIG_SPI is not set
 # CONFIG_SPMI is not set
 # CONFIG_HSI is not set

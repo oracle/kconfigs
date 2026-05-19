@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 7.0.5 Kernel Configuration
+# Linux/x86 7.0.7 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (SUSE Linux) 15.2.1 20260202"
 CONFIG_CC_IS_GCC=y
@@ -11261,7 +11261,7 @@ CONFIG_NFS_V3=m
 CONFIG_NFS_V3_ACL=y
 CONFIG_NFS_V4=m
 CONFIG_NFS_SWAP=y
-# CONFIG_NFS_V4_0 is not set
+CONFIG_NFS_V4_0=y
 CONFIG_NFS_V4_2=y
 CONFIG_PNFS_FILE_LAYOUT=m
 CONFIG_PNFS_BLOCK=m
