@@ -37,7 +37,7 @@ def main() -> None:
     cfg = ConfigParser()
     cfg.read(args.config)
     distros = get_distros(cfg, args.filter)
-    names = set(d.unique_name for d in distros)
+    names = set(d.name for d in distros)
     for path in args.input_dir.iterdir():
         if path.name not in names:
             print(f'Removing "{path.name}"')

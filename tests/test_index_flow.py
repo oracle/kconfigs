@@ -120,7 +120,7 @@ class RecordingExtractor(Extractor):
         self, package: Path, output: Path, dc: DistroConfig
     ) -> None:
         self.extract_calls += 1
-        if self.fail or dc.unique_name in self.fail_names:
+        if self.fail or dc.name in self.fail_names:
             raise RuntimeError("extract failed")
         output.write_text("CONFIG_FAKE=y\n")
 
@@ -207,7 +207,7 @@ def test_successful_index_targets_cleanup_shared_index(
     )
 
     assert tracker.success
-    assert set(new_distro_state) == {d.unique_name for d in distros}
+    assert set(new_distro_state) == {d.name for d in distros}
     assert len(RegistryFakeIndex.created) == 1
     assert RegistryFakeIndex.created[0].cleanup_calls == 1
     assert not RegistryFakeIndex.created[0].path.exists()
@@ -249,7 +249,7 @@ def test_failed_index_group_skips_cleanup(
     RegistryFakeIndex.created = []
     good = make_distro()
     bad = make_distro(name="Same Index")
-    extractor = RecordingExtractor(fail_names={bad.unique_name})
+    extractor = RecordingExtractor(fail_names={bad.name})
     downloader = DownloadRecorder()
 
     install_extractor(monkeypatch, extractor)
@@ -352,7 +352,7 @@ def test_failed_index_target_does_not_advance_state(
     new_distro_state, tracker = asyncio.run(
         main_module.run_distro_tasks(
             [distro],
-            {distro.unique_name: prior_state},
+            {distro.name: prior_state},
             tmp_path / "save",
             tmp_path / "out",
             filtered=False,
@@ -360,7 +360,7 @@ def test_failed_index_target_does_not_advance_state(
         )
     )
 
-    assert new_distro_state[distro.unique_name] == prior_state
+    assert new_distro_state[distro.name] == prior_state
     assert not tracker.success
     assert index.check_calls == 1
     assert index.resolve_calls == 1
@@ -391,7 +391,7 @@ def test_metadata_only_index_update_advances_state_without_download(
     index = StaticIndex(new_index_state, new_artifact)
     extractor = RecordingExtractor()
     downloader = DownloadRecorder()
-    output = tmp_path / "out" / distro.unique_name / "config"
+    output = tmp_path / "out" / distro.name / "config"
     output.parent.mkdir(parents=True)
     output.write_text("CONFIG_OLD=y\n")
 
@@ -402,7 +402,7 @@ def test_metadata_only_index_update_advances_state_without_download(
     new_distro_state, tracker = asyncio.run(
         main_module.run_distro_tasks(
             [distro],
-            {distro.unique_name: {"artifact": old_artifact.to_json()}},
+            {distro.name: {"artifact": old_artifact.to_json()}},
             tmp_path / "save",
             tmp_path / "out",
             filtered=False,
@@ -410,9 +410,7 @@ def test_metadata_only_index_update_advances_state_without_download(
         )
     )
 
-    assert new_distro_state[distro.unique_name] == {
-        "artifact": new_artifact.to_json()
-    }
+    assert new_distro_state[distro.name] == {"artifact": new_artifact.to_json()}
     assert tracker.success
     assert index.check_calls == 1
     assert index.resolve_calls == 1
@@ -436,7 +434,7 @@ def test_legacy_latest_url_state_migrates_without_download_when_output_exists(
     index = StaticIndex(index_state, artifact)
     extractor = RecordingExtractor()
     downloader = DownloadRecorder()
-    output = tmp_path / "out" / distro.unique_name / "config"
+    output = tmp_path / "out" / distro.name / "config"
     output.parent.mkdir(parents=True)
     output.write_text("CONFIG_OLD=y\n")
 
@@ -447,7 +445,7 @@ def test_legacy_latest_url_state_migrates_without_download_when_output_exists(
     new_distro_state, tracker = asyncio.run(
         main_module.run_distro_tasks(
             [distro],
-            {distro.unique_name: {"latest_url": artifact.url}},
+            {distro.name: {"latest_url": artifact.url}},
             tmp_path / "save",
             tmp_path / "out",
             filtered=False,
@@ -455,9 +453,7 @@ def test_legacy_latest_url_state_migrates_without_download_when_output_exists(
         )
     )
 
-    assert new_distro_state[distro.unique_name] == {
-        "artifact": artifact.to_json()
-    }
+    assert new_distro_state[distro.name] == {"artifact": artifact.to_json()}
     assert tracker.success
     assert index.check_calls == 1
     assert index.resolve_calls == 1

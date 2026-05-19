@@ -70,10 +70,10 @@ def main() -> None:
     kconfigs = {}
     kconfig_keys: set[str] = set()
     for distro in distros:
-        config_file = args.input_dir / distro.unique_name / "config"
+        config_file = args.input_dir / distro.name / "config"
         with config_file.open("rt") as f:
             kconfig = parse_kconfig(f)
-        kconfigs[distro.unique_name] = kconfig
+        kconfigs[distro.name] = kconfig
         kconfig_keys.update(kconfig)
 
     print("not set\tyes\tmod\tother\tdistro")
@@ -84,7 +84,7 @@ def main() -> None:
     for distro in distros:
         distro_list.append(
             {
-                "unique_name": distro.unique_name,
+                "unique_name": distro.name,
                 "name": distro.name,
                 "version": distro.version,
                 "arch": distro.arch,
@@ -97,7 +97,7 @@ def main() -> None:
         count_mod = 0
         count_other = 0
 
-        kconfig = kconfigs[distro.unique_name]
+        kconfig = kconfigs[distro.name]
         for key in kconfig_keys:
             val = kconfig.get(key)
             kconfig_to_distro_list[key.removeprefix("CONFIG_")].append(val)
@@ -110,7 +110,7 @@ def main() -> None:
             else:
                 count_other += 1
         print(
-            f"{count_missing}\t{count_yes}\t{count_mod}\t{count_other}\t{distro.unique_name}"
+            f"{count_missing}\t{count_yes}\t{count_mod}\t{count_other}\t{distro.name}"
         )
 
     with args.output_file.open("wt") as f:

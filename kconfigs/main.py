@@ -14,6 +14,7 @@ from collections.abc import Coroutine
 from collections.abc import Mapping
 from fnmatch import fnmatch
 from pathlib import Path
+from string import Template
 from types import TracebackType
 from typing import Any
 from typing import Self
@@ -31,6 +32,11 @@ from kconfigs.util import download_manager
 # Extraction is CPU-bound, and it also consumes quite a bit of disk space.
 # Limit the number of CPUs which can do extraction in parallel.
 extract_sem = asyncio.Semaphore(multiprocessing.cpu_count() + 1)
+
+TEMPLATE_VARIABLES = frozenset(
+    ("version", "arch", "codename", "package", "uekver")
+)
+SUBSTITUTED_TEMPLATE_FIELDS = frozenset(("name", "index", "key"))
 
 
 def artifact_from_state(state: dict[str, Any]) -> Artifact | None:
@@ -74,7 +80,7 @@ async def download_and_extract_artifact(
                 await download_file(artifact.signature_url, sigfile)
                 await extractor.verify_signature(file, sigfile, d)
 
-            print(f"Extract config of {d.unique_name}")
+            print(f"Extract config of {d.name}")
             await extractor.extract_kconfig(file, out, d)
     finally:
         if workdir.exists():
@@ -88,9 +94,9 @@ async def run_for_index_distro(
     save_dir: Path,
     out_dir: Path,
 ) -> tuple[DistroConfig, dict[str, Any]]:
-    workdir = save_dir / "distro" / d.unique_name
+    workdir = save_dir / "distro" / d.name
 
-    out = out_dir / d.unique_name / "config"
+    out = out_dir / d.name / "config"
     out.parent.mkdir(exist_ok=True, parents=True)
 
     old_artifact = artifact_from_state(state)
@@ -136,16 +142,122 @@ async def run_for_index_distro(
 def get_distros(
     cfg: configparser.ConfigParser, f: list[str]
 ) -> list[DistroConfig]:
+    templates = {
+        sec[:-1]: sec
+        for sec in cfg.sections()
+        if sec.endswith(":") and sec[:-1]
+    }
     distros = []
     for sec in cfg.sections():
-        if f and not any(fnmatch(sec, pat) for pat in f):
+        if sec.endswith(":"):
+            if not sec[:-1]:
+                raise ValueError("template section name must not be empty")
             continue
-        args: dict[str, Any] = dict(cfg[sec])
+
+        section_name = _distro_section_name(sec)
+        args = _expanded_section_args(cfg, sec, templates)
         # handle non-string configs
         if "do_update" in args:
-            args["do_update"] = cfg[sec].getboolean("do_update")
-        distros.append(DistroConfig(**args))
-    return distros
+            args["do_update"] = _convert_config_bool(
+                args["do_update"], sec, "do_update"
+            )
+        distros.append((sec, section_name, DistroConfig(**args)))
+    _check_unique_distro_names(distros)
+    return [
+        distro
+        for sec, section_name, distro in distros
+        if not f
+        or any(fnmatch(section_name, pat) or fnmatch(sec, pat) for pat in f)
+    ]
+
+
+def _check_unique_distro_names(
+    distros: list[tuple[str, str, DistroConfig]],
+) -> None:
+    sections_by_name: dict[str, str] = {}
+    for section, _, distro in distros:
+        if distro.name in sections_by_name:
+            raise ValueError(
+                f"sections [{sections_by_name[distro.name]}] and "
+                f"[{section}] resolve to duplicate distro name {distro.name!r}"
+            )
+        sections_by_name[distro.name] = section
+
+
+def _section_template(section: str) -> tuple[str, str] | None:
+    template, separator, section_name = section.partition(":")
+    if not separator:
+        return None
+    if not template:
+        raise ValueError(f"section [{section}] has an empty template name")
+    if not section_name:
+        return None
+    return template, section_name
+
+
+def _distro_section_name(section: str) -> str:
+    template = _section_template(section)
+    if template is None:
+        return section
+    _, section_name = template
+    return section_name
+
+
+def _expanded_section_args(
+    cfg: configparser.ConfigParser,
+    section: str,
+    templates: Mapping[str, str],
+) -> dict[str, Any]:
+    args: dict[str, Any] = {}
+    section_template = _section_template(section)
+    if section_template is not None:
+        template, _ = section_template
+        try:
+            template_section = templates[template]
+        except KeyError as e:
+            raise ValueError(
+                f"section [{section}] uses unknown template [{template}:]"
+            ) from e
+        args.update(cfg[template_section])
+    args.update(cfg[section])
+    _substitute_template_variables(args, section)
+    return args
+
+
+def _substitute_template_variables(args: dict[str, Any], section: str) -> None:
+    variables = {
+        key: args[key]
+        for key in TEMPLATE_VARIABLES
+        if key in args and isinstance(args[key], str)
+    }
+    for field in SUBSTITUTED_TEMPLATE_FIELDS:
+        value = args.get(field)
+        if not isinstance(value, str):
+            continue
+        try:
+            args[field] = Template(value).substitute(variables)
+        except KeyError as e:
+            missing = cast(str, e.args[0])
+            raise ValueError(
+                f"section [{section}] field {field} references "
+                f"unset variable ${missing}"
+            ) from e
+        except ValueError as e:
+            raise ValueError(
+                f"section [{section}] field {field} has invalid "
+                f"template syntax: {e}"
+            ) from e
+
+
+def _convert_config_bool(value: object, section: str, key: str) -> bool:
+    if not isinstance(value, str):
+        raise TypeError(f"section [{section}] field {key} must be a string")
+    try:
+        return configparser.ConfigParser.BOOLEAN_STATES[value.lower()]
+    except KeyError as e:
+        raise ValueError(
+            f"section [{section}] field {key} is not a boolean: {value!r}"
+        ) from e
 
 
 def AbsPath(s: str) -> Path:
@@ -158,7 +270,7 @@ def index_target_groups(
     groups: dict[IndexKey, set[str]] = {}
     for distro in distros:
         key = IndexRegistry.index_key(distro)
-        groups.setdefault(key, set()).add(distro.unique_name)
+        groups.setdefault(key, set()).add(distro.name)
     return groups
 
 
@@ -299,7 +411,7 @@ async def run_distro_tasks(
     if filtered:
         new_distro_state = distro_state.copy()
     else:
-        selected_distros = {d.unique_name for d in distros}
+        selected_distros = {d.name for d in distros}
         new_distro_state = {
             name: state
             for name, state in distro_state.items()
@@ -308,7 +420,7 @@ async def run_distro_tasks(
 
     async with TaskTracker() as tg:
         for distro in distros:
-            state = distro_state.get(distro.unique_name, {})
+            state = distro_state.get(distro.name, {})
             key = IndexRegistry.index_key(distro)
             index = indexes.get(distro)
             task = tg.create_task(
@@ -320,7 +432,7 @@ async def run_distro_tasks(
                     output_dir,
                 )
             )
-            task.set_name(distro.unique_name)
+            task.set_name(distro.name)
             task_index_keys[task] = key
 
         async for success, task in tg.as_completed():
@@ -330,11 +442,9 @@ async def run_distro_tasks(
                 else:
                     continue
             distro, state = await task
-            new_distro_state[distro.unique_name] = state
+            new_distro_state[distro.name] = state
             key = task_index_keys[task]
-            succeeded_index_targets.setdefault(key, set()).add(
-                distro.unique_name
-            )
+            succeeded_index_targets.setdefault(key, set()).add(distro.name)
 
     cleanup_completed_indexes(
         indexes,

@@ -84,10 +84,12 @@ file:
 # This section name should be brief, unique, and contain no spaces
 [distro_x86_64]
 
-# Name and version refer to the Linux distribution. The version is a string and
-# it cound include codenames or other useful info. Mainly used for readers on the
-# webpage.
-name = Distribution Name
+# The name is the unique display name for this configuration. Include enough
+# information to distinguish version, architecture, and kernel flavor.
+name = Distribution Name 1 x86_64
+
+# Version refers to the distribution version. Kernel flavor versions such as
+# Oracle UEK versions should use a separate field such as uekver.
 version = 1
 
 # Architecture: only x86_64 and aarch64 are valid options so far.
@@ -115,6 +117,36 @@ index = https://yum.example.com/version1/x86_64/
 fetcher = INDEX HERE
 extractor = EXTRACTOR HERE
 ```
+
+To avoid repeating common values, `config.ini` also supports templates. A
+section whose name ends with `:` defines a template. A section named
+`template:section_name` uses the matching `template:` section as defaults, and
+then overrides those defaults with its own values. The section name after the
+colon is the distribution target name used by filters.
+
+After template defaults and overrides are merged, `name`, `index`, and `key`
+values may use `$version`, `$arch`, `$codename`, `$package`, and `$uekver`
+substitutions:
+
+```ini
+[example_rpm:]
+name = Example Linux $version $arch
+package = kernel-core
+fetcher = kconfigs.rpm.RpmIndex
+extractor = kconfigs.rpm.RpmExtractor
+index = https://repo.example.com/$version/$arch/os/
+key = RPM-GPG-KEY-example-$version
+
+[example_rpm:example_1_x86_64]
+version = 1
+arch = x86_64
+
+[example_rpm:example_1_aarch64]
+version = 1
+arch = aarch64
+```
+
+Expanded `name` values must be unique.
 
 All distributions with package signing MUST be configured with their GPG key.
 The index URL should use HTTPS but HTTP is fine if a GPG key is present, and the
