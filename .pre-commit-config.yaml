@@ -27,8 +27,9 @@ repos:
         name: mypy
         entry: .venv/bin/mypy
         language: system
-        args: [--strict, --disallow-untyped-calls]
+        args: [--strict, --disallow-untyped-calls, kconfigs, tests]
         files: "^.*.py$"
+        pass_filenames: false
         verbose: true
 -   repo: https://github.com/netromdk/vermin
     rev: v1.8.0
