@@ -165,8 +165,13 @@ def _metadata_cache_path(
     savedir: Path, primary_url: str, checksum: Checksum
 ) -> Path:
     name = posixpath.basename(primary_url)
-    checksum_name = re.sub(r"[^A-Za-z0-9_.-]", "_", "-".join(checksum))
-    return savedir / f"{checksum_name}-{name}"
+    if checksum[1] in name:
+        checksum_prefix = ""
+    else:
+        checksum_prefix = (
+            re.sub(r"[^A-Za-z0-9_.-]", "_", "-".join(checksum)) + "-"
+        )
+    return savedir / f"{checksum_prefix}{name}"
 
 
 def samekindcmp(s1: T, s2: T) -> int:
