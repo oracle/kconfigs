@@ -16,11 +16,10 @@ jobs:
   publish:
     runs-on: ubuntu-24.04  # don't use "-latest", we can manually update
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GNUPGHOME: /tmp  # avoid "gpg: Fatal: can't create directory '/home/runner/.gnupg': File exists"
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
         with:
           python-version: '3.12'
       - name: Install uv
@@ -54,6 +53,8 @@ jobs:
               --output-file ../gh-pages/docs/summary.json
           cp index.html tux-sm.png ../gh-pages/docs/
       - name: Push update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd ../gh-pages
           git add .

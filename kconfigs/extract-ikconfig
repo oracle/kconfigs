@@ -48,8 +48,8 @@ then
 fi
 
 # Prepare temp files:
-tmp1=/tmp/ikconfig$$.1
-tmp2=/tmp/ikconfig$$.2
+tmp1=$(mktemp) || exit 1
+tmp2=$(mktemp) || exit 1
 trap "rm -f $tmp1 $tmp2" 0
 
 # Initial attempt for uncompressed images or objects:
