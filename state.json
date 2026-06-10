@@ -385,16 +385,16 @@
                 "source_index_state": {
                     "data": {
                         "month": 3,
-                        "revision": 41,
-                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2026-03_r41.zip",
-                        "version": "2026-03_r41",
+                        "revision": 42,
+                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2026-03_r42.zip",
+                        "version": "2026-03_r42",
                         "year": 2026
                     },
                     "kind": "kconfigs.android.AndroidGkiIndex",
                     "uid": "https://source.android.com/docs/core/architecture/kernel/gki-android16-6_12-release-builds"
                 },
-                "url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2026-03_r41.zip",
-                "version": "2026-03_r41"
+                "url": "https://dl.google.com/android/gki/gki-certified-boot-android16-6.12-2026-03_r42.zip",
+                "version": "2026-03_r42"
             }
         },
         "Arch x86_64": {
@@ -407,7 +407,7 @@
                 "source_index_state": {
                     "data": {
                         "db_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/core.db.tar.gz",
-                        "last_modified": "Tue, 09 Jun 2026 17:52:37 GMT"
+                        "last_modified": "Wed, 10 Jun 2026 12:41:14 GMT"
                     },
                     "kind": "kconfigs.pacman.PacmanIndex",
                     "uid": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/ repo=core"
@@ -515,9 +515,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "5f1b69df3380e684e6cc9c88f4993df1896cd6e71fa83cf25f744e0e563b9ca1"
+                            "fa295e3e69ff6e68bdffcf93c8963c37c20d9588f988b757cd9ef147a44bb4a8"
                         ],
-                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/5f1b69df3380e684e6cc9c88f4993df1896cd6e71fa83cf25f744e0e563b9ca1-primary.sqlite.xz"
+                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/repodata/fa295e3e69ff6e68bdffcf93c8963c37c20d9588f988b757cd9ef147a44bb4a8-primary.sqlite.xz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/os/ key=RPM-GPG-KEY-CentOS-Official"
@@ -537,9 +537,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "8cd211dc11ca18ce0437649e6a00955a65a1e8c4a738a87e0247da59a0d57c74"
+                            "4708b357a435009ff7b6cde1a238797229d68ce75e01530a5640cdfc1ff17590"
                         ],
-                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/repodata/8cd211dc11ca18ce0437649e6a00955a65a1e8c4a738a87e0247da59a0d57c74-primary.sqlite.xz"
+                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/repodata/4708b357a435009ff7b6cde1a238797229d68ce75e01530a5640cdfc1ff17590-primary.sqlite.xz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/os/ key=RPM-GPG-KEY-CentOS-Official"
@@ -559,9 +559,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "23d5e36b339f89791d744af77d95f3dad590025837e77dfc3ab0356c9338049c"
+                            "8d5a4a53d6d4419fff8fa9bc8a84c86cbfea099425e0c9d4da19dd1374117df8"
                         ],
-                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/repodata/23d5e36b339f89791d744af77d95f3dad590025837e77dfc3ab0356c9338049c-primary.sqlite.xz"
+                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/repodata/8d5a4a53d6d4419fff8fa9bc8a84c86cbfea099425e0c9d4da19dd1374117df8-primary.sqlite.xz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/os/ key=RPM-GPG-KEY-CentOS-Official"
@@ -581,9 +581,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "3e7c108ccba72edba8be1d230691f312f06eae9547782e49bdc510d672c1f066"
+                            "1808894bd5872cc9c83f301ea07524196baec5b7c5ad011e76db109c4c3d986e"
                         ],
-                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/3e7c108ccba72edba8be1d230691f312f06eae9547782e49bdc510d672c1f066-primary.sqlite.xz"
+                        "primary_url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/repodata/1808894bd5872cc9c83f301ea07524196baec5b7c5ad011e76db109c4c3d986e-primary.sqlite.xz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/ key=RPM-GPG-KEY-CentOS-Official"
@@ -823,7 +823,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "7d0ad7f02ac5588717836ded19f19c445dd1eb92c260ff16e32a0a95e002c398"
+                            "4e58b1f25401a5a16c72051a827b413718db053325c51d31430c97be887446d4"
                         ],
                         "packages_path": "main/binary-arm64/Packages.xz"
                     },
@@ -845,7 +845,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "8345ddd5debf70549dbdf7a8e73201496c86d0371d28e07ab5ce6803066ef435"
+                            "19f4e2139ea362288d2d568daf2d8f56c9494525b88ae6a40012d1ce75e17a40"
                         ],
                         "packages_path": "main/binary-amd64/Packages.xz"
                     },
@@ -1087,9 +1087,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "19909cb100daef2524063443f99cdad6ae2dac107825477795546ae98723edb6"
+                            "4deaa1b396315e40313f8fff0286b8085218a5f61ae0e3b03434a84466c1fdac"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/19909cb100daef2524063443f99cdad6ae2dac107825477795546ae98723edb6-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/4deaa1b396315e40313f8fff0286b8085218a5f61ae0e3b03434a84466c1fdac-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/ key=RPM-GPG-KEY-fedora-45-primary"
@@ -1109,9 +1109,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "da05d0451da79442c0053bc1723b8e15f4de289fdea3502cbd8a55db84d49ba2"
+                            "aa5f0e29755d31c5e451277dad13d9949ce926ba44c80012c4a725f96563eb1c"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/da05d0451da79442c0053bc1723b8e15f4de289fdea3502cbd8a55db84d49ba2-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/aa5f0e29755d31c5e451277dad13d9949ce926ba44c80012c4a725f96563eb1c-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/ key=RPM-GPG-KEY-fedora-45-primary"
@@ -1395,9 +1395,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "519cba052ba01418520228fd0a8cf146dc99cb2e9d94bddbd1170776421a6298"
+                            "ceed74b2fa3e08d44408bcea5044116f518bc2f64f96fa2a25e5f1bc41f1a2f0"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/519cba052ba01418520228fd0a8cf146dc99cb2e9d94bddbd1170776421a6298-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/ceed74b2fa3e08d44408bcea5044116f518bc2f64f96fa2a25e5f1bc41f1a2f0-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
@@ -1417,9 +1417,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "68201516572c7a8588aca9783cfa8d1956bbe7ad88d2bd806a5b368e35c351df"
+                            "cfe7189de80497232c95acaba14ce0d8e7d723558f830383e22f40d2e3b341ec"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/68201516572c7a8588aca9783cfa8d1956bbe7ad88d2bd806a5b368e35c351df-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/cfe7189de80497232c95acaba14ce0d8e7d723558f830383e22f40d2e3b341ec-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
@@ -1921,7 +1921,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -1973,7 +1973,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2025,7 +2025,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2077,7 +2077,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2129,7 +2129,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2181,7 +2181,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2233,7 +2233,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2285,7 +2285,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2337,7 +2337,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2389,7 +2389,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2441,7 +2441,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2493,7 +2493,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2545,7 +2545,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2597,7 +2597,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260608"
+                                "version": "next-20260609"
                             }
                         ]
                     },
@@ -2744,22 +2744,22 @@
             "artifact": {
                 "checksum": [
                     "sha512",
-                    "45fda873c2f971d48f1724beebc473fbe60d5ff6533cf7bfdf3eda379954d5678677c904415dc1f483e838d9f040d156a5f62999f41b39f25f64f9d014ef232c"
+                    "cd44dd29bd0507961fcabaf219bf06ce9f3225516b1e9b77444639e58a988a8f0174ace6dfd476a8876f45818d7a1f3dc6c5a53eeeb253f5a0d44621b21a9285"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha512",
-                            "233a91b92396680c50b70a759274a5279826f335e72e4e6164a674037805a63e2285051e18e898b9799cd2cf932cd1cc6e37ee98858c990137bd8e1ea528ecbc"
+                            "0dda05fac5ab8422b420ff439b0948715d025b64555d46e73b91d809c69ac74e949b2f94ce0b4ce4bb0e8a537c52f5a71eec39948d0dea6c43ece2b674590d88"
                         ],
-                        "primary_url": "https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss/repodata/233a91b92396680c50b70a759274a5279826f335e72e4e6164a674037805a63e2285051e18e898b9799cd2cf932cd1cc6e37ee98858c990137bd8e1ea528ecbc-primary.xml.zst"
+                        "primary_url": "https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss/repodata/0dda05fac5ab8422b420ff439b0948715d025b64555d46e73b91d809c69ac74e949b2f94ce0b4ce4bb0e8a537c52f5a71eec39948d0dea6c43ece2b674590d88-primary.xml.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss/ key=RPM-GPG-KEY-opensuse-tw"
                 },
-                "url": "https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss/riscv64/kernel-default-7.0.10-5.1.riscv64.rpm",
-                "version": "7.0.10-5.1"
+                "url": "https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss/riscv64/kernel-default-7.0.11-4.1.riscv64.rpm",
+                "version": "7.0.11-4.1"
             }
         },
         "openSUSE Tumbleweed s390x": {
