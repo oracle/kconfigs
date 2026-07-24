@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 5.15.211 Kernel Configuration
+# Linux/x86_64 5.15.212 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -3054,6 +3054,7 @@ CONFIG_SND_DMA_SGBUF=y
 CONFIG_SND_SEQUENCER=y
 CONFIG_SND_SEQ_DUMMY=y
 CONFIG_SND_SEQ_HRTIMER_DEFAULT=y
+# CONFIG_SND_SEQ_UMP is not set
 CONFIG_SND_DRIVERS=y
 # CONFIG_SND_PCSP is not set
 # CONFIG_SND_DUMMY is not set
