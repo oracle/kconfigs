@@ -823,7 +823,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "2d2c7542d9dd8821c288000178cb613663e8181f8f197703cbd23d138628384e"
+                            "5c91ef37d6af78c8f55c390b6cb03a62feb09ffb16ed8deef4af116007d7320b"
                         ],
                         "packages_path": "main/binary-arm64/Packages.xz"
                     },
@@ -845,7 +845,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "962937a181529ba569683a95d9b5b3c2ab862cfb00530e5672e55b6ea5de32dd"
+                            "c1d42dc259910b3a221c2cafda9aef425afb0a662557fa078cf9454981ae06d1"
                         ],
                         "packages_path": "main/binary-amd64/Packages.xz"
                     },
@@ -855,18 +855,6 @@
                 "url": "http://ftp.us.debian.org/debian/pool/main/l/linux/linux-base-7.1.8+deb14.1-amd64_7.1.8-2_amd64.deb",
                 "version": "7.1.8-2"
             }
-        },
-        "Fedora 41 aarch64": {
-            "latest_url": "NONE"
-        },
-        "Fedora 41 x86_64": {
-            "latest_url": "NONE"
-        },
-        "Fedora 42 aarch64": {
-            "latest_url": "NONE"
-        },
-        "Fedora 42 x86_64": {
-            "latest_url": "NONE"
         },
         "Fedora 43 aarch64": {
             "artifact": {
@@ -955,12 +943,6 @@
                 "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/44/Everything/x86_64/os/Packages/k/kernel-core-6.19.10-300.fc44.x86_64.rpm",
                 "version": "6.19.10-300.fc44"
             }
-        },
-        "Fedora Asahi Remix 41 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-41-aarch64/09907081-kernel/kernel-core-6.17.12-400.asahi.fc41.aarch64.rpm"
-        },
-        "Fedora Asahi Remix 42 aarch64": {
-            "latest_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-42-aarch64/09907081-kernel/kernel-core-6.17.12-400.asahi.fc42.aarch64.rpm"
         },
         "Fedora Asahi Remix 43 aarch64": {
             "artifact": {
@@ -1340,22 +1322,22 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "2f5e24e84e90ca294a3f5692d31a0932760d781864751d29a13ecf9789206f58"
+                    "776b80fdbce7c7ffd63a7c6ca461bf8dc7a6437f3a8044df5a79995cb5ef82cd"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "eb6557295c45db4e81ea16833840ee385be9b009cabdaad465a12dbd4a12d4fe"
+                            "1cf0e93039fb55075fa4721c611f686069b84a55f01eb98283ec9923a01604b9"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/eb6557295c45db4e81ea16833840ee385be9b009cabdaad465a12dbd4a12d4fe-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/1cf0e93039fb55075fa4721c611f686069b84a55f01eb98283ec9923a01604b9-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/getPackage/kernel-core-4.18.0-553.156.1.el8_10.x86_64.rpm",
-                "version": "4.18.0-553.156.1.el8_10"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/getPackage/kernel-core-4.18.0-553.157.1.el8_10.x86_64.rpm",
+                "version": "4.18.0-553.157.1.el8_10"
             }
         },
         "Oracle Linux 8 (UEK 6) aarch64": {
@@ -1369,9 +1351,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "a71cd7c2319b20b37963606942f0c61acd3c1583ada44fe28afad927f6e7ede5"
+                            "a8a8359e72995fe3020674c5b5281a9dd5bc9e8c5ff00b462bd855c49622a7a3"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/a71cd7c2319b20b37963606942f0c61acd3c1583ada44fe28afad927f6e7ede5-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/a8a8359e72995fe3020674c5b5281a9dd5bc9e8c5ff00b462bd855c49622a7a3-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
@@ -1754,12 +1736,6 @@
                 "version": "6.8.0-31.31"
             }
         },
-        "Ubuntu 25.04 Oracular aarch64": {
-            "latest_url": "http://ports.ubuntu.com/pool/main/l/linux/linux-modules-6.14.0-15-generic_6.14.0-15.15_arm64.deb"
-        },
-        "Ubuntu 25.04 Plucky x86_64": {
-            "latest_url": "http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-modules-6.14.0-15-generic_6.14.0-15.15_amd64.deb"
-        },
         "Ubuntu 26.04 LTS Resolute aarch64": {
             "artifact": {
                 "checksum": [
@@ -2046,12 +2022,6 @@
                 "version": "5.15.217"
             }
         },
-        "Upstream Default 5.4 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.302.tar.xz"
-        },
-        "Upstream Default 5.4 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.302.tar.xz"
-        },
         "Upstream Default 6.1 aarch64": {
             "artifact": {
                 "checksum": null,
@@ -2259,12 +2229,6 @@
                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.105.tar.xz",
                 "version": "6.12.105"
             }
-        },
-        "Upstream Default 6.17 aarch64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.13.tar.xz"
-        },
-        "Upstream Default 6.17 x86_64": {
-            "latest_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.13.tar.xz"
         },
         "Upstream Default 6.18 aarch64": {
             "artifact": {
