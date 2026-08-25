@@ -135,7 +135,8 @@ def _parse_package_stanzas(data: str) -> list[dict[str, str]]:
 
 
 async def _get_package_entry(
-    packages_local: Path, package_name: str,
+    packages_local: Path,
+    package_name: str,
 ) -> dict[str, str]:
     async with aiofiles.open(packages_local, "rt") as f:
         data = await f.read()
@@ -147,7 +148,9 @@ async def _get_package_entry(
             packages.append(stanza)
     if not packages:
         raise LookupError(f"No package {package_name} found")
-    packages.sort(key=lambda s: tuple(map(int, re.findall(r"\d+", s["Version"]))))
+    packages.sort(
+        key=lambda s: tuple(map(int, re.findall(r"\d+", s["Version"])))
+    )
     return packages[-1]
 
 
