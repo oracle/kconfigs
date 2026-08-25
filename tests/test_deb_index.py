@@ -15,7 +15,7 @@ from kconfigs.model import IndexState
 
 def make_distro(
     *,
-    package: str = "linux-generic",
+    package: str = r"linux-modules-(\d+\.\d+\.\d+)(-\d+)?-generic",
     name: str = "Ubuntu Test",
 ) -> DistroConfig:
     return DistroConfig(
@@ -87,27 +87,15 @@ def test_deb_index_resolve_materializes_packages_once_for_shared_index(
     packages = tmp_path / "Packages"
     packages.write_text(
         """
-Package: linux-image-generic
-Version: 1.0
-Depends: linux-image-6.8.0-31-generic (= 6.8.0-31.31), other-package
-Filename: pool/main/l/linux-meta/linux-image-generic.deb
-SHA256: meta-checksum
-
-Package: linux-image-6.8.0-31-generic
-Version: 6.8.0-31.31
-Filename: pool/main/l/linux/linux-image-6.8.0-31-generic.deb
-SHA256: image-checksum
-
 Package: linux-modules-6.8.0-31-generic
 Version: 6.8.0-31.31
 Filename: pool/main/l/linux/linux-modules-6.8.0-31-generic.deb
-SHA256: modules-checksum
+SHA256: old-modules-checksum
 
-Package: linux-image-lowlatency
-Version: 1.0
-Depends: linux-image-6.8.0-31-lowlatency (= 6.8.0-31.31)
-Filename: pool/main/l/linux-meta/linux-image-lowlatency.deb
-SHA256: lowlatency-meta
+Package: linux-modules-6.8.0-32-generic
+Version: 6.8.0-32.32
+Filename: pool/main/l/linux/linux-modules-6.8.0-32-generic.deb
+SHA256: new-modules-checksum
 
 Package: linux-image-6.8.0-31-lowlatency
 Version: 6.8.0-31.31
@@ -156,7 +144,8 @@ SHA256:
 
     dc = make_distro()
     dc_lowlatency = make_distro(
-        package="linux-lowlatency", name="Ubuntu Lowlatency Test"
+        package=r"linux-image-(\d+\.\d+\.\d+)(-\d+)?-lowlatency",
+        name="Ubuntu Lowlatency Test",
     )
     index = DebIndex(DebIndex.index_id(dc), tmp_path / "cache")
     index_state = IndexState(
@@ -176,12 +165,12 @@ SHA256:
 
         assert (
             artifact.url
-            == "http://archive.example.com/ubuntu/pool/main/l/linux/linux-modules-6.8.0-31-generic.deb"
+            == "http://archive.example.com/ubuntu/pool/main/l/linux/linux-modules-6.8.0-32-generic.deb"
         )
-        assert artifact.checksum == ("sha256", "modules-checksum")
+        assert artifact.checksum == ("sha256", "new-modules-checksum")
         assert artifact.signature_url is None
         assert artifact.source_index_state == index_state
-        assert artifact.version == "6.8.0-31.31"
+        assert artifact.version == "6.8.0-32.32"
 
         assert (
             lowlatency_artifact.url

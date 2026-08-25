@@ -134,47 +134,21 @@ def _parse_package_stanzas(data: str) -> list[dict[str, str]]:
     return stanzas
 
 
-async def _get_relevant_keys(
-    packages_local: Path, flavor: str
-) -> dict[str, dict[str, str]]:
+async def _get_package_entry(
+    packages_local: Path, package_name: str,
+) -> dict[str, str]:
     async with aiofiles.open(packages_local, "rt") as f:
         data = await f.read()
-    keys: dict[str, dict[str, str]] = {}
-    pkg_re = re.compile(rf"linux-.*{re.escape(flavor)}")
+    package_re = re.compile(package_name)
+    packages = []
     for stanza in _parse_package_stanzas(data):
         name = stanza.get("Package")
-        if name and pkg_re.fullmatch(name):
-            keys[name] = stanza
-    return keys
-
-
-def _dependency_name(dep: str) -> str:
-    dep = dep.split("|", maxsplit=1)[0].strip()
-    if " " in dep:
-        dep, _ = dep.split(maxsplit=1)
-    return dep
-
-
-def _resolve_concrete_package(
-    keys: dict[str, dict[str, str]], flavor: str
-) -> str:
-    deps = (
-        keys[f"linux-image-{flavor}"]["Depends"].replace("\n", " ").split(",")
-    )
-    for dep in deps:
-        pkg = _dependency_name(dep)
-        if pkg.startswith("linux-image"):
-            # Debian Forky now has linux-base instead.
-            base_pkg = pkg.replace("linux-image", "linux-base")
-            if base_pkg in keys:
-                return base_pkg
-            modules_pkg = pkg.replace("linux-image", "linux-modules")
-            if modules_pkg in keys:
-                return modules_pkg
-            if pkg in keys:
-                return pkg
-            raise Exception(f"Could not find concrete package: {pkg}")
-    raise Exception("Could not find specific linux-modules package")
+        if name and package_re.fullmatch(name):
+            packages.append(stanza)
+    if not packages:
+        raise LookupError(f"No package {package_name} found")
+    packages.sort(key=lambda s: tuple(map(int, re.findall(r"\d+", s["Version"]))))
+    return packages[-1]
 
 
 class DebIndex(Index):
@@ -237,17 +211,14 @@ class DebIndex(Index):
             )
         state = await self.check()
         packages_local = await self._materialized_packages()
-        m = re.fullmatch(r"linux-(.*)", dc.package)
-        assert m
-        flavor = m.group(1)
-        keys = await _get_relevant_keys(packages_local, flavor)
-        pkg = _resolve_concrete_package(keys, flavor)
+        pkg = await _get_package_entry(packages_local, dc.package)
+        print(pkg)
         return Artifact(
-            url=posixpath.join(self.index, keys[pkg]["Filename"]),
-            checksum=("sha256", keys[pkg]["SHA256"]),
+            url=posixpath.join(self.index, pkg["Filename"]),
+            checksum=("sha256", pkg["SHA256"]),
             signature_url=None,
             source_index_state=state,
-            version=keys[pkg].get("Version"),
+            version=pkg.get("Version"),
         )
 
 
