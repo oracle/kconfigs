@@ -215,7 +215,6 @@ class DebIndex(Index):
         state = await self.check()
         packages_local = await self._materialized_packages()
         pkg = await _get_package_entry(packages_local, dc.package)
-        print(pkg)
         return Artifact(
             url=posixpath.join(self.index, pkg["Filename"]),
             checksum=("sha256", pkg["SHA256"]),
