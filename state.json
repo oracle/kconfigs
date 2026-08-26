@@ -180,88 +180,88 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "da0028e98a7b9cefec411b07dc42b9010a239c0562dc7e8e79d61ad7665f78b6"
+                    "4b95625fecc37bb0841b34552a40fbf97339e545dfe4f6cb5aff2883a360cbb7"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "8197d8b2686e7375331b9085cc3f6b8effb778ec8f54619dbf77264cf7e86cd7"
+                            "378f2e293a1028fc31bed01f4d393db2aa8ad7b7c039a7c6d08d92ff7fbf323f"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/8197d8b2686e7375331b9085cc3f6b8effb778ec8f54619dbf77264cf7e86cd7-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/repodata/378f2e293a1028fc31bed01f4d393db2aa8ad7b7c039a7c6d08d92ff7fbf323f-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/ key=RPM-GPG-KEY-AlmaLinux-9"
                 },
-                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/Packages/kernel-core-5.14.0-687.39.1.el9_8.aarch64.rpm",
-                "version": "5.14.0-687.39.1.el9_8"
+                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/aarch64/os/Packages/kernel-core-5.14.0-687.41.1.el9_8.aarch64.rpm",
+                "version": "5.14.0-687.41.1.el9_8"
             }
         },
         "Alma Linux 9 ppc64le": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "410010b78d6e335e613ad5061206645cb916ef3d028ef3f8a2f440651d3e70f0"
+                    "7be14b046281fdcf6ff64344fce34bdd1f840fd5b947cfd5ee4ac41a3dfced5a"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "833578facede5e1b92c976b9a9fea292f8acb54ce36974feda494dc08b4a1cad"
+                            "edc402de414ccd9c13a597335f44cb0a720964762a1761d9802ccbd27dba78bb"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/repodata/833578facede5e1b92c976b9a9fea292f8acb54ce36974feda494dc08b4a1cad-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/repodata/edc402de414ccd9c13a597335f44cb0a720964762a1761d9802ccbd27dba78bb-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/ key=RPM-GPG-KEY-AlmaLinux-9"
                 },
-                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/Packages/kernel-core-5.14.0-687.39.1.el9_8.ppc64le.rpm",
-                "version": "5.14.0-687.39.1.el9_8"
+                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/ppc64le/os/Packages/kernel-core-5.14.0-687.41.1.el9_8.ppc64le.rpm",
+                "version": "5.14.0-687.41.1.el9_8"
             }
         },
         "Alma Linux 9 s390x": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "1deeb9d39dd60cae2e90c9ef7e865fd0f710b60096c20095ac6ad6c2303e52a6"
+                    "ead792778e6b06466ed6790adfb7df10dcbe65a25fcc38564a91d546caf20229"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "fb5a261d8da7d1a46ec9eec538586f77ee430c9600cdf7e935ee2025359a3ffb"
+                            "fd8232bce0f52bc1f34d88533d590c642a0e637076bb206f34af422f20b22e0c"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/repodata/fb5a261d8da7d1a46ec9eec538586f77ee430c9600cdf7e935ee2025359a3ffb-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/repodata/fd8232bce0f52bc1f34d88533d590c642a0e637076bb206f34af422f20b22e0c-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/ key=RPM-GPG-KEY-AlmaLinux-9"
                 },
-                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/Packages/kernel-core-5.14.0-687.39.1.el9_8.s390x.rpm",
-                "version": "5.14.0-687.39.1.el9_8"
+                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/s390x/os/Packages/kernel-core-5.14.0-687.41.1.el9_8.s390x.rpm",
+                "version": "5.14.0-687.41.1.el9_8"
             }
         },
         "Alma Linux 9 x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "ce41c1904670314bb5347225b93ffd9670ba9d407fb4da36aecb558344dcb128"
+                    "83aca97c3e53536afae5db6e4473878448d089d522e0ffb526ba8241785f9fc6"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "79ce15285192cd6006c0d911d4b88497a50bc47d4ba9e3305e912021e6ad79cd"
+                            "3c743aadd64ee524114e35f6766430fa9ae4d22621757c69f3bb213fcd486138"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/repodata/79ce15285192cd6006c0d911d4b88497a50bc47d4ba9e3305e912021e6ad79cd-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/repodata/3c743aadd64ee524114e35f6766430fa9ae4d22621757c69f3bb213fcd486138-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/ key=RPM-GPG-KEY-AlmaLinux-9"
                 },
-                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/Packages/kernel-core-5.14.0-687.39.1.el9_8.x86_64.rpm",
-                "version": "5.14.0-687.39.1.el9_8"
+                "url": "https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/Packages/kernel-core-5.14.0-687.41.1.el9_8.x86_64.rpm",
+                "version": "5.14.0-687.41.1.el9_8"
             }
         },
         "Android 12 (5.10) aarch64": {
