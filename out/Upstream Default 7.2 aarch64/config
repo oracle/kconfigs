@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 7.2.2 Kernel Configuration
+# Linux/arm64 7.2.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -11405,7 +11405,6 @@ CONFIG_CRYPTO_DEV_ALLWINNER=y
 CONFIG_CRYPTO_DEV_SUN8I_CE=m
 # CONFIG_CRYPTO_DEV_SUN8I_CE_DEBUG is not set
 # CONFIG_CRYPTO_DEV_SUN8I_CE_HASH is not set
-# CONFIG_CRYPTO_DEV_SUN8I_CE_PRNG is not set
 # CONFIG_CRYPTO_DEV_SUN8I_CE_TRNG is not set
 # CONFIG_CRYPTO_DEV_SUN8I_SS is not set
 CONFIG_CRYPTO_DEV_FSL_CAAM_COMMON=m
