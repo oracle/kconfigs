@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.18.0-553.158.1.el8_10.aarch64 Kernel Configuration
+# Linux/arm64 4.18.0-553.159.1.el8_10.aarch64 Kernel Configuration
 #
 
 #
@@ -1781,7 +1781,7 @@ CONFIG_BLK_DEV_NULL_BLK=m
 CONFIG_CDROM=m
 # CONFIG_BLK_DEV_PCIESSD_MTIP32XX is not set
 CONFIG_ZRAM=m
-CONFIG_ZRAM_WRITEBACK=y
+# CONFIG_ZRAM_WRITEBACK is not set
 # CONFIG_ZRAM_MEMORY_TRACKING is not set
 # CONFIG_BLK_DEV_DAC960 is not set
 # CONFIG_BLK_DEV_UMEM is not set
