@@ -4,88 +4,88 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "615c5dd6552292cf1e996dce3f944b9613746aa5365d5cbb508531a627c02ee6"
+                    "43d96cc468916583c3bb722014ae80778a753095e458cfe2a0b77b856c23cf91"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "c47a03563f07dfa835ae573646cbf79bb274f4099494799fb7526b1b6a07fe47"
+                            "89eba87b2435c0cd12e7797a4fe5057a7bf0aa5cc3765fae7660445523ae7ded"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/c47a03563f07dfa835ae573646cbf79bb274f4099494799fb7526b1b6a07fe47-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/89eba87b2435c0cd12e7797a4fe5057a7bf0aa5cc3765fae7660445523ae7ded-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/ key=RPM-GPG-KEY-AlmaLinux-10"
                 },
-                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-211.49.1.el10_2.aarch64.rpm",
-                "version": "6.12.0-211.49.1.el10_2"
+                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/Packages/kernel-core-6.12.0-211.50.1.el10_2.aarch64.rpm",
+                "version": "6.12.0-211.50.1.el10_2"
             }
         },
         "Alma Linux 10 ppc64le": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "0950a071fdb4d23f9d60d94711a6cccd561d6a39d632c11b4155f7743cf4b117"
+                    "969cd8fe5ea3bbfa69b9a16b22efe25e6ddc0e9377794bfe23f5e3ce1d9f23fb"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "b5db9b3cb4624c268e1ef8e8b9b0536424f7b885f24f24bfb9a34cef435f938a"
+                            "b88e04c6fd6a16a53137899ba076594b391174e262336589ff2358b40375c29c"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/b5db9b3cb4624c268e1ef8e8b9b0536424f7b885f24f24bfb9a34cef435f938a-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/b88e04c6fd6a16a53137899ba076594b391174e262336589ff2358b40375c29c-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/ key=RPM-GPG-KEY-AlmaLinux-10"
                 },
-                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-211.49.1.el10_2.ppc64le.rpm",
-                "version": "6.12.0-211.49.1.el10_2"
+                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/Packages/kernel-core-6.12.0-211.50.1.el10_2.ppc64le.rpm",
+                "version": "6.12.0-211.50.1.el10_2"
             }
         },
         "Alma Linux 10 s390x": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "51a36e2d042de5d821b2c224bf280fca0a88f24e0be072a9905f03ff80d1d18a"
+                    "c2323436fc184cc26cdc27a2752789610bc984f489385418b0797ba8c8e3df8f"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "815cd59aaa62ca701895fc7869c1851f0e94a782242991773ee7bb4ce6c0fbb2"
+                            "f1d3ff2d1a6e3b957ae10e54c9e529380d4af5d2d104ef7af0c2241335999247"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/815cd59aaa62ca701895fc7869c1851f0e94a782242991773ee7bb4ce6c0fbb2-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/f1d3ff2d1a6e3b957ae10e54c9e529380d4af5d2d104ef7af0c2241335999247-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/ key=RPM-GPG-KEY-AlmaLinux-10"
                 },
-                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/Packages/kernel-core-6.12.0-211.49.1.el10_2.s390x.rpm",
-                "version": "6.12.0-211.49.1.el10_2"
+                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/Packages/kernel-core-6.12.0-211.50.1.el10_2.s390x.rpm",
+                "version": "6.12.0-211.50.1.el10_2"
             }
         },
         "Alma Linux 10 x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "3cc7122c55c40f095b920ba9b99eca06de6659c0d1d01cdb08fa41f6ea6acf81"
+                    "91363f73de588c3ab2eda05ff458390f332293221bd7faed1a30d6ee52d7cb3b"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "e695e218a37e16504660aee50c80aeb1cb58270e8bc82b08c2dc020ed9b56cc7"
+                            "0265e1f1b704a427da94b5309edc4886201428efbbd3c257183a8500baf4872a"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/e695e218a37e16504660aee50c80aeb1cb58270e8bc82b08c2dc020ed9b56cc7-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/0265e1f1b704a427da94b5309edc4886201428efbbd3c257183a8500baf4872a-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/ key=RPM-GPG-KEY-AlmaLinux-10"
                 },
-                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-211.49.1.el10_2.x86_64.rpm",
-                "version": "6.12.0-211.49.1.el10_2"
+                "url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/Packages/kernel-core-6.12.0-211.50.1.el10_2.x86_64.rpm",
+                "version": "6.12.0-211.50.1.el10_2"
             }
         },
         "Alma Linux 8 aarch64": {
@@ -401,19 +401,19 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "28826442c80a30a9221ca7c14e181ce4bf65601cfd09be4bfd8bff213b86c15a"
+                    "a645c115bd8052273b9095997f4a759ad57626d564bf9b6a6a1e258d467d5fe8"
                 ],
-                "signature_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-7.2.3.arch1-2-x86_64.pkg.tar.zst.sig",
+                "signature_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-7.2.3.arch1-3-x86_64.pkg.tar.zst.sig",
                 "source_index_state": {
                     "data": {
                         "db_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/core.db.tar.gz",
-                        "last_modified": "Fri, 04 Sep 2026 14:16:36 GMT"
+                        "last_modified": "Sun, 06 Sep 2026 17:37:00 GMT"
                     },
                     "kind": "kconfigs.pacman.PacmanIndex",
                     "uid": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/ repo=core"
                 },
-                "url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-7.2.3.arch1-2-x86_64.pkg.tar.zst",
-                "version": "7.2.3.arch1-2"
+                "url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/linux-7.2.3.arch1-3-x86_64.pkg.tar.zst",
+                "version": "7.2.3.arch1-3"
             }
         },
         "CentOS 10 Stream aarch64": {
@@ -823,7 +823,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "eda01a78f095359f79ba5bff75ee5c105b6692daf2f14f7800075ef87a28e505"
+                            "0ceb0535228d68344966d7f677edfc051d5510448985520a95ffa1ebafafed8d"
                         ],
                         "packages_path": "main/binary-arm64/Packages.xz"
                     },
@@ -845,7 +845,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "0bf48361634545c0aff6eba56775e9bf1a39d8da8be9140fdd01823d9b66b766"
+                            "b60e84f57198865d54fa4985e32be07b3cccf26807c309b57873aab9517d0d67"
                         ],
                         "packages_path": "main/binary-amd64/Packages.xz"
                     },
@@ -948,44 +948,44 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "cc3fc77be82d01673645bc69eba73549a0806ba836e9edbf2090c09ec8806219"
+                    "d350ee6e4113020405371d75a5d279b4d68e650031f8e709ba2d2ad7aed3553c"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "375e1af8bf45f02ab1cc76ae7000092aec53c3cd3479fecaee9d6b1099ff9965"
+                            "0fa19cc8e34db3c8577df86c2f94220e0b7f6c647837de0b3b67519e922c647e"
                         ],
-                        "primary_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-43-aarch64/repodata/375e1af8bf45f02ab1cc76ae7000092aec53c3cd3479fecaee9d6b1099ff9965-primary.xml.gz"
+                        "primary_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-43-aarch64/repodata/0fa19cc8e34db3c8577df86c2f94220e0b7f6c647837de0b3b67519e922c647e-primary.xml.gz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-43-aarch64/ key=asahi.gpg"
                 },
-                "url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-43-aarch64/Packages/k/kernel-core-7.1.6-400.asahi.fc43.aarch64.rpm",
-                "version": "7.1.6-400.asahi.fc43"
+                "url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-43-aarch64/Packages/k/kernel-core-7.1.13-401.asahi.fc43.aarch64.rpm",
+                "version": "7.1.13-401.asahi.fc43"
             }
         },
         "Fedora Asahi Remix 44 aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "42adb0da7cd9957100a5cba3061439388a9c8119b4628219726ce3f17fa93116"
+                    "30a8007068ab28ec90aa5816626e6afdb7c19d5391533a784f85a5775453b18f"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "8abc9d435d7fda6b3028693f1993df65886ca5e7ca4f62790cd325fd84653d66"
+                            "ab9578d420b0ed595c7a2894331c5d9f537c78ed30cb1e2b0b90cf4b8039f11f"
                         ],
-                        "primary_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-44-aarch64/repodata/8abc9d435d7fda6b3028693f1993df65886ca5e7ca4f62790cd325fd84653d66-primary.xml.gz"
+                        "primary_url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-44-aarch64/repodata/ab9578d420b0ed595c7a2894331c5d9f537c78ed30cb1e2b0b90cf4b8039f11f-primary.xml.gz"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-44-aarch64/ key=asahi.gpg"
                 },
-                "url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-44-aarch64/Packages/k/kernel-core-7.1.6-400.asahi.fc44.aarch64.rpm",
-                "version": "7.1.6-400.asahi.fc44"
+                "url": "https://download.copr.fedorainfracloud.org/results/@asahi/kernel/fedora-44-aarch64/Packages/k/kernel-core-7.1.13-401.asahi.fc44.aarch64.rpm",
+                "version": "7.1.13-401.asahi.fc44"
             }
         },
         "Fedora Asahi Remix Rawhide aarch64": {
@@ -1021,9 +1021,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "572eb1c80010cee6733a1be1ba742d8309d21adce5b597067074097217c245fa"
+                            "aa9c0c33491d47655638968e40277db8719f45e9a9c790a8f76f4b1dc3971d89"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/572eb1c80010cee6733a1be1ba742d8309d21adce5b597067074097217c245fa-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/aa9c0c33491d47655638968e40277db8719f45e9a9c790a8f76f4b1dc3971d89-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/ key=RPM-GPG-KEY-fedora-46-primary"
@@ -1043,9 +1043,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "a2b8349647f374de15646bcfce0bc84807153194ec3f492d97350ca27b710427"
+                            "abfccbaf3b5956061dd8135c9c773eb0683e5aff724c54b909d6b45748f4f174"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/a2b8349647f374de15646bcfce0bc84807153194ec3f492d97350ca27b710427-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/abfccbaf3b5956061dd8135c9c773eb0683e5aff724c54b909d6b45748f4f174-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/ key=RPM-GPG-KEY-fedora-46-primary"
@@ -1058,132 +1058,132 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "525ce5175c6a96ec570566e5edbf3835b316cb33ec8d041c6773e47869700f51"
+                    "33e517d40f1401a176abb4501ffce4f7323538389e6616a92b1e4d7e9f70b7d8"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "4dce81bee27265d22376b748b6cab41d2a48b0c798943e44e28813729dd76e28"
+                            "857b58a3e67182268b7f7a3c56fff4444ad2e34f6db53eb97b31914956025100"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/4dce81bee27265d22376b748b6cab41d2a48b0c798943e44e28813729dd76e28-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/857b58a3e67182268b7f7a3c56fff4444ad2e34f6db53eb97b31914956025100-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol10"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/getPackage/kernel-core-6.12.0-211.50.1.el10_2.x86_64.rpm",
-                "version": "6.12.0-211.50.1.el10_2"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/getPackage/kernel-core-6.12.0-211.51.1.el10_2.x86_64.rpm",
+                "version": "6.12.0-211.51.1.el10_2"
             }
         },
         "Oracle Linux 10 (UEK 8 - 64k Page) aarch64": {
             "artifact": {
                 "checksum": [
-                    "sha1",
-                    "ae73b58e8ef7ac14b98517fd567e4e715aef186b"
+                    "sha256",
+                    "f799f15661be9e6764961e78dd396836c4df20a2767d200ca568ed609f3ecd4d"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
-                            "sha1",
-                            "a16a9305a13517e491b746d590f7afc483164e8a"
+                            "sha256",
+                            "37fc073dcd6cf4b052316cb8321ccc2a73465c046d0c9dd12dee2b6b787b073d"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/repodata/a16a9305a13517e491b746d590f7afc483164e8a-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/repodata/37fc073dcd6cf4b052316cb8321ccc2a73465c046d0c9dd12dee2b6b787b073d-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/ key=RPM-GPG-KEY-oracle-ol10"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/getPackage/kernel-uek64k-core-6.12.0-205.92.4.2.el10uek.aarch64.rpm",
-                "version": "6.12.0-205.92.4.2.el10uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/getPackage/kernel-uek64k-core-6.12.0-206.104.3.3.el10uek.aarch64.rpm",
+                "version": "6.12.0-206.104.3.3.el10uek"
             }
         },
         "Oracle Linux 10 (UEK 8) aarch64": {
             "artifact": {
                 "checksum": [
-                    "sha1",
-                    "621fa1fb02fd83d141133cc2eec505df85a7e194"
+                    "sha256",
+                    "dc18c5e7c61e78e4465f30168d796c4e917687f7d8f9da0ac6edc4fe47fd41e3"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
-                            "sha1",
-                            "a16a9305a13517e491b746d590f7afc483164e8a"
+                            "sha256",
+                            "37fc073dcd6cf4b052316cb8321ccc2a73465c046d0c9dd12dee2b6b787b073d"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/repodata/a16a9305a13517e491b746d590f7afc483164e8a-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/repodata/37fc073dcd6cf4b052316cb8321ccc2a73465c046d0c9dd12dee2b6b787b073d-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/ key=RPM-GPG-KEY-oracle-ol10"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/getPackage/kernel-uek-core-6.12.0-205.92.4.2.el10uek.aarch64.rpm",
-                "version": "6.12.0-205.92.4.2.el10uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/aarch64/getPackage/kernel-uek-core-6.12.0-206.104.3.3.el10uek.aarch64.rpm",
+                "version": "6.12.0-206.104.3.3.el10uek"
             }
         },
         "Oracle Linux 10 (UEK 8) x86_64": {
             "artifact": {
                 "checksum": [
-                    "sha1",
-                    "f3c20a31a5fb796d4e146ee640b3a5695cefe669"
+                    "sha256",
+                    "3f1fdc0fe227bdca35174b77ec5fd2382151cd9e6047211a46e86fa833c774d2"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
-                            "sha1",
-                            "a8d6402f7afeffdb46ef89e639988aa7166e7f18"
+                            "sha256",
+                            "e43206c751699490ed56858d102c80e6a833890fc7d9d91514970a7b8aa802e2"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/repodata/a8d6402f7afeffdb46ef89e639988aa7166e7f18-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/repodata/e43206c751699490ed56858d102c80e6a833890fc7d9d91514970a7b8aa802e2-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/ key=RPM-GPG-KEY-oracle-ol10"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/getPackage/kernel-uek-core-6.12.0-205.92.4.2.el10uek.x86_64.rpm",
-                "version": "6.12.0-205.92.4.2.el10uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/UEKR8/x86_64/getPackage/kernel-uek-core-6.12.0-206.104.3.3.el10uek.x86_64.rpm",
+                "version": "6.12.0-206.104.3.3.el10uek"
             }
         },
         "Oracle Linux 10 (UEK-NEXT) aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "6b02955035771b851d1f0861f928057248ab0a72032f079a90df304b0c270e81"
+                    "89293762bfd95a49acaa36d2dadda1c85690ed743a61b7bd18fdfd1249bce336"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "2e69b02bc563922a252f1ee96732f149d2a30a8e53633eb43cf0cc3234f83be5"
+                            "7abe765b30deb817ec7a1057752e4b0d5e3d6a225988a481bd77c37575b2c0f6"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/repodata/2e69b02bc563922a252f1ee96732f149d2a30a8e53633eb43cf0cc3234f83be5-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/repodata/7abe765b30deb817ec7a1057752e4b0d5e3d6a225988a481bd77c37575b2c0f6-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/ key=RPM-GPG-KEY-oracle-development"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/getPackage/kernel-ueknext-core-7.1.12-0.el10ueknext.aarch64.rpm",
-                "version": "7.1.12-0.el10ueknext"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/aarch64/getPackage/kernel-ueknext-core-7.1.13-0.el10ueknext.aarch64.rpm",
+                "version": "7.1.13-0.el10ueknext"
             }
         },
         "Oracle Linux 10 (UEK-NEXT) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "952a627cdaf019efe7240eed3ecd4d653b64504504924bc8378fd09ad614f696"
+                    "5c3ba59af00c8f94049c81760062812b019fcebad23e2a2ddaa6b88969c98027"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "cecf1a8be0e87a1774eb47b00caaf47fc62df5a4517d36ecd4862bef236226e2"
+                            "66185869e00522efbf12c8ea7ba7e64227f56a3d769b2960624a2a4a97a22749"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/x86_64/repodata/cecf1a8be0e87a1774eb47b00caaf47fc62df5a4517d36ecd4862bef236226e2-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/x86_64/repodata/66185869e00522efbf12c8ea7ba7e64227f56a3d769b2960624a2a4a97a22749-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/x86_64/ key=RPM-GPG-KEY-oracle-development"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/x86_64/getPackage/kernel-ueknext-core-7.1.12-0.el10ueknext.x86_64.rpm",
-                "version": "7.1.12-0.el10ueknext"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/developer/UEKnext/x86_64/getPackage/kernel-ueknext-core-7.1.13-0.el10ueknext.x86_64.rpm",
+                "version": "7.1.13-0.el10ueknext"
             }
         },
         "Oracle Linux 7 (Red Hat Compatible) x86_64": {
@@ -1344,22 +1344,22 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "ea793d2bfed7141f8ffe9a5e81feb0fdb9d4c3f6f05d781e4f5f9663b8cc6e72"
+                    "1a2b07fbc6098cd5e634bbd13208bf8da2c91828b90c6b49b0e6ebd8bf81d8f6"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "fd4f8b41d2edf99c7456e94a897eeff2fa6420857628d3ce6dc47d5e611d046f"
+                            "d62c0b7f9acceb538f45d3ca3a73acc4acd26e108fe07cdc1bfb2442d347571b"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/fd4f8b41d2edf99c7456e94a897eeff2fa6420857628d3ce6dc47d5e611d046f-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/d62c0b7f9acceb538f45d3ca3a73acc4acd26e108fe07cdc1bfb2442d347571b-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/getPackage/kernel-uek-5.4.17-2136.359.3.el8uek.aarch64.rpm",
-                "version": "5.4.17-2136.359.3.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/getPackage/kernel-uek-5.4.17-2136.359.3.1.el8uek.aarch64.rpm",
+                "version": "5.4.17-2136.359.3.1.el8uek"
             }
         },
         "Oracle Linux 8 (UEK 6) x86_64": {
@@ -1388,44 +1388,44 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "6a6691534a6d86aba6adff4a151bef4c54683cfe12ca0f78f0996389a7a6dab2"
+                    "06d98a24d3ebf724eaea6ddcab0c33320bfe7a759cb2211bd650e783fcee1185"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "b87bbbcf821cfab0bcd5becd38eb22f6f401fa5b67cf94dc69ab873b5252bfbf"
+                            "26a8f39448c462659fc30df826725e649de69ae4569b10c1423d440e06f1a4f8"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/repodata/b87bbbcf821cfab0bcd5becd38eb22f6f401fa5b67cf94dc69ab873b5252bfbf-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/repodata/26a8f39448c462659fc30df826725e649de69ae4569b10c1423d440e06f1a4f8-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/getPackage/kernel-uek-core-5.15.0-323.211.3.5.el8uek.aarch64.rpm",
-                "version": "5.15.0-323.211.3.5.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el8uek.aarch64.rpm",
+                "version": "5.15.0-324.217.5.2.el8uek"
             }
         },
         "Oracle Linux 8 (UEK 7) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "214d89b3cda2e4596402a49e38f247b5ced0359721ce228d3c3496ef82821d65"
+                    "191cba4fbe6547af898b66078b3ef9fe16b6dd8ccb6ec46605f7ea6ea1b82ecb"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "3f2389eac3971f02aaf68c9dd3d46a450a531fe394e0f6386cec2996510cbe2a"
+                            "dadcbbe56601d0848f52445e7d6d8a9e8defdc603776aa5883cf82c42a0755f5"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/3f2389eac3971f02aaf68c9dd3d46a450a531fe394e0f6386cec2996510cbe2a-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/dadcbbe56601d0848f52445e7d6d8a9e8defdc603776aa5883cf82c42a0755f5-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-323.211.3.5.el8uek.x86_64.rpm",
-                "version": "5.15.0-323.211.3.5.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el8uek.x86_64.rpm",
+                "version": "5.15.0-324.217.5.2.el8uek"
             }
         },
         "Oracle Linux 9 (Red Hat Compatible) x86_64": {
@@ -1439,9 +1439,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "fab1bbd4fb4ccb32e3a100400cc232ee802fe54985f36c2a9d81680c5380ec90"
+                            "dbedbffd2c9dab8435d8f3eb4bf7630befd14446048eb3e81b6ba9a1717af149"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/fab1bbd4fb4ccb32e3a100400cc232ee802fe54985f36c2a9d81680c5380ec90-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/dbedbffd2c9dab8435d8f3eb4bf7630befd14446048eb3e81b6ba9a1717af149-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol9"
@@ -1454,110 +1454,110 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "2612ac156544a41dd661be13f1d58b187df5c748569bfed006110a817f4542af"
+                    "8c76a4c98f4163038c7853942e8b76beb4542bdc1b7d9fbdf837a1408fe768be"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "64542045dc76039e6b72d3e493816b41bd19548d71e404bf2ae9fe17a13adc28"
+                            "f6834668e6ce8d7d66805b2e2c219cb3f87aa34d6b3a277eb2d254f7c5df801e"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/64542045dc76039e6b72d3e493816b41bd19548d71e404bf2ae9fe17a13adc28-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/f6834668e6ce8d7d66805b2e2c219cb3f87aa34d6b3a277eb2d254f7c5df801e-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/getPackage/kernel-uek-core-5.15.0-323.211.3.5.el9uek.aarch64.rpm",
-                "version": "5.15.0-323.211.3.5.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el9uek.aarch64.rpm",
+                "version": "5.15.0-324.217.5.2.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 7) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "90ce04b892c2935eaa4d09c7071857c0d23244ca10cfd0c085a93331b21b8acd"
+                    "bcd7ef9eff1635a80509193a63b939f60a08cc1263280f748437fd10dea00242"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "44c46f8d069546050b0f530de2a998aca005d92e29bd836cf2a243a0066b4622"
+                            "84fe440bac3d07f62a54239ab2726739dd31cedff3c03108fb5b974d72eb9010"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/44c46f8d069546050b0f530de2a998aca005d92e29bd836cf2a243a0066b4622-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/84fe440bac3d07f62a54239ab2726739dd31cedff3c03108fb5b974d72eb9010-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-323.211.3.5.el9uek.x86_64.rpm",
-                "version": "5.15.0-323.211.3.5.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el9uek.x86_64.rpm",
+                "version": "5.15.0-324.217.5.2.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 8 - 64k Page) aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "2d9c21fc746bcfb8560d24217990656a2d5b3c67f2bd479e2515a29ca34ce6eb"
+                    "f146932a969925738bcd361bce1e416a80f1e3d8a83ea446c52950767b5e5016"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "0241c0e55e7eaab40328e61c29266e2c98dca5310b2775f25fe01c9f8222893d"
+                            "35e103c4916cb3ef1ba110690de00859c614d843df246cf221bbbef8951db7a3"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/0241c0e55e7eaab40328e61c29266e2c98dca5310b2775f25fe01c9f8222893d-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/35e103c4916cb3ef1ba110690de00859c614d843df246cf221bbbef8951db7a3-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/getPackage/kernel-uek64k-core-6.12.0-205.92.4.2.el9uek.aarch64.rpm",
-                "version": "6.12.0-205.92.4.2.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/getPackage/kernel-uek64k-core-6.12.0-206.104.3.3.el9uek.aarch64.rpm",
+                "version": "6.12.0-206.104.3.3.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 8) aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "348c3c9f5c48b442a9307f7cd3c0f2c09e852cee3392ecb40a2f5356a0becc09"
+                    "c67a8bd088a2c675de704e73e278ab6dcab59b026c9423ba9dc79f0fdcdd7b60"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "0241c0e55e7eaab40328e61c29266e2c98dca5310b2775f25fe01c9f8222893d"
+                            "35e103c4916cb3ef1ba110690de00859c614d843df246cf221bbbef8951db7a3"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/0241c0e55e7eaab40328e61c29266e2c98dca5310b2775f25fe01c9f8222893d-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/repodata/35e103c4916cb3ef1ba110690de00859c614d843df246cf221bbbef8951db7a3-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/getPackage/kernel-uek-core-6.12.0-205.92.4.2.el9uek.aarch64.rpm",
-                "version": "6.12.0-205.92.4.2.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/aarch64/getPackage/kernel-uek-core-6.12.0-206.104.3.3.el9uek.aarch64.rpm",
+                "version": "6.12.0-206.104.3.3.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 8) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "1a9609ea88e014d33bab5e7a96d1024250a2411c6d603075753b29337186bb18"
+                    "90fbc1af90dfe8404fe0717baae1a5bbadd6e90b52086dd30b9571b52ee0bd0b"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "e8e71432c48e58854922e1a3f219a6d8513431b14b7ab5e3881f8c07ff16b624"
+                            "d0075b175575d8a9e973338f9417a01d8aaa6bf7eca1471be5bedc3a272246fe"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/e8e71432c48e58854922e1a3f219a6d8513431b14b7ab5e3881f8c07ff16b624-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/repodata/d0075b175575d8a9e973338f9417a01d8aaa6bf7eca1471be5bedc3a272246fe-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/getPackage/kernel-uek-core-6.12.0-205.92.4.2.el9uek.x86_64.rpm",
-                "version": "6.12.0-205.92.4.2.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR8/x86_64/getPackage/kernel-uek-core-6.12.0-206.104.3.3.el9uek.x86_64.rpm",
+                "version": "6.12.0-206.104.3.3.el9uek"
             }
         },
         "Oracle Linux 9 (UEK-NEXT) aarch64": {
@@ -1615,7 +1615,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "4ae856d3dce3e57115d8665e8fbe83c19922b7e3812675c20f1601529d55dcd9"
+                            "8abaae50f3c47b99d2d5cd19570dc9ff52a22d74ab8bf5a9be7c5ce239ccacb4"
                         ],
                         "packages_path": "main/binary-arm64/Packages.gz"
                     },
@@ -1637,7 +1637,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "4ae856d3dce3e57115d8665e8fbe83c19922b7e3812675c20f1601529d55dcd9"
+                            "8abaae50f3c47b99d2d5cd19570dc9ff52a22d74ab8bf5a9be7c5ce239ccacb4"
                         ],
                         "packages_path": "main/binary-arm64/Packages.gz"
                     },
@@ -1866,24 +1866,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -1903,7 +1903,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -1922,24 +1922,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -1959,7 +1959,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -1978,24 +1978,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2015,7 +2015,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2034,24 +2034,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2071,7 +2071,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2090,24 +2090,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2127,7 +2127,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2146,24 +2146,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2183,7 +2183,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2197,29 +2197,29 @@
         "Upstream Default 6.12 aarch64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2239,43 +2239,43 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                "version": "6.12.108"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                "version": "6.12.109"
             }
         },
         "Upstream Default 6.12 x86_64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2295,43 +2295,43 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                "version": "6.12.108"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                "version": "6.12.109"
             }
         },
         "Upstream Default 6.18 aarch64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2351,43 +2351,43 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                "version": "6.18.49"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                "version": "6.18.50"
             }
         },
         "Upstream Default 6.18 x86_64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2407,15 +2407,15 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                "version": "6.18.49"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                "version": "6.18.50"
             }
         },
         "Upstream Default 6.6 aarch64": {
@@ -2426,24 +2426,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2463,7 +2463,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2482,24 +2482,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2519,7 +2519,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2538,24 +2538,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2575,7 +2575,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2594,24 +2594,24 @@
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2631,7 +2631,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
@@ -2645,29 +2645,29 @@
         "Upstream Default 7.2 aarch64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2687,43 +2687,43 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                "version": "7.2.3"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                "version": "7.2.4"
             }
         },
         "Upstream Default 7.2 x86_64": {
             "artifact": {
                 "checksum": null,
-                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.sign",
+                "signature_url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.sign",
                 "source_index_state": {
                     "data": {
                         "kernels": [
                             {
-                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc1.tar.gz",
-                                "version": "7.3-rc1"
+                                "url": "https://git.kernel.org/torvalds/t/linux-7.3-rc2.tar.gz",
+                                "version": "7.3-rc2"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                                "version": "7.2.3"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                                "version": "7.2.4"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.13.tar.xz",
                                 "version": "7.1.13"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.49.tar.xz",
-                                "version": "6.18.49"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.50.tar.xz",
+                                "version": "6.18.50"
                             },
                             {
-                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.108.tar.xz",
-                                "version": "6.12.108"
+                                "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.109.tar.xz",
+                                "version": "6.12.109"
                             },
                             {
                                 "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.156.tar.xz",
@@ -2743,15 +2743,15 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260903"
+                                "version": "next-20260907"
                             }
                         ]
                     },
                     "kind": "kconfigs.upstream.UpstreamIndex",
                     "uid": "https://www.kernel.org/feeds/kdist.xml"
                 },
-                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz",
-                "version": "7.2.3"
+                "url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.4.tar.xz",
+                "version": "7.2.4"
             }
         },
         "openSUSE Leap (SLES Compatible) 16.0 aarch64": {
@@ -2941,9 +2941,9 @@
                     "data": {
                         "checksum": [
                             "sha512",
-                            "042bfdd69fbc0c8125836a2482e11b362d75bb4c65f49f3fdb3ca1763d9039796ef01dd9a3e1e237b1696950b4dd2e555906f34ed266f62ac2e52f56d0b5939d"
+                            "890911ad81c2b63ad2f2c4a02d0c35ecc68b0b61b8c7fbae41fd53a5fa91375e63a7df43a7a0b903080f46d100bf79d97c45cd591eb87b80fbc53985eae6ffc9"
                         ],
-                        "primary_url": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/042bfdd69fbc0c8125836a2482e11b362d75bb4c65f49f3fdb3ca1763d9039796ef01dd9a3e1e237b1696950b4dd2e555906f34ed266f62ac2e52f56d0b5939d-primary.xml.zst"
+                        "primary_url": "https://download.opensuse.org/tumbleweed/repo/oss/repodata/890911ad81c2b63ad2f2c4a02d0c35ecc68b0b61b8c7fbae41fd53a5fa91375e63a7df43a7a0b903080f46d100bf79d97c45cd591eb87b80fbc53985eae6ffc9-primary.xml.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://download.opensuse.org/tumbleweed/repo/oss/ key=RPM-GPG-KEY-opensuse-tw"
