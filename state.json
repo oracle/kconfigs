@@ -11,9 +11,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "5be4b0034a4873615d5f8da5fc808dbf7764a77eb4839b25087923644f9de1d6"
+                            "46ed120726aac4cd9815e43a3df69ceedbab07e507992e2f22caf5474cfc37de"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/5be4b0034a4873615d5f8da5fc808dbf7764a77eb4839b25087923644f9de1d6-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/repodata/46ed120726aac4cd9815e43a3df69ceedbab07e507992e2f22caf5474cfc37de-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/aarch64/os/ key=RPM-GPG-KEY-AlmaLinux-10"
@@ -33,9 +33,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "a3a85bfe21352ce01cd6d6f001af9c377c74f5ec1447d76835bad99fd415caae"
+                            "3d0ca3d3dd775874bf00b6a54827fb3fdbff8502b22802ab9a6ea2d6dfef9058"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/a3a85bfe21352ce01cd6d6f001af9c377c74f5ec1447d76835bad99fd415caae-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/repodata/3d0ca3d3dd775874bf00b6a54827fb3fdbff8502b22802ab9a6ea2d6dfef9058-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/ppc64le/os/ key=RPM-GPG-KEY-AlmaLinux-10"
@@ -55,9 +55,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "a32eb92cf554c59b2982d0292f6050838fdbe587daa3a29f433999bcb301560c"
+                            "69a9e1c2c1425a3e32f49c17df83afeee7afbc8b12152d48e7397958c9e8eb7e"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/a32eb92cf554c59b2982d0292f6050838fdbe587daa3a29f433999bcb301560c-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/repodata/69a9e1c2c1425a3e32f49c17df83afeee7afbc8b12152d48e7397958c9e8eb7e-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/s390x/os/ key=RPM-GPG-KEY-AlmaLinux-10"
@@ -77,9 +77,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "5b84d7f1b2888920911267fcfba3f6972711938e99e3ba4bfeb02ee88c477e96"
+                            "18d543aa451af0bb87c45371ea0f5b2cca6169458ff9532b8e0ff120495ff8b6"
                         ],
-                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/5b84d7f1b2888920911267fcfba3f6972711938e99e3ba4bfeb02ee88c477e96-primary.sqlite.bz2"
+                        "primary_url": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/repodata/18d543aa451af0bb87c45371ea0f5b2cca6169458ff9532b8e0ff120495ff8b6-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://repo.almalinux.org/almalinux/10/BaseOS/x86_64/os/ key=RPM-GPG-KEY-AlmaLinux-10"
@@ -347,16 +347,16 @@
                 "source_index_state": {
                     "data": {
                         "month": 6,
-                        "revision": 10,
-                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2026-06_r10.zip",
-                        "version": "2026-06_r10",
+                        "revision": 11,
+                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2026-06_r11.zip",
+                        "version": "2026-06_r11",
                         "year": 2026
                     },
                     "kind": "kconfigs.android.AndroidGkiIndex",
                     "uid": "https://source.android.com/docs/core/architecture/kernel/gki-android14-6_1-release-builds"
                 },
-                "url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2026-06_r10.zip",
-                "version": "2026-06_r10"
+                "url": "https://dl.google.com/android/gki/gki-certified-boot-android14-6.1-2026-06_r11.zip",
+                "version": "2026-06_r11"
             }
         },
         "Android 15 (6.6) aarch64": {
@@ -366,16 +366,16 @@
                 "source_index_state": {
                     "data": {
                         "month": 7,
-                        "revision": 8,
-                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2026-07_r8.zip",
-                        "version": "2026-07_r8",
+                        "revision": 9,
+                        "url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2026-07_r9.zip",
+                        "version": "2026-07_r9",
                         "year": 2026
                     },
                     "kind": "kconfigs.android.AndroidGkiIndex",
                     "uid": "https://source.android.com/docs/core/architecture/kernel/gki-android15-6_6-release-builds"
                 },
-                "url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2026-07_r8.zip",
-                "version": "2026-07_r8"
+                "url": "https://dl.google.com/android/gki/gki-certified-boot-android15-6.6-2026-07_r9.zip",
+                "version": "2026-07_r9"
             }
         },
         "Android 16 (6.12) aarch64": {
@@ -426,7 +426,7 @@
                 "source_index_state": {
                     "data": {
                         "db_url": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/core.db.tar.gz",
-                        "last_modified": "Thu, 17 Sep 2026 15:56:59 GMT"
+                        "last_modified": "Fri, 18 Sep 2026 15:12:08 GMT"
                     },
                     "kind": "kconfigs.pacman.PacmanIndex",
                     "uid": "https://mirrors.edge.kernel.org/archlinux/core/os/x86_64/ repo=core"
@@ -842,7 +842,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "1dbf64e44855751ccd363bbd7365ec66679af8fd067d9b588f0863abcedd296c"
+                            "25e95cd33ae46a9d85e7318a6cb8bec3458341a57d8d63dc88d48f6186201adf"
                         ],
                         "packages_path": "main/binary-arm64/Packages.xz"
                     },
@@ -864,7 +864,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "8368b3f3ec0c23ec8197f530cb121113a1200ff0fb5cd82377c5d6679f4e5780"
+                            "070dd5e20755906c404291f7fe57e0e87dc590aaecd474efb73a8e35e37f2dd0"
                         ],
                         "packages_path": "main/binary-amd64/Packages.xz"
                     },
@@ -1040,9 +1040,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "e03dba47c54fc27cbdce794199435e7cd9673edc1859a7e53f4f91cd78cee588"
+                            "a7aa93a8487a67cc534c5b63488887ce7c85c885233a3388d902d08803e11d13"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/e03dba47c54fc27cbdce794199435e7cd9673edc1859a7e53f4f91cd78cee588-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/repodata/a7aa93a8487a67cc534c5b63488887ce7c85c885233a3388d902d08803e11d13-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/ key=RPM-GPG-KEY-fedora-46-primary"
@@ -1062,9 +1062,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "33782e78eb1aa6ee0c8483a8b4dbcc5685054be9d995cb84ef77f5f27ceec736"
+                            "fe8f2c8473962f4dbf0fd664d16ff79f3d84091cc55947efcb54f05bd24d75af"
                         ],
-                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/33782e78eb1aa6ee0c8483a8b4dbcc5685054be9d995cb84ef77f5f27ceec736-primary.sqlite.zst"
+                        "primary_url": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/repodata/fe8f2c8473962f4dbf0fd664d16ff79f3d84091cc55947efcb54f05bd24d75af-primary.sqlite.zst"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/ key=RPM-GPG-KEY-fedora-46-primary"
@@ -1077,22 +1077,22 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "89703c40554c5c8f8d668ec38bb38d643aa4957ec0895b572d6abc1e78e9c369"
+                    "e7b58f046f23f8174ce1f7d31351599c8b065686013fe52925b8c73174ff73d4"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "08bce835ced6589ece7f13ea13bbb817e0db1fe13fa53fdb7cd20045732c077c"
+                            "7b850db56704d3b08bbe1fd3de964bc5b1e665b0f77901412b39b6ccc3824eb6"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/08bce835ced6589ece7f13ea13bbb817e0db1fe13fa53fdb7cd20045732c077c-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/repodata/7b850db56704d3b08bbe1fd3de964bc5b1e665b0f77901412b39b6ccc3824eb6-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol10"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/getPackage/kernel-core-6.12.0-211.55.1.el10_2.x86_64.rpm",
-                "version": "6.12.0-211.55.1.el10_2"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL10/baseos/latest/x86_64/getPackage/kernel-core-6.12.0-211.56.1.el10_2.x86_64.rpm",
+                "version": "6.12.0-211.56.1.el10_2"
             }
         },
         "Oracle Linux 10 (UEK 8 - 64k Page) aarch64": {
@@ -1348,9 +1348,9 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "354dfad313e427fae143e8f4b4783e91ed2cf6a05da38fa83985fe97a492c5f8"
+                            "2e8d0452f52eabefa24884ed303e5ae62990cc9662a2b05815883247a39ce7ac"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/354dfad313e427fae143e8f4b4783e91ed2cf6a05da38fa83985fe97a492c5f8-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/repodata/2e8d0452f52eabefa24884ed303e5ae62990cc9662a2b05815883247a39ce7ac-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
@@ -1363,154 +1363,154 @@
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "1a2b07fbc6098cd5e634bbd13208bf8da2c91828b90c6b49b0e6ebd8bf81d8f6"
+                    "4f0d0bbf5625707123da4a24d06dc9595b70cf3f601ff6e96af6ed2ad8ee12be"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "1089a2d666f5861fdf200eb4e1250381f4dfc2050bf9fdf35fbd2026bf69d856"
+                            "44775372a685f882d8ae9ea8d4a31ed46dc87d0fa2bbe337d2bc852ae4d7fdb8"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/1089a2d666f5861fdf200eb4e1250381f4dfc2050bf9fdf35fbd2026bf69d856-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/repodata/44775372a685f882d8ae9ea8d4a31ed46dc87d0fa2bbe337d2bc852ae4d7fdb8-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/getPackage/kernel-uek-5.4.17-2136.359.3.1.el8uek.aarch64.rpm",
-                "version": "5.4.17-2136.359.3.1.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/aarch64/getPackage/kernel-uek-5.4.17-2136.359.3.2.el8uek.aarch64.rpm",
+                "version": "5.4.17-2136.359.3.2.el8uek"
             }
         },
         "Oracle Linux 8 (UEK 6) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "793029fdfd6f1180a6da7a710256b135b7fbd2a4d42ee8767f93b63cc5cf37d0"
+                    "ebb3806c3e60f0c6beacc78981b00f766e92de94ade2d2c7a4e22c6b8d74f8b5"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "094037c177595f9604be17b121876821b335c89d66d495fcc5c883818473fb0d"
+                            "fc8690d71f3363b5d7344b066f5f44cd9e2261f8cffbc5748b39b1097d5605e2"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR6/x86_64/repodata/094037c177595f9604be17b121876821b335c89d66d495fcc5c883818473fb0d-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR6/x86_64/repodata/fc8690d71f3363b5d7344b066f5f44cd9e2261f8cffbc5748b39b1097d5605e2-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR6/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR6/x86_64/getPackage/kernel-uek-5.4.17-2136.359.3.1.el8uek.x86_64.rpm",
-                "version": "5.4.17-2136.359.3.1.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR6/x86_64/getPackage/kernel-uek-5.4.17-2136.359.3.2.el8uek.x86_64.rpm",
+                "version": "5.4.17-2136.359.3.2.el8uek"
             }
         },
         "Oracle Linux 8 (UEK 7) aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "06d98a24d3ebf724eaea6ddcab0c33320bfe7a759cb2211bd650e783fcee1185"
+                    "09e260e1edc074abd73403d855cb366344a0e88206091ace2fd7129c552a960e"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "26a8f39448c462659fc30df826725e649de69ae4569b10c1423d440e06f1a4f8"
+                            "4b3df175c2ff91ec8f21668366167467bb1540f2f74792f2284629a37e518ef6"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/repodata/26a8f39448c462659fc30df826725e649de69ae4569b10c1423d440e06f1a4f8-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/repodata/4b3df175c2ff91ec8f21668366167467bb1540f2f74792f2284629a37e518ef6-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el8uek.aarch64.rpm",
-                "version": "5.15.0-324.217.5.2.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.3.el8uek.aarch64.rpm",
+                "version": "5.15.0-324.217.5.3.el8uek"
             }
         },
         "Oracle Linux 8 (UEK 7) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "191cba4fbe6547af898b66078b3ef9fe16b6dd8ccb6ec46605f7ea6ea1b82ecb"
+                    "71dc092f41e5e9eb5f55b475e837532e18c111d389dc8f39abca586e5e2a7de4"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "dadcbbe56601d0848f52445e7d6d8a9e8defdc603776aa5883cf82c42a0755f5"
+                            "f68ed25d74563b68a334207a8ef12636bbdb0a9eb5d30cd7d100a08d7b37a683"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/dadcbbe56601d0848f52445e7d6d8a9e8defdc603776aa5883cf82c42a0755f5-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/repodata/f68ed25d74563b68a334207a8ef12636bbdb0a9eb5d30cd7d100a08d7b37a683-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/ key=RPM-GPG-KEY-oracle-ol8"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el8uek.x86_64.rpm",
-                "version": "5.15.0-324.217.5.2.el8uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL8/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.3.el8uek.x86_64.rpm",
+                "version": "5.15.0-324.217.5.3.el8uek"
             }
         },
         "Oracle Linux 9 (Red Hat Compatible) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "14851fc6fe62556b873cd6b9fefdad3d25f1cb24cd9f13a0cca7e39da6519490"
+                    "62d6117e723b55e9a7b03a676e6c3d129716f28f3779c4e4ff695050086e9ffc"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "de06e04e742e95c75a123203531025e4ce4e3b91df8eaeb77a3c76dbaf395cb6"
+                            "4bb304df34a6e8263287837f14712e19b21828aee3bad69114a64a7169d22f9f"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/de06e04e742e95c75a123203531025e4ce4e3b91df8eaeb77a3c76dbaf395cb6-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/repodata/4bb304df34a6e8263287837f14712e19b21828aee3bad69114a64a7169d22f9f-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/getPackage/kernel-core-5.14.0-687.48.1.el9_8.x86_64.rpm",
-                "version": "5.14.0-687.48.1.el9_8"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/x86_64/getPackage/kernel-core-5.14.0-687.49.1.el9_8.x86_64.rpm",
+                "version": "5.14.0-687.49.1.el9_8"
             }
         },
         "Oracle Linux 9 (UEK 7) aarch64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "8c76a4c98f4163038c7853942e8b76beb4542bdc1b7d9fbdf837a1408fe768be"
+                    "5d7c0f89269b452748864006db11e866e7267583494bd98b0a4643ff4ca17e94"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "e661ad6132e52f503b2f4b035e7bc506f8a5f42f54b8981c939f00e6dc79c373"
+                            "5c004c98ce56e3d7dd4081d5044920d976669651744c6b0842f5a42d184181fd"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/e661ad6132e52f503b2f4b035e7bc506f8a5f42f54b8981c939f00e6dc79c373-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/repodata/5c004c98ce56e3d7dd4081d5044920d976669651744c6b0842f5a42d184181fd-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el9uek.aarch64.rpm",
-                "version": "5.15.0-324.217.5.2.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/baseos/latest/aarch64/getPackage/kernel-uek-core-5.15.0-324.217.5.3.el9uek.aarch64.rpm",
+                "version": "5.15.0-324.217.5.3.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 7) x86_64": {
             "artifact": {
                 "checksum": [
                     "sha256",
-                    "bcd7ef9eff1635a80509193a63b939f60a08cc1263280f748437fd10dea00242"
+                    "d7158980c599b1e836e7085062e1d9c7cc8ce57fa8a86a019ed2ea28630bdac5"
                 ],
                 "signature_url": null,
                 "source_index_state": {
                     "data": {
                         "checksum": [
                             "sha256",
-                            "84fe440bac3d07f62a54239ab2726739dd31cedff3c03108fb5b974d72eb9010"
+                            "ee3e71f064d7cd354b69d10984f17e5bdafea1e61b94809dddc9ce21a856d15c"
                         ],
-                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/84fe440bac3d07f62a54239ab2726739dd31cedff3c03108fb5b974d72eb9010-primary.sqlite.bz2"
+                        "primary_url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/repodata/ee3e71f064d7cd354b69d10984f17e5bdafea1e61b94809dddc9ce21a856d15c-primary.sqlite.bz2"
                     },
                     "kind": "kconfigs.rpm.RpmIndex",
                     "uid": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/ key=RPM-GPG-KEY-oracle-ol9"
                 },
-                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.2.el9uek.x86_64.rpm",
-                "version": "5.15.0-324.217.5.2.el9uek"
+                "url": "https://yum.oracle.com/repo/OracleLinux/OL9/UEKR7/x86_64/getPackage/kernel-uek-core-5.15.0-324.217.5.3.el9uek.x86_64.rpm",
+                "version": "5.15.0-324.217.5.3.el9uek"
             }
         },
         "Oracle Linux 9 (UEK 8 - 64k Page) aarch64": {
@@ -1634,7 +1634,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "37ac84a5b20609ad8989f6ed718c3366c86fffd03deb7f4bd82f53d2fd236a89"
+                            "9552038b8b73a80c0a79efc4739eebffcc10cde3b12b2cede7b1ab140fe7bede"
                         ],
                         "packages_path": "main/binary-arm64/Packages.gz"
                     },
@@ -1656,7 +1656,7 @@
                     "data": {
                         "checksum": [
                             "sha256",
-                            "37ac84a5b20609ad8989f6ed718c3366c86fffd03deb7f4bd82f53d2fd236a89"
+                            "9552038b8b73a80c0a79efc4739eebffcc10cde3b12b2cede7b1ab140fe7bede"
                         ],
                         "packages_path": "main/binary-arm64/Packages.gz"
                     },
@@ -1922,7 +1922,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -1978,7 +1978,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2034,7 +2034,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2090,7 +2090,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2146,7 +2146,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2202,7 +2202,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2258,7 +2258,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2314,7 +2314,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2370,7 +2370,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2426,7 +2426,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2482,7 +2482,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2538,7 +2538,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2594,7 +2594,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2650,7 +2650,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2706,7 +2706,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
@@ -2762,7 +2762,7 @@
                             },
                             {
                                 "url": "linux-next",
-                                "version": "next-20260916"
+                                "version": "next-20260918"
                             }
                         ]
                     },
