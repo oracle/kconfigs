@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.18.52 Kernel Configuration
+# Linux/x86_64 6.18.54 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -367,6 +367,7 @@ CONFIG_PARAVIRT_CLOCK=y
 # CONFIG_BHYVE_GUEST is not set
 # CONFIG_INTEL_TDX_GUEST is not set
 CONFIG_CC_HAS_MARCH_NATIVE=y
+CONFIG_RUSTC_HAS_APXF=y
 # CONFIG_X86_NATIVE_CPU is not set
 CONFIG_X86_INTERNODE_CACHE_SHIFT=6
 CONFIG_X86_L1_CACHE_SHIFT=6
