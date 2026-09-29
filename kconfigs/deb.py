@@ -239,5 +239,7 @@ class DebExtractor(Extractor):
             code = await proc.wait()
             assert code == 0
             candidates = list(tdpath.glob("boot/config*"))
+            if not candidates:
+                candidates = list(tdpath.glob("usr/lib/modules/*/config"))
             assert len(candidates) == 1
             shutil.copyfile(candidates[0], output)
