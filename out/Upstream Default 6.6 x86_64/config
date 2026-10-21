@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 6.6.159 Kernel Configuration
+# Linux/x86_64 6.6.160 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -4214,14 +4214,7 @@ CONFIG_INTEL_IOMMU_PERF_EVENTS=y
 # CONFIG_DAX is not set
 CONFIG_NVMEM=y
 CONFIG_NVMEM_SYSFS=y
-
-#
-# Layout Types
-#
-# CONFIG_NVMEM_LAYOUT_SL28_VPD is not set
-# CONFIG_NVMEM_LAYOUT_ONIE_TLV is not set
-# end of Layout Types
-
+# CONFIG_NVMEM_LAYOUTS is not set
 # CONFIG_NVMEM_RMEM is not set
 
 #
@@ -4314,7 +4307,6 @@ CONFIG_FAT_DEFAULT_CODEPAGE=437
 CONFIG_FAT_DEFAULT_IOCHARSET="iso8859-1"
 # CONFIG_FAT_DEFAULT_UTF8 is not set
 # CONFIG_EXFAT_FS is not set
-# CONFIG_NTFS_FS is not set
 # CONFIG_NTFS3_FS is not set
 # end of DOS/FAT/EXFAT/NT Filesystems
 
