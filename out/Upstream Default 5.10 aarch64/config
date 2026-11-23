@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.10.274 Kernel Configuration
+# Linux/arm64 5.10.275 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 CONFIG_CC_IS_GCC=y
@@ -942,7 +942,7 @@ CONFIG_GENERIC_EARLY_IOREMAP=y
 CONFIG_ARCH_HAS_PTE_DEVMAP=y
 CONFIG_FRAME_VECTOR=y
 # CONFIG_PERCPU_STATS is not set
-# CONFIG_GUP_BENCHMARK is not set
+# CONFIG_GUP_TEST is not set
 # CONFIG_READ_ONLY_THP_FOR_FS is not set
 CONFIG_ARCH_HAS_PTE_SPECIAL=y
 # end of Memory Management options
@@ -2103,7 +2103,6 @@ CONFIG_AHCI_MVEBU=y
 CONFIG_AHCI_XGENE=y
 CONFIG_AHCI_QORIQ=y
 # CONFIG_SATA_AHCI_SEATTLE is not set
-# CONFIG_SATA_INIC162X is not set
 # CONFIG_SATA_ACARD_AHCI is not set
 CONFIG_SATA_SIL24=y
 CONFIG_ATA_SFF=y
